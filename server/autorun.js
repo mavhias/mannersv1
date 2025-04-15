@@ -2,7 +2,7 @@ import moment from 'moment'
 import request from "sync-request";
 
 
-sendAlert = (user, miss) => {
+const sendAlert = (user, miss) => {
   let cl = Meteor.users.findOne(user);
   if (!cl) return false;
   Meteor.call('sendEmail',
@@ -36,7 +36,7 @@ sendAlert = (user, miss) => {
 			<h6 align="left">Bonjour ` + cl.profile.firstname + `</h6>
 			<div class="text2">
 		<p>Nous vous rappelons que votre mission ` + miss.name + ` commence dans moins de 12h.</p>
-			<p>C’est le moment de vérifier que tout est bien en place avec vos Manners :</p>
+			<p>C'est le moment de vérifier que tout est bien en place avec vos Manners :</p>
 
 			<div class="btn"><a href="#">Messagerie instantannée</a></div><br><br>
 
@@ -80,28 +80,27 @@ let admins = ['rtr6xvYoup8o7eBgG',
 missionTimer = () => {
   let missions = Missions.find().fetch();
   missions.forEach(miss => {
-
-    // let begin = (miss.beginsTo.length > 2) ? miss.beginsTo.slice(0, 2) : miss.beginsTo[0];
-    // let date = moment(new Date(miss.startDate)).add(parseInt(begin), 'hours').format();
-    // let alert = moment(date).subtract(12, 'hours').format();
-    // let diff = new Date(alert).getTime() - new Date().getTime();
-    // Meteor.setTimeout(() => {
-    //     // sendAlert(miss.creator, miss);
-    // }, diff);
     let duration = parseInt(miss.duration.split(' ')[0]);
     let end = miss.endTo; //.length > 2) ? miss.endTo.slice(0, 2) : miss.endTo[0];
     let date = moment(new Date(miss.startDate)).add(parseInt(end), 'hours').format();
     date = moment(date).add(duration - 1, 'day');
-    // let alert = moment(date).subtract(12, 'hours').format();
     let diff = new Date(date).getTime() - new Date().getTime();
     Meteor.setTimeout(() => {
-      // sendAlert(miss.creator, miss);
-      // if (miss.status < 3) return;
       Missions.update(miss._id, {
         $set: {
           status: 4
         }
       });
+      if (miss.start < moment().add(12, 'hours').toDate()) {
+        if (!miss.alertSent) {
+          Missions.update(miss._id, {
+            $set: {
+              alertSent: true
+            }
+          });
+          sendAlert(miss.creator, miss);
+        }
+      }
     }, diff);
   });
 }
@@ -131,17 +130,17 @@ Meteor.startup(function () {
           if (!answer && appV.step == 2) {
             let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + `,
 
-Nous avons remarqué que tu n’as pas encore fixé de date pour venir nous rencontrer 😔
+Nous avons remarqué que tu n'as pas encore fixé de date pour venir nous rencontrer 😔
 
 Tu peux toujours le faire grâce au lien suivant :
 https://calendly.com/manners/rencontre/10-06-2016?back=1
 
-Et n’oublie pas si ces créneaux ne te conviennent pas, envoie nous un mail, nous t’en proposerons un nouveau.
+Et n'oublie pas si ces créneaux ne te conviennent pas, envoie nous un mail, nous t'en proposerons un nouveau.
 
-Nous t’invitons à lire le guide que nous avons élaboré avant notre rencontre.
+Nous t'invitons à lire le guide que nous avons élaboré avant notre rencontre.
 
 Nous avons hâte de te rencontrer 😘
-L’équipe Manners
+L'équipe Manners
 
 JOINDRE GUIDE DU MANNERS`;
             Meteor.call('sendEmailCli',
@@ -151,17 +150,17 @@ JOINDRE GUIDE DU MANNERS`;
               mText);
           } else if (!answer && appV.step == 3) {
             let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + `,
-Nous avons remarqué que tu n’as pas encore fixé de date pour venir nous rencontrer 😔
+Nous avons remarqué que tu n'as pas encore fixé de date pour venir nous rencontrer 😔
 
 Tu peux toujours le faire grâce au lien suivant :
 https://calendly.com/manners/rencontre/10-06-2016?back=1
 
-Et n’oublie pas si ces créneaux ne te conviennent pas, envoie nous un mail, nous t’en proposerons un nouveau.
+Et n'oublie pas si ces créneaux ne te conviennent pas, envoie nous un mail, nous t'en proposerons un nouveau.
 
-Nous t’invitons à lire le guide que nous avons élaboré avant notre rencontre.
+Nous t'invitons à lire le guide que nous avons élaboré avant notre rencontre.
 
 Nous avons hâte de te rencontrer 😘
-L’équipe Manners
+L'équipe Manners
 
 JOINDRE GUIDE DU MANNERS
 `;
@@ -172,11 +171,11 @@ JOINDRE GUIDE DU MANNERS
               mText);
           } else if (!answer && step == 4) {
             let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + ` 😊
-J’espère que tu vas bien ?
+J'espère que tu vas bien ?
 Où en es-tu de tes démarches ? On a pas de news … On est triste 😢
-As-tu besoin d’aide ?
+As-tu besoin d'aide ?
 
-Si tu as des questions surtout n’hésite pas à m’appeler directement sur mon portable.
+Si tu as des questions surtout n'hésite pas à m'appeler directement sur mon portable.
 
 Have a good day ☀️
 L'équipe Manners`;
