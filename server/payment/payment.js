@@ -14,9 +14,14 @@ var paymentModule = function (commissionRate) {
 
 paymentModule.prototype.authenticate = function () {
   try {
+    // Désactivé temporairement en développement local
+    if (process.env.NODE_ENV === 'development') {
+      console.log('MangoPay désactivé en développement local');
+      return;
+    }
+    
     MangoPaySDK.apiVersion = 'v2.01';
     MangoPaySDK.production = true;
-    // MangoPaySDK.authenticate('mannersbe', 'yJgDiQXpLnv6wSx4iPA6SAwiwpONPo6jVpCzzQU0eecHeve7Bj');
     MangoPaySDK.authenticate('bemanners', '40oyHazKzeFwVvNaHaXeTEebeuxDRBk9G3kfKVQSAboKTnjnqD');
   } catch (error) {
     console.log(error);

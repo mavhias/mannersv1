@@ -8,6 +8,7 @@
   "dependencies": {
     "@babel/runtime": "^7.24.0",
     "bcrypt": "^5.1.1",
+    "chai": "^5.2.0",
     "google-auth-library": "^9.0.0",
     "googleapis": "^128.0.0",
     "html-pdf": "^2.2.0",
