@@ -77,11 +77,11 @@ let admins = ['rtr6xvYoup8o7eBgG',
   'o6hKzM3CtCeiQhAGG'
 ];
 
-missionTimer = () => {
+const missionTimer = () => {
   let missions = Missions.find().fetch();
   missions.forEach(miss => {
     let duration = parseInt(miss.duration.split(' ')[0]);
-    let end = miss.endTo; //.length > 2) ? miss.endTo.slice(0, 2) : miss.endTo[0];
+    let end = miss.endTo;
     let date = moment(new Date(miss.startDate)).add(parseInt(end), 'hours').format();
     date = moment(date).add(duration - 1, 'day');
     let diff = new Date(date).getTime() - new Date().getTime();
@@ -191,7 +191,7 @@ L'équipe Manners`;
     }
 
   });
-  setInterval(missionTimer(), 1000 * 1000 * 24);
+  Meteor.setInterval(missionTimer, 1000 * 60 * 60 * 24);
 
 
   //       let obj = {
