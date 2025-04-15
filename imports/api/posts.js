@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
-import { check } from 'meteor/check';
+import { check, Match } from 'meteor/check';
 
 // Configuration de SimpleSchema
 SimpleSchema.defineValidationErrorTransform((error) => error);
