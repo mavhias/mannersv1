@@ -1,0 +1,1487 @@
+<template name='Admin'>
+  <style>
+  .date-col {
+    border: 2px solid green;
+  }
+  </style>
+  <link rel="stylesheet" href="/css/style.css"> {{pay}} {{#AdminLTE skin="blue"}}
+  <header class="main-header">
+
+    <!-- Logo -->
+    <a href="/accueil"><img class="logo" src="/images/logo.svg" alt="Manners" height="120" width="200">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+      <!-- Navbar Right Menu -->
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-success">4</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 4 messages</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <!-- start message -->
+                    <a href="#">
+                      <div class="pull-left">
+                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        Support Team
+                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                      </h4>
+                      <p>Why not buy a new awesome theme?</p>
+                    </a>
+                  </li>
+                  <!-- end message -->
+                  <li>
+                    <a href="#">
+                      <div class="pull-left">
+                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        AdminLTE Design Team
+                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                      </h4>
+                      <p>Why not buy a new awesome theme?</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div class="pull-left">
+                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        Developers
+                        <small><i class="fa fa-clock-o"></i> Today</small>
+                      </h4>
+                      <p>Why not buy a new awesome theme?</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div class="pull-left">
+                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        Sales Department
+                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                      </h4>
+                      <p>Why not buy a new awesome theme?</p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div class="pull-left">
+                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                      </div>
+                      <h4>
+                        Reviewers
+                        <small><i class="fa fa-clock-o"></i> 2 days</small>
+                      </h4>
+                      <p>Why not buy a new awesome theme?</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="#">See All Messages</a></li>
+            </ul>
+          </li>
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page
+                      and may cause design problems
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-red"></i> 5 new members joined
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-red"></i> You changed your username
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="#">View all</a></li>
+            </ul>
+          </li>
+          <!-- Tasks: style can be found in dropdown.less -->
+          <li class="dropdown tasks-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-flag-o"></i>
+              <span class="label label-danger">9</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 9 tasks</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <!-- Task item -->
+                    <a href="#">
+                      <h3>
+                        Design some buttons
+                        <small class="pull-right">20%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">20% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- end task item -->
+                  <li>
+                    <!-- Task item -->
+                    <a href="#">
+                      <h3>
+                        Create a nice theme
+                        <small class="pull-right">40%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">40% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- end task item -->
+                  <li>
+                    <!-- Task item -->
+                    <a href="#">
+                      <h3>
+                        Some task I need to do
+                        <small class="pull-right">60%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="sr-only">60% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- end task item -->
+                  <li>
+                    <!-- Task item -->
+                    <a href="#">
+                      <h3>
+                        Make beautiful transitions
+                        <small class="pull-right">80%</small>
+                      </h3>
+                      <div class="progress xs">
+                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                          aria-valuemax="100">
+                          <span class="sr-only">80% Complete</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <!-- end task item -->
+                </ul>
+              </li>
+              <li class="footer">
+                <a href="#">View all tasks</a>
+              </li>
+            </ul>
+          </li>
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">Administrateur </span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+
+
+
+
+
+
+
+  <!-- The Right Sidebar -->
+  <div class="main-sidebar">
+    <!-- Inner sidebar -->
+    <div class="sidebar">
+      <!-- user panel (Optional) -->
+      <!--<div class="user-panel">
+      <div class="pull-left image">
+        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+        <p>User Name</p>
+
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
+    </div>-->
+      <!-- /.user-panel -->
+      <!-- Search Form (Optional) -->
+      <!-- /.sidebar-form -->
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+
+        <div class="col-md-6">
+
+
+        </div>
+
+        <!-- Début du test -->
+        <li class="active bl" id="blink-1"> <a href="/administration/1"><span>Dashboard</span></a></li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Audiences</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li id="blink-2" class="bl"> <a href="/administration/2"><i class="fa fa-circle-o"></i>Suivi Inscriptions</a></li>
+            <li id="blink-3" class="bl"> <a href="/administration/3"><i class="fa fa-circle-o"></i>Suivi Missions</a></li>
+            <li id="blink-4" class="bl"> <a href="/administration/4"><i class="fa fa-circle-o"></i>Suivi Paiement</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Missions</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">2</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li id="blink-8" class="bl"> <a href="/administration/8"><i class="fa fa-circle-o"></i><span>Express Host Select</span></a></li>
+            <li id="blink-12" class="bl"> <a href="/administration/12"><i class="fa fa-circle-o"></i><span>Custom Host Select</span></a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Paiement</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">2</span>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li id="blink-7" class="bl"> <a href="/administration/7"><span>Paiement</span></a></li>
+            <li id="blink-9" class="bl"> <a href="/administration/9"><span>Paiement (Transfert)</span></a></li>
+          </ul>
+        </li>
+
+        <!--<li id="blink-5" class="bl"> <a href="/administration/5"><span>Partenaire(User Edit)</span></a></li>-->
+        <li id="blink-6" class="bl"> <a href="/administration/6"><span>Blog</span></a></li>
+        <!--<li id="blink-10" class="bl"> <a href="/administration/10"><span>Historique(Email)</span></a></li>-->
+        <li id="blink-11" class="bl"> <a href="/administration/11"><span>Moderation</span></a></li>
+        <li id="blink-13" class="bl"> <a href="/administration/13"><span>Users Rejected</span></a></li>
+        <li id="blink-14" class="bl"> <a href="/administration/14"><span>Client VIP</span></a></li>
+        <li id="blink-15" class="bl"> <a href="/administration/15"><span>Mangopay users</span></a></li>
+        <li id="blink-16" class="bl"> <a href="/administration/16"><span>Calendly events</span></a></li>
+        <li id="blink-17" class="bl"> <a href="/administration/17"><span>Docs</span></a></li>
+
+
+      </ul>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </div>
+  <!-- /.main-sidebar -->
+  <div class="content-wrapper">
+    {{#if nav 1}}
+    <!-- panel colors -->
+    <!-- Content Wrapper. Contains page content -->
+    
+
+        <section>
+                
+                <div>
+                  <legend>Send pay email to cli</legend>  
+                  <div class="form-group">
+                    <label for="">label</label>
+                    <input type="number" class="form-control" id="inpPay" placeholder="Input amount">
+                    <input type="text" class="form-control" id="userId" placeholder="Input user id">
+                    <input type="email" class="form-control" id="userEm" placeholder="Input user email">
+                  </div>
+                
+                  
+                
+                  <button type="submit" class="btn btn-primary sendEmail">Submit</button>
+                </div>
+                
+              </section>
+    <!-- /.content-wrapper -->
+    <!--/.row-->
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <li role="presentation" class="divider"></li>
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Chemin</th>
+            <th>Type d'utilisateur</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each analytics}}
+          <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.path}}</td>
+            <td>{{this.type}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 2}}
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Telephone</th>
+            <th>Mail</th>
+            <th>Société</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each clients}}
+          <tr>
+            <td>{{profile.nameManager}}</td>
+            <td>{{profile.lastNameManager}}</td>
+            <td>{{profile.tel}}</td>
+            <td>{{profile.email}}</td>
+            <td>{{profile.entreprise}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 3}}
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Nom</th>
+            <th>Nom de la mission</th>
+            <th>Commentaires</th>
+            <th>Horaires</th>
+            <th>Lieu</th>
+            <th>Type Mission</th>
+            <th>Nb Manners</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each analytics}}
+          <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.data.name}}</td>
+            <td>{{this.data.overview}}</td>
+            <td>{{this.data.duration}}</td>
+            <td>{{this.data.address}} - {{this.data.city}}</td>
+            <td>{{this.mtype}}</td>
+            <td>{{this.data.hostesCol}}</td>
+            <td>{{this.sex}}</td>
+            <!--<td><input type="text" id="inpPay-{{this._id}}"></td>
+            <td>
+              <button class="sendEmail btn btn-primary" id='sendE-{{this._id}}-{{this.data.price}}-{{this.data.creator}}'>send email</button>
+            </td>-->
+            <td>
+              <button class="setPay btn btn-primary" id='setP-{{this._id}}'>Set payment done</button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 4}}
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nombre d’inscription</th>
+            <th>Nombre de pré-sélectionné</th>
+            <th>Nombre de rendez-vous</th>
+            <th>Nombre de sélectionnés</th>
+            <th>Nombre de partenaire</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each analytics}}
+          <tr>
+            <td>{{this.inscCount}}</td>
+            <td>{{this.verified}}</td>
+            <td>{{this.emailCount}}</td>
+            <td>{{this.dconfCount}}</td>
+            <td>{{this.clientCount}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 5}}
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Date</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each preselected}}
+          <tr>
+            <td>{{profile.name}}</td>
+            <td>{{profile.createdAt}}</td>
+            <td>
+              <input type="text" name="" id="rib-{{_id}}" class="form-control rib" value="" required="required" pattern="RIB" title="">
+              <input type="text" name="" id="scan-{{_id}}" class="form-control scan" value="" required="required" pattern="Scan" title="">
+              <div class="">
+                <button type="button" id="deny-{{_id}}" class="btn btn-large btn-block button-colored">Confirmer</button>
+              </div>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 6}}
+    
+    
+    <div class="box box-solid box-primary">
+      <form action="" id="post-to-blog">
+        <legend class="text-center">Article</legend>
+        <div class="form-group">
+          <label for="">Titre de l'article </label>
+          <input type="text" class="form-control text-center" id="" name="title" placeholder="Titre">
+          <label for="">Uploader une image</label>
+          <input type="file" required id="fileselect5" name="fileselect" multiple="multiple" />
+          <label for="">Auteur de l'article</label>
+          <input type="text" class="form-control text-center" id="" name="author" placeholder="Auteur">
+          <label for="">Texte</label>
+          <textarea name="body" id="" cols="30" rows="10" class="text-center" placeholder="Ecrivez-votre texte ici"></textarea>
+        </div>
+        <button type="submit" class="text-center btn btn-primary">Envoyer</button>
+      </form>
+    </div>
+    {{else}}{{#if nav 8}}
+
+<div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu2" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-1" href="#">awaiting assignment</a></li>
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-2" href="#">assignment awaiting validation</a></li>
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-3" href="#">mission validated pending completion</a></li>
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-4" href="#">missions completed unpaid</a></li>
+                <li role="presentation"><a role="menuitem" class="menu2" id="menu2-5" href="#">missions completed unpaid</a></li>
+
+
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    
+  
+    
+    <div class="col-md-4">
+      <input type="search" name="" class="form-control search-miss" value="" required="required" placeholder="search..." title="">
+    </div>
+    <div class="col-md-9">
+      {{#if missExist missions}}
+      {{#each missions}}
+            <div class="gray_title_bg box_title mission_title">
+        Informations sur les postes | {{name}} | {{startDate}}
+      </div>
+      <div class="location_box_bg place_info location_text_padding text-center">
+        <div class="panel-group accordion" id="accordion-{{_id}}" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading-{{_id}}">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion-{{_id}}" href="#collapse-{{_id}}">
+          More Info
+        </a>
+              </h4>
+            </div>
+            <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{_id}}">
+              <div class="panel-body">
+
+                <div class="well">
+                  <section>
+                    <p>
+                      <span>Client name: {{cliName this.creator}}</span>
+                    </p>
+                    <p>
+                      <span>Client first name: {{cliFirstName this.creator}}</span>
+                    </p>
+                    <p>
+                      <span>Date of a mission: {{moment startDate}}</span>
+                    </p>
+                    <p>
+                      <span>Timetable: {{beginsTo}} - {{endsTo}}</span>
+                    </p>
+                    <p>
+                      <span>Typologies of the trades:</span>
+                      <!--<ul>
+                        {{#each job _id}}
+                        <li>
+                          {{this}}
+                        </li>
+                        {{/each}}
+                      </ul>-->
+                      
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each job _id}}
+                          <tr>
+                            <td>
+                              {{this.mission}}
+                            </td>
+                            <td>
+                              {{this.col}}
+                            </td>
+                            <td>
+                              {{this.start}} {{this.finish}} 
+                            </td>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                      
+                    </p>
+                    <p>
+                      <span>Outfits selecteds:</span>
+                      <ul>
+                        {{#each suits this.suits}}
+                        <li>
+                          {{this.info}}
+                        </li>
+                        {{/each}}
+                      </ul>
+                    </p>
+                     <p>
+                      <span>Sex selecteds:</span>
+                      <ul>
+                        {{#each this.pattern}}
+                        <li>
+                          {{this.sex}}
+                        </li>
+                        {{/each}}
+                      </ul>
+                    </p>
+                    <p>
+                      Mission description: {{overview}}
+                    </p>
+                    <p>Additional information: {{moreInfo}}</p>
+                    <p>
+                      Price : {{price}}
+                    </p>
+                    <p>
+                      Hour rate : {{hr}}
+                    </p>
+                  </section>
+
+                </div>
+
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-large add-fav btn-block btn-default">Add Hosts</button>
+            
+          </div>
+        </div>
+        <div class="row">
+          <!--<span>
+          Maximum users:
+          </span>
+          <select name="" class="form-control mxx-users" required="required">
+            <option value="">3</option>
+            <option value="">6</option>
+            <option value="">12</option>
+          </select>-->
+          <!--<span>
+            Jobs:
+          </span>-->
+          
+          <!--<select name="" id="jobsList-{{_id}}" class="form-control jobsList" required="required">
+          {{#each jobsList _id}}
+          <option>{{this}}</option>
+          {{/each}}
+          </select>-->
+{{#each tabs}}        
+<div class="date-col row">
+          {{#each pre}}
+          <div class="col-md-4">
+            <div class="{{added ../_id id}} box_title mission_title">
+            </div>
+            <div class="location_box_bg location_p text-center">
+              <div class="row">
+                <img src="{{getImage id}}" width='200px' alt="" />
+                <div class="recruitment_info">
+                  <div class="users_name">{{userName id}}</div>
+                  <div class="users_name">job:
+                    
+                    <select class="form-control" name="jobSelect" id="jobSelect-{{id}}-{{../_id}}">
+                    {{#each userJobs ../_id id}}
+                    <option>{{this}}</option>
+                    {{/each}}
+                    </select>
+                    
+                  </div>
+                  <div class="users_name">start: {{this.start}}</div>
+                  <div class="users_name">finish: {{finish}}</div>
+                  <div class="users_name">date: {{moment this.date}}</div>
+                  <div class="users_name">missions done: {{missCount id}}</div>
+                  <div class="users_name">rating: {{favorites id}}</div>                  <div class="mission_like_number red_text">
+                    <!--<button type="button" id="{{../_id}}-{{id}}-{{date}}-{{mission}}" class="btn add-fav btn-large btn-block btn-primary">add to mission</button>-->
+                    
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" class='check-user' value="{{../_id}}-{{id}}-{{date}}-{{mission}}-{{pid}}">
+                        Add to Mission
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    {{/each}}
+    </div>
+    {{/each}}
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+       <div class="gray_title_bg font-change-title">
+        Informations sur les postes | {{name}} | {{startDate}}
+      </div>
+      <div class="location_box_bg place_info location_text_padding text-center">
+        <img src="/images/search.jpg" class="img-loop text-center" alt="">
+              <br>
+              <h4 class="text-center">Les Manners sont en train de postuler </h4>
+      </div>
+       
+{{/if}}
+    </div>
+    {{else}} {{#if nav 7}}
+    <div class="box box-solid box-primary">
+      <!--payment-->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Client + company</th>
+            <th>host cols</th>
+            <th>hour rate</th>
+            <th>total</th>
+            <th>users</th>
+            <th>Confirmer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each mis in miss}}
+          <tr>
+            <td>{{mis.name}}</td>
+            <td>{{mis.hostesCol}}</td>
+            <td>{{mis.hr}}</td>
+            <td>{{mis.price}}</td>
+            <td>
+              {{#each mis.hostes}}
+              <input type="text" name="" id="paySum-{{id}}" class="form-control" value="" required="required" pattern="" title="">
+              {{/each}}
+            </td>
+            <td>
+              {{#each mis.hostes}} {{getUser id mis._id}}
+              <br> {{/each}}
+            </td>
+            <td disabled={{payEnable status}}>
+              {{#each mis.hostes}}
+              <a id="pay-{{id}}-{{mis._id}}" href="#" class="btn pay btn-block btn-default">Pay</a> {{/each}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    {{else}} {{#if nav 9}}
+    <div class="box box-solid box-primary">
+      <!--payment-->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>author id</th>
+            <th>CreditedWalletId</th>
+            <th>DebitedWalletId</th>
+            <th>DebitedFunds</th>
+            <th>Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each transacts}}
+          <tr>
+            <td>{{Tag}}</td>
+            <td>{{AuthorId}}</td>
+            <td>
+              {{CreditedWalletId}}
+            </td>
+            <td>
+              {{DebitedWalletId}}
+            </td>
+            <td>{{DebitedFunds.Amount}}</td>
+            <td>{{Fees.Amount}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 10}}
+    <div class="box box-solid box-primary">
+      <!--payment-->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Preselected</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each email}}
+          <tr>
+            <td>{{this.profile.firstname}} {{this.profile.name}}</td>
+            <td>
+              {{{mailOp _id}}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 11}}
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Confirmer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each preappoint}}
+          <tr>
+            <td>
+              <img src="{{getImage _id}}" width='250px' alt="">
+              <span>
+                Prénom : {{profile.firstname}}<br>
+                Nom : {{profile.name}}<br>
+                Téléphone : {{profile.phone}} <br>
+                Email: {{profile.email}}
+              </span>
+            </td>
+            <td>
+              <section class="form-group">
+                <div class="">
+                  <p> Etape 2 : Après Reunion </p>
+                  {{#if app1conf _id}}
+                  <button class="button-colored btn-large  btn-admin app1-conf" id='set-{{_id}}'>Confirmer</button>
+                  <button class="button-colored btn-large  btn-admin app1-deny" id='set-{{_id}}'>Decliner</button>
+                  {{else}}
+                     <button class="button-colored btn-large  btn-admin app1-conf" disabled id='set-{{_id}}'>Confirmer</button>
+                     <button class="button-colored btn-large btn-admin app1-deny" disabled id='set-{{_id}}'>Decliner</button>
+                  {{/if}}
+                </div>
+                <input type="text" name="" id="app1-reason-{{_id}}" class="form-control" value="" required="required" pattern="Pour quelle raison tu le refuses ?"
+                  placeholder="Si non, pourquoi tu le refuses ? " title="">
+              </section>
+              <section>
+                                  {{>bic1}}
+              </section>
+              {{#if getOp _id}}
+              <section class="form-group">
+                <div class="">
+                  <p> Etape 3 : Après Signature </p>
+                  {{#if app2conf _id}}
+                  <button type="button" id="conf-{{_id}}" class="button-colored confirm btn-large btn-block btn-admin">Confirmer</button>
+                  <button type="button" id="deny-{{_id}}" class="button-colored deny btn-large btn-block btn-admin">Decliner</button>
+                  {{else}}
+                  <button type="button" id="conf-{{_id}}" disabled class="button-colored confirm btn-large btn-block btn-admin">Confirmer</button>
+                  <button type="button" id="deny-{{_id}}" disabled class="button-colored deny btn-large btn-block btn-admin">Decliner</button>
+                  {{/if}}
+                </div>
+                <input type="text" name="" id="preselect-reason-{{_id}}" class="form-control" value="" required="required" placeholder="Si non, pourquoi tu le refuses ? "
+                  title="">
+              </section>
+              {{else}}
+              <span>Elle/Il n'a pas encore passé le show-users !
+              </span> {{/if}}
+              <section class="form-group">
+                {{{mailOp _id}}}
+              </section>
+              <section>
+                Rib: {{profile.rib}}
+                <br> scan: {{profile.scan}}
+              </section>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 12}}
+
+<div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu2" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-1" href="#">awaiting assignment</a></li>
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-2" href="#">assignment awaiting validation</a></li>
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-3" href="#">mission validated pending completion</a></li>
+        <li role="presentation"><a role="menuitem" class="menu2" id="menu2-4" href="#">missions completed unpaid</a></li>
+                <li role="presentation"><a role="menuitem" class="menu2" id="menu2-5" href="#">missions completed unpaid</a></li>
+
+
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    
+  
+    
+    <div class="col-md-4">
+      <input type="search" name="" class="form-control search-miss" value="" required="required" placeholder="search..." title="">
+    </div>
+    <div class="col-md-9">
+      {{#if missCustExist missionsCustom}}
+      {{#each missionsCustom}}
+            <div class="gray_title_bg box_title mission_title">
+        Informations sur les postes | {{name}} | {{startDate}}
+      </div>
+      <div class="location_box_bg place_info location_text_padding text-center">
+        <div class="panel-group accordion" id="accordion-{{_id}}" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading-{{_id}}">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion-{{_id}}" href="#collapse-{{_id}}">
+          More Info
+        </a>
+              </h4>
+            </div>
+            <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{_id}}">
+              <div class="panel-body">
+
+                <div class="well">
+                  <section>
+                    <p>
+                      <span>Client name: {{cliName this.creator}}</span>
+                    </p>
+                    <p>
+                      <span>Client first name: {{cliFirstName this.creator}}</span>
+                    </p>
+                    <p>
+                      <span>Date of a mission: {{moment startDate}}</span>
+                    </p>
+                    <p>
+                      <span>Timetable: {{beginsTo}} - {{endsTo}}</span>
+                    </p>
+                    <p>
+                      <span>Typologies of the trades:</span>
+                      <!--<ul>
+                        {{#each job _id}}
+                        <li>
+                          {{this}}
+                        </li>
+                        {{/each}}
+                      </ul>-->
+                      
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each job _id}}
+                          <tr>
+                            <td>
+                              {{this.mission}}
+                            </td>
+                            <td>
+                              {{this.col}}
+                            </td>
+                            <td>
+                              {{this.start}} {{this.finish}} 
+                            </td>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                      
+                    </p>
+                    <p>
+                      <span>Outfits selecteds:</span>
+                      <ul>
+                        {{#each suits this.suits}}
+                        <li>
+                          {{this.info}}
+                        </li>
+                        {{/each}}
+                      </ul>
+                    </p>
+                     <p>
+                      <span>Sex selecteds:</span>
+                      <ul>
+                        {{#each this.pattern}}
+                        <li>
+                          {{this.sex}}
+                        </li>
+                        {{/each}}
+                      </ul>
+                    </p>
+                    <p>
+                      Mission description: {{overview}}
+                    </p>
+                    <p>Additional information: {{moreInfo}}</p>
+                    <p>
+                      Price : {{price}}
+                    </p>
+                    <p>
+                      Hour rate : {{hr}}
+                    </p>
+                  </section>
+
+                </div>
+
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-large add-fav btn-block btn-default">Add Hosts</button>
+            
+          </div>
+        </div>
+        <div class="row">
+          <!--<span>
+          Maximum users:
+          </span>
+          <select name="" class="form-control mxx-users" required="required">
+            <option value="">3</option>
+            <option value="">6</option>
+            <option value="">12</option>
+          </select>-->
+          <!--<span>
+            Jobs:
+          </span>-->
+          
+          <!--<select name="" id="jobsList-{{_id}}" class="form-control jobsList" required="required">
+          {{#each jobsList _id}}
+          <option>{{this}}</option>
+          {{/each}}
+          </select>-->
+                  
+
+          {{#each preHostes}}
+          <div class="col-md-4">
+            <div class="{{added ../_id id}} box_title mission_title">
+            </div>
+            <div class="location_box_bg location_p text-center">
+              <div class="row">
+                <img src="{{getImage id}}" width='200px' alt="" />
+                <div class="recruitment_info">
+                  <div class="users_name">{{userName id}}</div>
+                  <div class="users_name">job:
+                    
+                    <select class="form-control" name="jobSelect" id="jobSelect-{{id}}-{{../_id}}">
+                    {{#each userJobs ../_id id}}
+                    <option>{{this}}</option>
+                    {{/each}}
+                    </select>
+                    
+                  </div>
+                  <div class="users_name">start: {{this.start}}</div>
+                  <div class="users_name">finish: {{finish}}</div>
+                  <div class="users_name">date: {{moment this.date}}</div>
+                  <div class="users_name">missions done: {{missCount id}}</div>
+                  <div class="users_name">rating: {{favorites id}}</div>                  <div class="mission_like_number red_text">
+                    <!--<button type="button" id="{{../_id}}-{{id}}-{{date}}-{{mission}}" class="btn add-fav btn-large btn-block btn-primary">add to mission</button>-->
+                    
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" class='check-user' value="{{../_id}}-{{id}}-{{date}}-{{mission}}-{{pid}}">
+                        Add to Mission
+                      </label>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    {{/each}}
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+       <div class="gray_title_bg font-change-title">
+        Informations sur les postes | {{name}} | {{startDate}}
+      </div>
+      <div class="location_box_bg place_info location_text_padding text-center">
+        <img src="/images/search.jpg" class="img-loop text-center" alt="">
+              <br>
+              <h4 class="text-center">Les Manners sont en train de postuler </h4>
+      </div>
+       
+{{/if}}
+    </div>
+
+    <!--<div class="col-md-4">
+      <input type="search" name="" class="form-control search-miss" value="" required="required" pattern="" title="">
+    </div>
+    <div class="col-md-9">
+      {{#if missCustExist missionsCustom}}
+      {{#each missionsCustom}}
+      <div class="gray_title_bg font-change-title">
+        Informations sur les postes | {{name}} | {{startDate}}
+      </div>
+      <div class="location_box_bg place_info location_text_padding text-center">
+         <div class="panel-group accordion" id="accordion-{{_id}}" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading-{{_id}}">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion-{{_id}}" href="#collapse-{{_id}}">
+          More Info
+        </a>
+              </h4>
+            </div>
+            <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{_id}}">
+              <div class="panel-body">
+
+                <div class="well">
+                  <section>
+                    <p>
+                      <span>Client name: {{cliName this.creator}}</span>
+                    </p>
+                    <p>
+                      <span>Client first name: {{cliFirstName this.creator}}</span>
+                    </p>
+                    <p>
+                      <span>Date of a mission: {{moment startDate}}</span>
+                    </p>
+                    <p>
+                      <span>Timetable: {{beginsTo}} - {{endsTo}}</span>
+                    </p>
+                    <p>
+                      <span>Typologies of the trades:</span>
+                              <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each job _id}}
+                          <tr>
+                            <td>
+                              {{this.mission}}
+                            </td>
+                            <td>
+                              {{this.col}}
+                            </td>
+                            <td>
+                              {{this.start}} {{this.finish}} 
+                            </td>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+                    </p>
+                    <p>
+                      <span>Outfits selecteds:</span>
+                      <ul>
+                        {{#each suits this.suits}}
+                        <li>
+                          {{this}}
+                        </li>
+                        {{/each}}
+                      </ul>
+                    </p>
+                    <p>
+                      Mission description: {{overview}}
+                    </p>
+                    <p>Additional information: {{moreInfo}}</p>
+                    <p>
+                      Price : {{price}}
+                    </p>
+                    <p>
+                      Hour rate : {{hr}}
+                    </p>
+                  </section>
+
+                </div>
+
+              </div>
+            </div>
+            
+            <button type="button" class="btn btn-large add-fav btn-block btn-default">Add Hosts</button>
+            
+          </div>
+        </div>
+        <div class="row">
+          {{#each preHostes}}
+          <div class="col-md-4">
+            <div class="{{added ../_id id}} box_title mission_title">
+            </div>
+            <div class="location_box_bg location_p text-center">
+              <div class="row">
+                <img src="{{getImage id}}" width='200px' alt=""/>
+                <div class="recruitment_info">
+                  <div class="users_name">{{userName id}}</div>
+                  <div class="users_name">job: {{mission}}</div>
+                  <div class="users_name">start: {{start}}</div>
+                  <div class="users_name">finish: {{finish}}</div>
+                  <div class="users_name">date: {{moment date}}</div>
+                  <div class="users_name">missions done: {{missCount id}}</div>
+                  <div class="users_name">rating: {{favorites id}}</div>
+
+
+                  <div class="mission_like_number red_text">
+                    <button type="button" id="{{../_id}}-{{id}}-{{date}}-{{mission}}" class="btn add-fav-c btn-large btn-block btn-primary">add to mission</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+       <div class="gray_title_bg font-change-title">
+        Informations sur les postes | {{name}} | {{startDate}}
+      </div>
+      <div class="location_box_bg place_info location_text_padding text-center">
+        <img src="/images/search.jpg" class="img-loop text-center" alt="">
+              <br>
+              <h4 class="text-center">Les Manners sont en train de postuler </h4>
+      </div>
+       
+{{/if}}
+
+    </div>-->
+    {{else}} {{#if nav 13}}
+    <div class="dropdown">
+      <button class="button-colored dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Filtrer par 
+    <span class="caret"></span></button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation"><a role="menuitem" tabindex="1" href="#">Mois</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="2" href="#">Semaine</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="3" href="#">Hier</a></li>
+        <!--<li role="presentation" class="divider"></li>-->
+        <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>-->
+      </ul>
+    </div>
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Nom</th>
+            <th>Reason</th>
+            <th>Step</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each rejected}}
+          <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.reason}}</td>
+            <td>{{this.type}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}} {{#if nav 14}}
+
+    <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Tel</th>
+            <th>Logo</th>
+            <th>Fav</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each clients}}
+          <tr>
+            <td>{{this.profile.nameManager}} {{this.profile.lastNameManager}}</td>
+            <td>{{this.profile.entreprise}}</td>
+            <td>{{this.profile.tel}}</td>
+            <td>
+              <img src="{{getImage _id}}" width="200px" alt="">
+            </td>
+            <td>
+              <div class="mission_like_number red_text">
+                <span class="{{favExist _id}}" id="lik-{{_id}}" aria-hidden="true"></span>
+              </div>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+   {{else}} {{#if nav 15}}
+      <div class="box box-primary">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>emails</th>
+            <th>state</th>
+            <th>url</th>
+            <th>id</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each mogopay}}
+          <tr>
+            <td>{{Email}}</td>
+            <td>{{this.profile.entreprise}}</td>
+            <td>{{this.profile.tel}}</td>
+            <td>
+              {{Id}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+     {{else}} {{#if nav 16}}
+      <div class="box box-primary">
+        <!--{{loadVyte}}-->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Created At</th>
+            <th>Profile Name</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each vyte}}
+          <tr>
+            <td>{{this.time}}</td>
+            <td>{{this.payload.invitee.name}}</td>
+            <td>{{this.payload.invitee.email}}</td>
+            <td>
+              {{this.payload.event.start_time_pretty}}
+            </td>
+            <td>
+              <!-- {{phone this.payload.invitee.email this.payload.questions_and_responses.1_response }} -->
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    {{else}}
+          <div class="box box-primary">
+<table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Profile Name</th>
+            <th>CNI</th>
+            <th>PNG</th>
+            <th>make req</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each bic}}
+          <tr>
+            <td>{{name}}</td>
+            <td>
+            <img src="{{cni}}" alt="">
+            </td>
+            <td>
+              <img src="{{png}}" alt="">
+            </td>
+            <td>
+              
+              <button type="button" class="btn btn-default cni-upload" id="upl-{{id}}-{{cni}}">make request</button>
+              
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+   {{/if}}
+   {{/if}}
+    {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}}
+  </div>
+  {{/AdminLTE}}
+</template>

@@ -1,0 +1,604 @@
+<template name="AccueilClientInt">
+ <header class="header">
+      <div class="expanded row">
+        <div class="medium-1 columns">
+          <i class="fa fa-bars" id="menu-open"></i>
+          <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+          <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+        </div>
+        <div class="medium-2 columns">
+          <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+        </div>
+        <div class="medium-6 columns text-left">
+          {{#unless currentUser}}
+            <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+{{/unless}}
+          <a href="/nouvelle-mission/1" class="button-colored header-item reversed">Créer une mission</a>
+          <div class="comment-wrapper">
+            <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+          </div>
+          <div class="comment-wrapper dropdown dropdown-toggle">
+            <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+              <li class="divider"></li>
+              <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+              <li class="divider"></li>
+              <li><a href="/tenues">Les tenues</a></li>
+              <li class="divider"></li>
+              <li><a href="/contact">Contactez-nous</a></li>
+            </ul>
+          </div>{{#unless currentUser}}
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+          </div>
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+          </div>{{/unless}}{{#if currentUser}}
+          <div class="pull-right customer_name cn-ac">
+            <div class="inline-block dropdown dropdown-toggle customer_mt">
+              <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                <div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+
+              </div>
+              <!--<div class="comment-wrapper">
+                <div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div>
+                <div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+              </div>-->
+              <ul class="dropdown-menu">
+                <li><a href="/client/mes-missions">Mes missions</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/history">Mon historique</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/messagerie">Messagerie</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/compte">Mon compte</a></li>
+                <li class="divider"></li>
+                {{>logoutC}}
+              </ul>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </header>
+    <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+
+    <div class="carousel slide" data-ride="carousel" id="blog-carousel">
+        <ol class="carousel-indicators bullets">
+            <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="1" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="2" data-target="#carousel-example-generic"></li>
+        </ol>
+
+
+        {{> carouselList templ="client"}}
+        <a class="left carousel-control" data-slide="prev" href="#blog-carousel" role="button">
+            <span aria-hidden="false" class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Précèdent</span>
+        </a>
+        <a class="right carousel-control" data-slide="next" href="#blog-carousel" role="button">
+            <span aria-hidden="false" class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </div>
+
+    <!-- Features -->
+
+
+    <section class="parallax bg-img-6">
+        <div class="container pb50">
+            <div class="row">
+
+                <div class="col-md-12 text-center white progress-circle-icon">
+
+                    <div class="progress-circle style-1" data-circle-percent="50" data-circle-text="Détaillez vos 
+                    besoins">
+                        <i class="fa fa-pencil"></i>
+                        <!-- Change circle percent & text in attributes above -->
+                        <svg class="progress-svg">
+                            <circle r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                            <circle class="bar" r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                        </svg>
+                    </div>
+                    <div class="progress-circle style-1" data-circle-percent="50" data-circle-text="Choisissez les meilleurs">
+                        <i class="fa fa-hand-pointer-o"></i>
+                        <!-- Change circle percent & text in attributes above -->
+                        <svg class="progress-svg">
+                            <circle r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                            <circle class="bar" r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                        </svg>
+                    </div>
+                    <div class="progress-circle style-1" data-circle-percent="75" data-circle-text="Payez de manière sécurisez">
+                        <i class="fa fa-credit-card"></i>
+                        <!-- Change circle percent & text in attributes above -->
+                        <svg class="progress-svg">
+                            <circle r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                            <circle class="bar" r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                        </svg>
+                    </div>
+                    <div class="progress-circle style-1" data-circle-percent="100" data-circle-text="Recommandez vos profils favoris">
+                        <i class="fa fa-heart-o"></i>
+                        <!-- Change circle percent & text in attributes above -->
+                        <svg class="progress-svg">
+                            <circle r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                            <circle class="bar" r="80" cx="90" cy="90" fill="transparent" stroke-dasharray="502.4" stroke-dashoffset="0"></circle>
+                        </svg>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="fs30">
+Nous sélectionnons pour vous les meilleurs freelances en événementiel <br> pour vous accompagner sur vos événements et opérations ponctuelles.<br>
+ Nous prenons en charge la facturation et le paiement des missions <br> ainsi que l’assurance des prestataires.</p>
+                    <br>
+                    <a href="/nouvelle-mission/1" class="button">Planifier une mission</a>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+    <section class="section-services">
+        <div class="row small-up-2 medium-up-4 ssc">
+            <div class="column">
+                <h3><span>1.</span><div class="img-wrapper"><img src="images/picto/detaillez-vos-besoins.png"/></div></h3>
+                <p>Détaillez vos besoins</p>
+            </div>
+            <div class="column">
+                <h3><span>12.</span><div class="img-wrapper"><img src="images/picto/nous-vous-mettons.png"/></div></h3>
+                <p>Choisissez les meilleurs profils</p>
+            </div>
+            <div class="column">
+                <h3><span>3.</span><div class="img-wrapper"><img src="images/picto/payez.png"/></div></h3>
+                <p>Payez en ligne</p>
+            </div>
+            <div class="column">
+                <h3><span>4.</span><div class="img-wrapper"><img src="images/picto/recommandez.png"/></div></h3>
+                <p>Recommandez vos profils favoris</p>
+            </div>
+        </div>
+    </section>
+   !-->
+
+
+    <!-- Section 2 
+        <section id="features" class="section-features background-white pt20 pb110">
+            <div class="row small-up-2 medium-up-4 sscf">                      
+                <div class="row">    
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 section-heading pb20">   
+                        <h2>Quels<span class="bold"> Avantages</span></h2>
+                        <hr class="separator">
+                        <div class="accueil-text-1">Nous sélectionnons pour vous les meilleurs freelances en événementiel pour vous accompagner sur vos événements et opérations ponctuelles. <br>Nous prenons en charge la facturation et le paiement</div>
+                    </div> 
+                    <div class="col-md-2"></div>
+                    <div class="col-md-12 mr-auto text-center">   
+                        <div class="icon-tabs-centered">
+
+                            <ul id="iconTabs" class="nav nav-tabs nav-tabs-center">
+                                <li class="active pl30 pr30"><a href="#tab-i1" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i><span>Payez moins cher</span></a><ul class="no-width">
+                      <li><p class="little" >Mise en relation gratuite.</p></li>
+                      <li><p class="little">Travaillez directement avec des auto-entrepreneurs.</p></li>
+                      <li><p class="little">Deux fois moins cher qu’avec une agence traditionnelle.</p></li>
+                    </ul></li>
+                                <li class="active pl30 pr30"><a href="#tab-i2" data-toggle="tab"><i class="fa fa-user-o"></i><span>Choissez les meilleurs </span></a> <ul class="no-width">
+                                                           <li> <p class="little">Une sélection exigeante sur CV puis entretien physique.</p></li>
+                      <li><p class="little">Un système d’évaluation performant qui met avant les profils sérieux et responsables.</p></li>
+                                    </ul></li>
+                                <li class="active pl30 pr30"><a href="#tab-i3" data-toggle="tab"><i class="fa fa-calendar-check-o"></i><span>Simplifiez vos démarches</span></a> <ul class="no-width">
+                      <li><p>Facturation dématérialisée et consultable en ligne.</p></li>
+                      <li><p>Système de paiement en ligne sécurisé.</p></li>
+                    </ul></li>
+                                <li class="active pl30 pr30"><a href="#tab-i4" data-toggle="tab"><i class="fa fa-lock"></i><span>Sécurisé</span></a> <ul class="no-width">
+                        <li><p>Travaillez avec des indépendants en règle avec le droit du travail.</p></li>
+                        <li><p>Nos partenaires sont assurés pendant leurs missions jusqu’à 8M€.</p></li>
+                   
+                      </ul></li>
+                            </ul>
+
+                        </div> 
+
+                    </div> 
+
+                </div>
+            </div>
+        </section>
+        -->
+
+    <!-- About -->
+    <!-- Portfolio -->
+
+
+
+
+<section class="p0 sectionc-3">
+
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-4">
+
+					<figure class="effect-ming">
+                        <img src="/images/portfolio/3.png">
+						<figcaption>
+							<h2 class="white">Hôtess(es) <span>d'accueil</span></h2>
+						</figcaption>			
+					</figure>
+</div>
+
+<div class="col-md-4">
+					<figure class="effect-ming">
+                        <img src="/images/portfolio/5.png">
+						<figcaption>
+							<h2 class="white">Responsable <span>Vestiaire</span></h2>
+						</figcaption>			
+					</figure>
+</div>
+<div class="col-md-4">
+					<figure class="effect-ming">
+                        <img src="/images/portfolio/1.png">
+						<figcaption>
+							<h2 class="white">Voiturier</h2>
+						</figcaption>			
+					</figure>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-4">
+					<figure class="effect-ming">
+                        <img src="/images/portfolio/4.png">
+						<figcaption>
+							<h2 class="white">Barman</h2>
+						</figcaption>			
+					</figure>
+</div>
+<div class="col-md-4">
+					<figure class="effect-ming">
+                        <img src="/images/portfolio/6.png">
+						<figcaption>
+							<h2 class="white">Serveur</h2>
+						</figcaption>			
+					</figure>
+</div>
+<div class="col-md-4">
+					<figure class="effect-ming">
+                        <img src="/images/portfolio/2.png">
+						<figcaption>
+							<h2 class="white">Street Marketeur</h2>
+                        <div class="button hollow">En savoir plus</div>
+						</figcaption>			
+					</figure>
+</div>
+</div>
+</div>
+		<script>
+			// For Demo purposes only (show hover effect on mobile devices)
+			[].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
+				el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+			} );
+		</script>
+
+</section>
+
+     <!--   
+
+        <div class="container-full-width">
+            <div class="row">
+                <div class="col-md-4 jasgrid">
+                    <div class="box-item">
+                        <div class="box-post">
+                            <h3 class="post-title">
+                                <a href="#">
+                            Hôte(sse) d'accueil
+                        </a>
+                            </h3>
+
+                        </div>
+                        <img src="images/portfolio/1.png" class="">
+                    </div>
+
+                    <div class="box-item">
+                        <div class="box-post">
+                            <h3 class="post-title">
+                                <a href="#">
+                                Barmaid
+                        </a>
+                            </h3>
+
+                        </div>
+                        <img src="images/portfolio/4.png">
+
+                    </div>
+
+                </div>
+                <div class="col-md-4 jasgrid">
+                    <div class="box-item">
+                        <div class="box-post">
+                            <h3 class="post-title">
+                                <a href="#">
+                            Responsable vestiaire
+                        </a>
+                            </h3>
+
+                        </div>
+
+                        <img src="images/portfolio/5.png">
+                    </div>
+
+                    <div class="box-item">
+                        <div class="box-post">
+                            <h3 class="post-title">
+                                <a href="#">
+                            Serveur(se)
+                        </a>
+                            </h3>
+
+                        </div>
+                        <img src="images/portfolio/3.png">
+
+                    </div>
+                </div>
+
+               
+                <div class="col-md-4 jasgrid">
+                    <div class="box-item">
+                        <div class="box-post">
+                            <h3 class="post-title">
+                                <a href="#">
+                            Voiturier
+                        </a>
+                            </h3>
+
+                        </div>
+                        <img src="images/portfolio/6.png">
+                    </div>
+
+                    <div class="box-item">
+                        <div class="box-post">
+                            <h3 class="post-title">
+                                <a href="#">
+                        Street Marketeur
+                        </a>
+                            </h3>
+
+                        </div>
+                        <img src="images/portfolio/2.png">
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+!-->
+   
+
+
+
+
+    <section class="section-features">
+        <div class="row small-up-2 medium-up-4 sscf">
+            <h2> Pourquoi Manners </h2>
+            <hr/>
+            <div class="column">
+
+                <img class="icon" src="/images/euro.png" />
+                <h2>Payez moins cher<span class="star"></span></h2>
+                <div class="ul-wrapper draw meet">
+                    <ul>
+                        <li class="section-features-texthovercenter">
+                            <p>Mise en relation gratuite.</p>
+                        </li>
+                        <br>
+                        <li>
+                            <p>Taux horaire moyen : 20€/h.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <img class="icon" src="/images/medal.png" />
+                <h2>Choisissez les meilleurs</h2>
+                <div class="ul-wrapper draw meet">
+                    <ul>
+                        <li class="section-features-texthovercenter">
+                            <p>Pré-selection sur CV puis entretien physique.</p>
+                        </li>
+                        <li>
+                            <p>Système d’évaluation transparent </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column time">
+                <img class="icon" src="/images/time.png" />
+                <h2>Simplifiez vous la vie</h2>
+                <div class="ul-wrapper draw meet">
+                    <ul>
+                        <li class="section-features-texthovercenter">
+                            <p>Facturation en ligne et paiement sécurisé.</p>
+                        </li>
+                        <li>
+                            <p>Création de mission et sélection des profils en ligne </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <img class="icon" src="/images/security.png" />
+                <h2>Travaillez en toute sécurité</h2>
+                <div class="ul-wrapper draw meet">
+                    <ul>
+                        <li>
+                            <p class="little section-features-texthovercenter">Travaillez avec des indépendants en règle avec le droit du travail.</p>
+                        </li>
+                        <li>
+                            <p class="little">Nos partenaires sont assurés pendant leurs missions jusqu’à 8M€.</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Page Hero -->
+    <section class="hero-fullscreen parallax bg-event-1">
+        <div class="hero-container container">
+            <div class="hero-content text-center">
+
+                <div class="col-sm-12 mr-auto white text-center pt120 pt0-xs">
+                    <h2 class="large mt20">Découvrez nos <span class="bold ahcolor">Manners</span> sur le terrain</h2>
+                    <hr class="separator mb30">
+                    <p class="mb80 mb0-xs">Un manners est un freelance qui réalise des missions en événementiel.</p>
+                    <a href="" class="play-btn popup-video hidden-xs">
+                        <i class="fa fa-play"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax bg-grey-1">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-10 mr-auto">
+                    <div class="ac-testimonials black">
+
+
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="/images/logos/curtys.png" alt="#">
+                                    <hr class="separator">
+                                    <h4>Bilan super positif, toujours réactif et présent. Manners nous permet de passer plus
+                                        de temps à créer nos campagnes plutôt qu’à les planifier</h4>
+                                    <h5 class="subheading">Jean-Philippe B.</h5>
+                                    <p>Curty's</p>
+
+                                </div>
+
+                                <div class="item">
+                                    <img src="/images/logos/zipjet.png" alt="#">
+                                    <hr class="separator">
+                                    <h4>"Un service que nous recommandons vivement, des jeunes motivés et organisés, tout s'est
+                                        très bien passé, merci à vous !"</h4>
+                                    <h5 class="subheading"> Damien R.</h5>
+                                    <p>ZIPJET</p>
+                                </div>
+
+                                <div class="item">
+                                    <img src="/images/logos/dcontract.png" alt="#">
+                                    <hr class="separator">
+                                    <h4>"Un service disponible et à notre écoute, tout était dans les délais, merci à eux !"</h4>
+                                    <br>
+                                    <h5 class="subheading">Victor C.</h5>
+                                    <p>DContract</p>
+
+
+                                </div>
+
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+            </div>
+        </div>
+    </section>
+    <!-- End ac-testimonials -->
+
+
+
+    <!-- Clients Section -->
+    <section>
+        <div class="container container-section-client pt80 pb100">
+            <div class="row">
+                    <h2 class="large mt20">Nos <span class="bold ahcolor">clients</span> </h2>
+                <hr>
+                <br>
+                        <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                <div class="col-md-12">
+                    <div class="col-md-2"><img src="/images/clients/1.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/2.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/3.png" class="img-responsive wth60" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/4.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/5.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/6.png" class="img-responsive wth60" alt="#"></div>
+                </div>
+                                </div>
+                            <div class="item">
+                <div class="col-md-12">
+                    <div class="col-md-2"><img src="/images/clients/7.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/8.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/9.png" class="img-responsive mt25"  alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/10.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/11.png" class="img-responsive mt25" alt="#"></div>
+                    <div class="col-md-2"><img src="/images/clients/12.png" class="img-responsive wth60" alt="#"></div>
+                </div>
+                                                                </div>                
+                            <!-- Indicators -->
+                            <!-- Wrapper for slides -->
+                            </div>
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                </div>    
+                </div>
+                                    <a href="/nouvelle-mission/1" class="button hollow">Planifier une mission</a>
+    </section>
+    {{>footerForms}}
+</template>

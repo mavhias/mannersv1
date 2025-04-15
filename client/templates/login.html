@@ -1,0 +1,101 @@
+<template name="Login">
+  <link rel="stylesheet" href="/css/style.css">
+
+    <div id="main-menu" class="main-menu">
+        <div class="inner">
+            <i class="fa fa-close" id="menu-close"></i>
+
+                     <div class="row">
+              <div class="medium-9 columns medium-centered">
+                  <div class="row">
+                      <div class="medium-6 columns">
+                          <div class="menu-box">
+                              <h2>Liens utiles</h2>
+                              <nav>
+                                  <ul>
+                    <li><a href="/devenir-manners">Devenez Partenaire</a></li>
+                    <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+                    <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                    <li><a href="/tenues">Les tenues</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="menu-box contacts">
+                                <h2>Contact</h2>
+                                <p><i class="fa fa-phone"></i>01 76 39 00 01</p>
+                                <p><i class="fa fa-map-marker"></i> Paris 75008, 24 Avenue Marceau</p>
+                                <p><i class="fa fa-envelope"></i><a href="/contact" target="_blank">Contactez-nous</a></p>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+            <div class="row">
+                <div class="medium-4 columns medium-centered">
+                    <div class="menu-box menu-box-socials">
+                        <h2></h2>
+                        <!-- Réseaux sociaux -->
+                        <div class="socials text-center">
+                            <a href="/facebook" target="_blank"><img src="images/facebook-menu.png" alt=""></a>
+                            <a href="/twitter" target="_blank"><img src="images/twitter-menu.png" alt=""></a>
+                            <a href="/linkedin" target="_blank"><img src="images/linkedin-menu.png" alt=""></a>
+                            <a href="/instagram" target="_blank"><img src="images/instagram.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+  <div class="wrapper page_bg">
+    {{>helperComp}}
+
+  		<div class="container login">
+        <div class="bg-login"></div>
+  			<div class="register_frame login_bg login__size_box">
+  					<div class="login_box">
+  							<h3 class="text-center profil_phrase">Connectez-vous :</h3>
+              {{#if currentUser}}
+              <button class="button-colored login-btn" style="width: 100%;" id="logout">Déconnexion</button>
+                  <div class="text-center" style="margin-top: 20px"><p>Vous n’avez pas de compte ? <a href="/inscrivez-vous" class="pass_link">Inscription</a></p></div>
+                    <!-- <form class="new-task">
+                      <input type="text" name="text" placeholder="Type to add new tasks" />
+                    </form> -->
+            {{else}}
+            <form role="form">
+              <div class="form-group label-floating">
+                <!-- <label class="control-label">Adresse e-mail</label> -->
+                <input type="email" id='email' class="form-control" placeholder="Adresse e-mail">
+              </div>
+              <div class="form-group label-floating">
+                <!-- <label class="control-label">Mot de passe</label> -->
+                <input type="password" id='password' class="form-control" placeholder="Mot de passe">
+              </div>
+              <div class="checkbox">
+                <label class="form_label"><input type="checkbox" value=""> Se souvenir de moi</label>
+              </div>
+              <div class="text-center">
+                <a id="reset-pass" class="pass_link text-center">
+                  Mot de passe oublié ?
+                </a>
+              </div>
+              <button class="signin_btn login-button button-colored">Connexion</button>
+              <div style="margin-top: 20px"><p>Vous n’avez pas de compte ? <a href="/inscrivez-vous" class="pass_link">Inscription</a></p></div>
+            </form>
+            {{/if}}
+
+
+  					</div>
+  				</div>
+        </div>
+  	</div>
+
+
+  <!-- {{> loginButtons}} -->
+
+</template>

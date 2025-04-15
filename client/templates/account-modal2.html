@@ -1,0 +1,30 @@
+<template name="accountModal2">
+  <link rel="stylesheet" href="/css/style.css">
+
+  				<!-- Modal -->
+  				<div class="modal fade" id="myModal33" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  					<div class="modal-dialog" role="document">
+  						<div class="modal-content rieview_modal">
+  							<div class="rieview_modal_title yellow_text">
+  								Notez votre mission !
+  							</div>
+  							<div class="review_modal_text">
+  								{{mission.name}}<br>
+  								{{mission.address}}<br>
+  								{{mission.startDate}}<br>
+  								<span class="red_text">{{mission.hostesCol}} hôtes</span>
+  							</div>
+  							<div class="rewiev_modal_rating">
+  								<div class="rewiew_star" id="review-star-1"></div>
+  								<div class="rewiew_star" id="review-star-2"></div>
+  								<div class="rewiew_star" id="review-star-3"></div>
+  								<div class="rewiew_star" id="review-star-4"></div>
+  								<div class="rewiew_star" id="review-star-5"></div>
+  							</div>
+  							<div class="text-center">
+  								<button class="btn submit_btn rewiew_modal_btn" id="mission-final">ok</button>
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+</template>

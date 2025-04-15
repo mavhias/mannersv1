@@ -1,0 +1,574 @@
+  <template name="AccueilHoteInt">
+  <!--<link rel="stylesheet" href="/css/style.css">-->
+<style media="screen">
+  .section-features {
+    /*pa-left: auto !important;*/
+    margin-right: auto !important;
+  }
+
+.header {
+/*position: fixed;
+top:0;
+background: #fff;
+width: 100%;
+height: 13%;
+z-index: 99999;*/
+}
+
+</style>
+  <div id="main-menu" class="main-menu">
+      <div class="inner">
+          <i class="fa fa-close" id="menu-close"></i>
+
+          <div class="row">
+              <div class="medium-9 columns medium-centered">
+                  <div class="row">
+                      <div class="medium-6 columns">
+                          <div class="menu-box">
+                              <h2>Liens utiles</h2>
+                              <nav>
+                                  <ul>
+                    <li class="menu-toggle-resp"><a href="/accueil">Accueil Client</a></li>
+                    <li class="menu-toggle-resp"><a href="/partenaire/compte">Compte Manners</a></li>
+                    <li class="menu-toggle-resp"><a href="/inscription">S'inscrire</a></li>
+                    <li class="menu-toggle-resp"><a href="/connexion">Se connecter</a></li>
+                    <li><a href="/devenir-manners">Devenez Hôte</a></li>
+                    <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+                    <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                    <li><a href="/tenues">Les tenues</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="menu-box contacts">
+                                <h2>Contact</h2>
+                                <p><i class="fa fa-phone"></i>01 76 39 00 01</p>
+                                <p><i class="fa fa-map-marker"></i> Paris 75008, 24 Avenue Marceau</p>
+                                <p><i class="fa fa-envelope"></i><a href="/contact" target="_blank">Contactez-nous</a></p>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="medium-4 columns medium-centered">
+                  <div class="menu-box menu-box-socials">
+                      <h2></h2> <!-- Réseaux sociaux -->
+                      <div class="socials text-center">
+                          <a href="#"><img src="/images/facebook-menu.png" alt=""></a>
+                          <a href="#"><img src="/images/twitter-menu.png" alt=""></a>
+                          <a href="#"><img src="/images/linkedin-menu.png" alt=""></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+ <header class="header">
+            <div class="expanded row">
+                <div class="medium-1 columns">
+                    <i class="fa fa-bars" id="menu-open"></i>
+                    <a href="/accueilhote"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                    <a href="/accueil" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Client</a>
+                </div>
+
+                <div class="medium-2 columns">
+                    <a href="/accueilhote"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                </div>
+
+                <div class="medium-6 columns text-left">
+                    {{#unless currentUser}}
+                        <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueil">ESPACE CLIENT</a>
+                {{/unless}}
+                    <div class="comment-wrapper">
+                        <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+                    </div>
+                    <div class="comment-wrapper dropdown dropdown-toggle">
+                        <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/tenues">Les tenues</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/contact">Contactez-nous</a></li>
+                        </ul>
+                    </div>{{#unless currentUser}}
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                    </div>
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                    </div>{{/unless}}{{#if currentUser}}
+                    <div class="pull-right customer_name cn-ac">
+                        <div class="inline-block dropdown dropdown-toggle customer_mt">
+                            <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                                <div
+                                    class="header-item"><span class="inline-block"><br>{{currentUser.profile.firstname}} {{currentUser.profile.name}}</span>
+                            </div>
+
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="/partenaire/mes-missions">Mes missions</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/historique">mon historique</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/profil">mon profil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/messagerie">Messagerie</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/compte/">Mon compte</a></li>
+                            <li class="divider"></li>
+                            {{>logoutC}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+    </div>
+
+
+    <div class="expanded row">
+        <div class="medium-11 medium-offset-1">
+        </div>
+    </div>
+    </header>
+
+     <section class="hero-fullscreen parallax homehost-bg-manners">  
+            <div class="hero-container container">  
+                <div class="hero-content text-center">   
+                    
+                    <div class="col-sm-11 mr-auto text-center">
+                        <h1 class="large white">Inscris-toi et rejoins la communauté!</h1>
+                        <hr class="separator hidden-xs">
+                        <h4 class="large white">Gagne de l'argent et de l'expérience en réalisant des missions ponctuelles en événementiel.</h4>
+                        <a href="/inscription" class="btn btn-manners btn-lg btn-appear mt40 mb40 hidden-xs"><span>INSCRIPTION</span></a> 
+                    </div> 
+                    
+                </div>
+            </div>    
+        </section>
+        <!-- End Page Hero --> 
+        <div class="sectionp bg-grey">
+                    <div class="container">                      
+                        <div class="row overflownothidden">     
+                            <div class="col-md-12">
+                     <div class="col-md-3">
+                                <img src="/images/integration/1.jpg" alt="#">
+                                <div class="overlay-1">
+                                <div class="text-s2-host">Hôte d'accueil</div>
+                                </div>
+                              </div>                             
+                                <div class="col-md-3">
+                                <img src="/images/integration/2.jpg" alt="#">
+                                <div class="overlay-1">
+                                <div class="text-s2-host">Street-Marketeur</div>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <img src="/images/integration/3.jpg" alt="#">
+                                <div class="overlay-2">
+                                <div class="text-s2-host">Barman</div>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <img src="/images/integration/4.jpg" alt="#">
+                                <div class="overlay-2">
+                                <div class="text-s2-host">Voiturier</div>
+                              </div>
+                              </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+        </div>
+
+    
+        <!-- Features -->  
+           <section class="section-services-2 bg-grey">
+               <br>
+               <br>
+
+               
+    <!-- <h2>Devenez notre partenaire</h2>
+    <p>Si vous avez de l’ambition et la volonté de travailler de manière professionnelle, Manners est une plate-forme qui vous correspond.</p>
+    <p>Inscrivez-vous pour participer à nos séances de séléction</p> -->
+      <div class="row small-up-2 medium-up-4 ssc1">
+          <div class="column">
+              <h3><span>1.</span><div class="img-wrapper"><img src="/images/picto/creez-votre-profil.png"/></div></h3>
+              <p>Pré-inscris toi en ligne.</p>
+          </div>
+          <div class="column">
+              <h3><span>2.</span><div class="img-wrapper"><img src="/images/picto/rencontrez-nous.png"/></div></h3>
+              <p>Rencontrez-nous à nos bureaux.</p>
+          </div>
+          <div class="column">
+              <h3><span>3.</span><div class="img-wrapper"><img src="/images/picto/comportement.png"/></div></h3>
+              <p>Crée ton profil.</p>
+          </div>
+          <div class="column">
+              <h3><span>4.</span><div class="img-wrapper"><img src="/images/picto/commencez-vos-missions.png"/></div></h3>
+              <p>Commence tes missions</p>
+          </div>
+      </div>
+      <a class="button hollow button show-for-medium" href="/inscription">REJOINS L'ÉQUIPE</a>
+        {{#unless currentUser}}<a class="button hollow button show-for-medium" href="/inscription">REJOINS L'ÉQUIPE</a>{{/unless}}
+  </section>
+
+        <!-- End Features --> 
+        
+        <!-- Fun Facts -->
+        <section class="bg-app-2">
+            <div class="container pt100 pb100"> 
+                <div class="row white pt40 pb40">
+
+                    <div class="col-sm-3 counter"> 
+                        <h1>505</h1> 
+                        <h5>Manners actifs</h5> 
+                    </div>
+                    <div class="col-sm-3 counter"> 
+                        <h1>289</h1> 
+                        <h5>Clients référencés</h5> 
+                    </div>
+                    <div class="col-sm-3 counter"> 
+                        <h1>889</h1> 
+                        <h5>Missions réalisées</h5> 
+                    </div> 
+                    <div class="col-sm-3 counter"> 
+                        <h1>20,13€/h</h1> 
+                        <h5>Taux horaire moyen</h5> 
+                    </div>
+
+                </div> 
+            </div>
+        </section>
+        <!-- End Fun Facts -->
+        
+        <!-- Image Column -->
+        <section class="section-prerequis bg-grey">            
+            <div class="container">
+              
+                <div class="vertical-align">
+
+                       <div class="col-md-6 prerequis-nopadding">
+<div id="myCarouselp" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarouselp" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarouselp" data-slide-to="1"></li>
+    <li data-target="#myCarouselp" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item itempartenaire active">
+      <img src="/images/sectionp-photo/serveur-carre.png" alt="Los Angeles">
+    </div>
+
+    <div class="item itempartenaire">
+      <img src="/images/sectionp-photo/cuisine-carre.png" alt="Chicago">
+    </div>
+
+    <div class="item itempartenaire">
+      <img src="/images/sectionp-photo/vente-carre.png" alt="New York">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarouselp" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarouselp" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>                    </div>
+                    
+                    <div class="col-md-6">
+                        <h2>Gagne plus d'argent</h2> 
+                        <hr class="separator left ahcolor">
+                        <p class="mt30">Travaille en direct avec tes clients et gagne en moyenne 20€/h<br>
+                        Reçoit ton argent juste après la mission par virement.<br>
+                        </p>
+                    </div> 
+
+                </div>
+            </div>
+        </section>            
+        <!-- End Image Column -->  
+        
+        <!-- Features -->  
+        <section class="pt140 pb120 parallax bg-app-3">
+            <div class="container">                      
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-6 feature-center white">
+                        <i class="fa fa-euro size-4x ahcolor"></i>
+                        <i class="fa fa-euro back-icon"></i>  
+                        <h4>Gagnez plus d'argent</h4>
+                        <p style="font-size:18px">Mettez fin aux intermédiaires. <br>Gagnez jusqu’au double par rapport à une agence traditionnelle.<br></p> 
+                    </div>
+                    <div class="col-md-3 col-sm-6 feature-center white">
+                        <i class="fa fa-calendar-o size-4x ahcolor"></i>
+                        <i class="fa fa-calendar-o back-icon"></i>  
+                        <h4>Travaille quand tu peux</h4>
+                         <p style="font-size:18px">Tu es indépendant, à toi de choisir quand tu travailles.<br>Renseigne ton emploi du temps, on te contactera en fonction.<br></p>  
+                    </div>
+                    <div class="col-md-3 col-sm-6 feature-center white">
+                        <i class="fa fa-briefcase size-4x ahcolor"></i>
+                        <i class="fa fa-briefcase back-icon"></i>  
+                        <h4>Utilise ton propre vestiaire</h4>
+                         <p style="font-size:18px">Ne perd pas de temps à récupérer puis rendre ta tenue en agence.<br>Travaille avec tes propres affaires.</p>  
+                    </div>  
+
+                    <div class="col-md-3 col-sm-6 feature-center white">
+                        <i class="fa fa-smile-o size-4x ahcolor"></i>
+                        <i class="fa fa-smile-o back-icon"></i>  
+                        <h4>Simplifie-toi la vie</h4>
+                         <p style="font-size:18px">On édite tes factures et on les envoie à tes clients. <br>On sécurise tous les paiements pour éviter les impayés.</p> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Features -->     
+        
+        <!-- Image Column --> 
+        <section class="section-prerequis bg-grey">
+            <div class="container"> 
+                
+                <div class="vertical-align">
+
+                    <div class="col-md-6 prerequis-padding">
+                        <h2>Quels sont les pré-requis</h2> 
+                        <hr class="separator right ahcolor">
+                        <p class="mt30">Nous exigeons que nos partenaires soient indépendant et irréprochable, avec notre système de recommandations il est impératif que nos Manners mettent en avant toute leur expertise à chaque mission</p>
+                        <div class="mb10 lefticon sectionp-6">
+                            <i class="fa fa-check ahcolor "></i>  Tu as plus de 18 ans <br><br>
+                            <i class="fa fa-check ahcolor "></i>  Tu es auto-entrepreneur (ou autre) <br>     <br>                 
+                            <i class="fa fa-check ahcolor "></i> Tu as de l'expérience en accueil, service, vente ou animation  <br><br>
+                            <i class="fa fa-check ahcolor "></i>  Tu possèdes un smartphone (iPhone ou Android) <br>
+                        </div> 
+                    </div>
+
+                    <div class="col-md-6 prerequis-nopadding">
+<div id="myCarouselp" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarouselp" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarouselp" data-slide-to="1"></li>
+    <li data-target="#myCarouselp" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item itempartenaire active">
+      <img src="/images/sectionp-photo/serveur-carre.png" alt="Los Angeles">
+    </div>
+
+    <div class="item itempartenaire">
+      <img src="/images/sectionp-photo/cuisine-carre.png" alt="Chicago">
+    </div>
+
+    <div class="item itempartenaire">
+      <img src="/images/sectionp-photo/vente-carre.png" alt="New York">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarouselp" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarouselp" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>                    </div>
+
+                </div>
+            </div>
+        </section>            
+        <!-- End Image Column -->       
+        
+         <section class="parallax bg-app-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-10 mr-auto">
+                    <div class="ac-testimonials white">
+
+
+                        <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active width-img-testi">
+                                           <img src="/images/section-partenaire/laura.jpg" width="150px" alt="">
+                                <h4>Manners m'a permis d’être en relation avec des clients réguliers et de me faciliter la vie en tant qu'hôtesse d'accueil. Une belle startup qui ira loin !</h4>  
+                                <h5 class="subheading">Laura C.</h5>
+                                <p>A réalisé 12 missions</p>
+                            </div> 
+                                <div class="item width-img-testi">
+             
+                                <img src="/images/section-partenaire/clemence.png" alt="">
+                                <h4>Manners m'a permis d’être en relation avec des clients réguliers et de me faciliter la vie en tant qu'hôtesse d'accueil. Une belle startup qui ira loin !</h4>  
+                                <h5 class="subheading">Clémence G.</h5>
+                                <p>A réalisé 12 missions</p>
+                                </div>
+
+                                <div class="item width-img-testi">
+
+                                <img src="/images/section-partenaire/virgile.jpg" width="150px" alt="">
+                                <h4>Manners m'a permis d’être en relation avec des clients réguliers et de me faciliter la vie en tant qu'hôtesse d'accueil. Une belle startup qui ira loin !</h4>  
+                                <h5 class="subheading">Virgile </h5>
+                                <p>A réalisé 12 missions</p>
+                                </div>
+
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel3" data-slide-to="1"></li>
+                    <li data-target="#myCarousel3" data-slide-to="2"></li>
+                </ol>
+
+            </div>
+        </div>
+    </section>
+
+        <!-- End Testimonials --> 
+        
+        <!-- Start Contact Form -->    
+        <section class="pt120 pb100 bg-grey">
+            <div class="container">
+                <div class="row">     
+                    
+                    <div class="col-sm-8 mr-auto text-center mb60">
+                        <h2>Tu as des questions ou des recommandations ?</h2>
+                        <hr class="separator">
+                        <h5 class="subheading">N’hésite pas à nous écrire, on répondra à ton message au plus vite !</h5>  
+                    </div>
+                    
+                    <div class="contact col-md-9"> 
+                        <div id="message"></div>
+                        <!-- Contact Form will be functional only on your server. Upload to your server when testing. -->
+                        <form method="post" action="php/contact-form.php" name="contactform" id="contactform"> 
+                            <fieldset><input name="name" type="text" id="name" placeholder="Ton Nom*"/></fieldset>  
+                            <fieldset><input name="email" type="text" id="email" placeholder="Ton Email*"/></fieldset>
+                            <input name="subject" type="text" id="subject" placeholder="Sujet"/>
+                            <textarea name="comments" cols="40" rows="3" id="comments" placeholder="Description*"></textarea>
+                            <br>
+                            <input type="submit" class="submit btn btn-md btn-primary btn-round" id="submit" value="Envoyer votre message" />
+                        </form>
+                    </div>  
+                    
+                    <div class="col-md-3 mt60 contact-side">  
+                        
+                        <div class="side-info">
+                            <h5>Téléphone nous !</h5>
+                            <p>
+                                01 76 39 00 01
+                                
+                            </p>
+                            <p><a href="/comment-ca-marche"> En savoir plus</a> </p>
+                        </div>   
+                        <div class="sidebar-share"> 
+                            <ul class="list-inline">
+                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                <li><a href="#"><i class="ti-google"></i></a></li> 
+                            </ul>
+                        </div>  
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- End Contact Form -->  
+        
+        <!-- Download -->
+        <section class="bg-app-1"> 
+            <div class="container pt140 pb130">
+                <div class="row">
+
+                    <div class="col-sm-8 white mr-auto text-center">
+                        <h2>Tu veux en savoir plus sur nous et notre fonctionnement ?</h2>
+                        <hr class="separator">
+                        <h5 class="subheading">N'hésite pas à visiter le reste de notre site</h5> 
+                        <a href="/questions-frequentes" class="btn btn-manners btn-lg btn-appear mt40"><span>FAQ</span></a> 
+                        <a href="/comment-ca-marche" class="btn btn-manners btn-lg btn-appear mt40"><span>Comment ça marche</span></a> 
+                    </div> 
+
+                </div>
+            </div>
+        </section>
+
+   
+
+    <footer class="footer">
+        <div class="row text-center">
+            <div class="medium-4 columns">
+                <h6>LIENS UTILES</h6>
+                    <ul>
+                    <li><a href="/devenir-hote-hotesse">Devenez Partenaire</a></li>
+                    <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+                    <li><a href="/faq">Questions fréquentes</a></li>
+                    <li><a href="/tenues">Les tenues</a></li>
+                    <li><a href="/contact" target="_blank">Contactez-nous</a></li>
+                </ul>
+            </div>
+            <div class="medium-4 columns">
+                <h6>CONTACTEZ-NOUS</h6>
+                <p>
+                    Jean, notre responsable partenariat:
+                    <br><a href="mailto:nicholas@bemanners.com">nicholas@bemanners.com</a>
+                    <br><a href="tel:+33176390001">01 76 39 00 01</a>
+                    <br> 24 Avenue Marceau 75008 PARIS
+                </p>
+            </div>
+            <div class="medium-4 columns">
+                <h6>SUIVEZ-NOUS</h6>
+                <div class="socials text-center">
+                            <a href="/facebook" target="_blank"><img src="/images/facebook-menu.png" alt=""></a>
+                            <a href="/twitter" target="_blank"><img src="/images/twitter-menu.png" alt=""></a>
+                            <a href="/linkedin" target="_blank"><img src="/images/linkedin-menu.png" alt=""></a>
+                            <a href="/instagram" target="_blank"><img src="/images/instagram.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-10 columns medium-centered">
+                <div class="copyright text-center"><a href="dossier/manners-cgu.pdf">Conditions générales d'utilisation </a> - <a href="dossier/manners-mentions-legales.pdf">Mentions légales</a> - @Manners 2016</div>
+            </div>
+        </div>
+        <div class="row column text-center">
+            <img src="/images/powered.png" alt="">
+        </div>
+    </footer>
+
+</template>

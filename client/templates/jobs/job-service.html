@@ -1,0 +1,145 @@
+<template name="JobService">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <div id="main-menu" class="main-menu">
+      <div class="inner">
+          <i class="fa fa-close" id="menu-close"></i>
+
+          <div class="row">
+              <div class="medium-9 columns medium-centered">
+                  <div class="row">
+                      <div class="medium-6 columns">
+                          <div class="menu-box">
+                              <h2>Liens utiles</h2>
+                              <nav>
+                                  <ul>
+                                      <li><a href="/devenir-hote-hotesse.html">Devenez Hôte/Hôtesse ?</a></li>
+                                      <li><a href="#">Comment ça marche ?</a></li>
+                                      <li><a href="/faq">Questions fréquentes</a></li>
+                                      <li><a href="#">Les tenues</a></li>
+                                  </ul>
+                              </nav>
+                          </div>
+                      </div>
+                      <div class="medium-6 columns">
+                          <div class="menu-box contacts">
+                              <h2>Contactez-nous</h2>
+                              <p><i class="fa fa-phone"></i> 09 53 27 40 05</p>
+                              <p><i class="fa fa-map-marker"></i> Paris 75008, 24 Avenue Marceau</p>
+                              <p><i class="fa fa-envelope"></i><a href="mailto:contact@bemanners.com">contact@bemanners.com</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="medium-4 columns medium-centered">
+                  <div class="menu-box menu-box-socials">
+                      <h2></h2>
+                      <!-- Réseaux sociaux -->
+                      <div class="socials text-center">
+                          <a href="#"><img src="/images/facebook-menu.png" alt=""></a>
+                          <a href="#"><img src="/images/twitter-menu.png" alt=""></a>
+                          <a href="#"><img src="/images/linkedin-menu.png" alt=""></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+  <header class="header">
+      <div class="expanded row">
+
+          <div class="medium-1 columns">
+              <i class="fa fa-bars" id="menu-open"></i>
+              <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+              <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+          </div>
+
+          <div class="medium-2 columns">
+              <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+          </div>
+
+          <div class="medium-6 columns text-left">
+            <div class="comment-wrapper button-wrapper">
+              <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17 font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+            </div><div class="comment-wrapper">
+              <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+            </div><div class="comment-wrapper dropdown dropdown-toggle">
+               <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                 <li class="divider"></li>
+                 <li><a href="/faq">Questions fréquentes</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#">Les tenues</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#">Contactez-nous</a></li>
+               </ul>
+             </div>{{#unless currentUser}}<div class="comment-wrapper ">
+                <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+              </div>
+              <div class="comment-wrapper ">
+                <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+              </div>{{/unless}}{{#if currentUser}}<div class="pull-right customer_name cn-ac">
+                <div class="inline-block dropdown dropdown-toggle customer_mt">
+                  <div class="comment-wrapper"><div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div><div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+
+                  </div>
+                </div>
+                <ul class="dropdown-menu">
+                  <li><a href="/client/mes-missions">Mes missions</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/history">Mon historique</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/messagerie">Messagerie</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/compte">Mon compte</a></li>
+                  <li class="divider"></li>
+                  {{>logoutC}}
+                </ul>
+              </div>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+
+       <div class="expanded row">
+         <div class="medium-11 medium-offset-1">
+         </div>
+       </div>
+    </header>
+
+    <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+    <section class="job title"><div class="row">
+      <h1>Street-marketeur</h1>
+      <hr/>
+      <p>Le street-marketeur, comme son nom l’indique procède au street marketing d’une entreprise.</p><p>Ce terme est en fait une technique de promotion qui s’étend à la simple distribution de flyers dans la rue jusqu’à l’action évènementielle.</p><p> Le street-marketeur est parfois mal vu mais il contribue énormément à la prospection d’une entreprise et son impact peut-être parfois énorme.</p>
+
+    </div></section
+    ><div><section class="job"><div class="row">
+      <h2>Être informé</h2>
+      <hr/>
+      <p>Le street-marketeur doit connaître son produit et l’entreprise.</p><p>En effet si un passant s’arrête afin de poser des questions, le street-marketeur doit pouvoir lui répondre et ceci spontanément car le passant  doit voir ses questions éclaircies rapidement (sans pour autant se sentir « rushé ») pour laisser le street-marketeur continuer ses opérations mercatiques.</p><p> Ainsi le street-marketeur doit avoir un langage fluide et plaisant quand il s’agit de parler et de vanter le produit en question.</p>
+    </div></section
+    ><section class="job"><div class="row">
+      <h2>L’attitude</h2>
+      <hr/>
+      <p>L’attitude doit être une priorité pour les street-marketeur afin de donner une bonne impression de la marque et du produit aux passants.</p><p>Cela se traduit par une bonne posture, c’est à dire ne pas être avachi ou assis et par le fait de sourire.</p><p>Un street-marketeur qui sait sourire mettra toujours les passants dans de bonnes conditions de dialogue, mais attention à ne pas être oppressant lorsqu’on tombe sur une personne peu aimable.</p><p>Un street-marketeur de bonne qualité est bon vendeur sans jamais trop l’être.</p>
+      </div></section
+    ><section class="job"><div class="row">
+      <h2>La gestuelle</h2>
+      <hr/>
+      <p>En plus d’une attitude avenante, le street-marketeur doit user de « body language ».</p><p> En effet le body language est un outil en plus dans le maigre panel de choix du street-marketeur pour attirer les passants et ainsi promouvoir son produit.</p><p>Néanmoins il devra faire attention à ne pas « bousculer » les passants afin qu’ils ne sentent pas agressés.</p>
+    </div></section
+    ><section class="job"><div class="row">
+      <h2>L'endurance</h2>
+      <hr/>
+      <p>Une bonne endurance mentale comme physique aidera énormément le street-marketeur.</p><p>En effet, il devra tout au long de sa mission persévérer et respecter tous les points abordés dans cette fiche afin d’optimiser la publicité du produit.</p><p>Ainsi il ne devra pas se laisser abattre par l’ignorance des passants dont il sera le témoin et continuer sa mission avec entrain tout en souriant.</p><p>De plus le street-marketeur sera souvent soumis à travailler debout sous un climat parfois instable, ainsi il devra faire preuve d'adaptabilité afin de s’accoutumer rapidement à sa mission pour la mener à bien.</p>
+      </div></section></div>
+</template>

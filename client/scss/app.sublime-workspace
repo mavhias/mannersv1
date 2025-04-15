@@ -1,0 +1,542 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"img",
+				"IMG_2247"
+			],
+			[
+				"$s",
+				"$scope	AngularJS"
+			],
+			[
+				"ba",
+				"background-color: 〔property〕"
+			],
+			[
+				"text",
+				"text-align: 〔property〕"
+			],
+			[
+				"border-r",
+				"border-radius"
+			],
+			[
+				"h",
+				"h4	Tag"
+			],
+			[
+				"H",
+				"H4	Tag"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"p",
+				"p	Tag"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"psii",
+				"position"
+			],
+			[
+				"t",
+				"top"
+			],
+			[
+				"i",
+				"inline-block"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"b",
+				"background"
+			],
+			[
+				"set",
+				"setView"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"tim",
+				"timeline"
+			],
+			[
+				"htt",
+				"httpResponse〔argument〕"
+			],
+			[
+				"l",
+				"laDate"
+			],
+			[
+				"parse",
+				"parseInt〔function〕"
+			],
+			[
+				"j",
+				"jsonTrackPoints"
+			],
+			[
+				"ng-c",
+				"ng-controller	AngularJS"
+			],
+			[
+				"my",
+				"myWaypoints"
+			],
+			[
+				"va",
+				"var"
+			],
+			[
+				"loca",
+				"locateUser〔function〕"
+			],
+			[
+				"lie",
+				"linear"
+			],
+			[
+				"get",
+				"getHours〔function〕"
+			],
+			[
+				"value",
+				"value"
+			],
+			[
+				"valu",
+				"value"
+			],
+			[
+				"ng-s",
+				"ng-show	AngularJS"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"add",
+				"addTo"
+			],
+			[
+				"Map",
+				"MapLighter"
+			],
+			[
+				"user",
+				"userMarker"
+			],
+			[
+				"m",
+				"min"
+			],
+			[
+				"lo",
+				"longitude"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"an",
+				"angular"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"angul",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"angula",
+				"Set Syntax: HTML (Angular.js)"
+			],
+			[
+				"linter",
+				"SublimeLinter: Disable Linter"
+			],
+			[
+				"lint",
+				"SublimeLinter: Show All Errors"
+			],
+			[
+				"LINTER",
+				"SublimeLint: Show All Errors"
+			],
+			[
+				"subli",
+				"SublimeLinter: Clear Caches"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"PAC",
+				"Package Control: Enable Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 530.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/MaxLighter/mannersbe/client/scss/app.scss",
+		"/Users/MaxLighter/mannersbe/client/templates/home.html",
+		"/Users/MaxLighter/mannersbe/public/css/app.css",
+		"/Users/MaxLighter/mannersbe/client/js/app.js",
+		"/Users/MaxLighter/mannersbe/client/scss/_settings.scss",
+		"/Users/MaxLighter/manners/client/templates/home.html",
+		"/Users/MaxLighter/manners/public/css/app.css",
+		"/Users/MaxLighter/manners/client/templates/carousel.html",
+		"/Users/MaxLighter/manners/client/js/carousel.js",
+		"/Users/MaxLighter/manners/client/scss/app.scss",
+		"/Users/MaxLighter/manners/client/scss/_settings.scss",
+		"/Users/MaxLighter/manners/client/templates/become.html",
+		"/Users/MaxLighter/manners/client/js/become.js",
+		"/Users/MaxLighter/manners/client/js/app.js",
+		"/Users/MaxLighter/manners/server/settings.json",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-donation.html",
+		"/Users/MaxLighter/MuslApp/www/css/style.css",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-qibla.html",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-dash.html",
+		"/Users/MaxLighter/MuslApp/www/js/app.js",
+		"/Users/MaxLighter/MuslApp/www/templates/settings.html",
+		"/Users/MaxLighter/MuslApp/www/templates/tabs.html",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-pray.html",
+		"/Users/MaxLighter/MuslApp/www/index.html",
+		"/Users/MaxLighter/MuslApp/www/js/controllers.js",
+		"/Users/MaxLighter/MuslApp/www/img/ben.png",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-tasbih.html",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-names.html",
+		"/Users/MaxLighter/MuslApp/www/img/IMG_2247.jpg",
+		"/Users/MaxLighter/MuslApp/www/img/IMG_2229.JPG",
+		"/Users/MaxLighter/MuslApp/www/templates/tab-quran.html",
+		"/Users/MaxLighter/MuslApp/www/lib/99.json",
+		"/Users/MaxLighter/SupPrayApp/www/test.html",
+		"/Users/MaxLighter/MusApp/www/templates/tab-dash.html",
+		"/Users/MaxLighter/MusApp/www/js/controllers.js",
+		"/Users/MaxLighter/MusApp/www/js/app.js",
+		"/Users/MaxLighter/MusApp/www/templates/tabs.html",
+		"/Users/MaxLighter/MusApp/www/index.html",
+		"/Users/MaxLighter/SupPrayApp/www/js/app.js",
+		"/Users/MaxLighter/SupPrayApp/www/index.html",
+		"/Users/MaxLighter/MusApp/www/templates/tab-pray.html",
+		"/Users/MaxLighter/MusApp/www/templates/tab-qibla.html",
+		"/Users/MaxLighter/MusApp/www/css/style.css",
+		"/Users/MaxLighter/Downloads/simple-compass_1327266412_demo_package/index.html",
+		"/Users/MaxLighter/MusApp/www/lib/99.json",
+		"/Users/MaxLighter/MusApp/www/test.html",
+		"/Users/MaxLighter/MusApp/www/templates/tab-names.html",
+		"/Users/MaxLighter/MusApp/www/lib/angular-moment-hijri.min.js",
+		"/Users/MaxLighter/MusApp/www/templates/tab-tasbih.html",
+		"/Users/MaxLighter/MusApp/www/lib/PrayTimes.js",
+		"/Users/MaxLighter/MusApp/www/lib/allah.json",
+		"/Users/MaxLighter/MusApp/www/templates/name.html",
+		"/Users/MaxLighter/MuslimApp/www/index.html",
+		"/Users/MaxLighter/MuslimApp/src/js/controllers/today.controller.js",
+		"/Users/MaxLighter/MuslimApp/src/templates/tab-today.html",
+		"/Users/MaxLighter/MuslimApp/src/js/app.js",
+		"/Users/MaxLighter/MuslimApp/src/templates/tabs.html",
+		"/Users/MaxLighter/MusApp/www/templates/tab-donation.html",
+		"/Applications/MAMP/htdocs/Celine/tableau.php",
+		"/Applications/MAMP/htdocs/Celine/resultat.php",
+		"/Applications/MAMP/htdocs/Celine/calculatrice.php",
+		"/Applications/MAMP/htdocs/Celine/message.php",
+		"/Applications/MAMP/htdocs/Celine/date_de_naissance.php",
+		"/Applications/MAMP/htdocs/Celine/formulaire.php",
+		"/Users/MaxLighter/sign-in-then-tabs-nightly/js/index.js",
+		"/Users/MaxLighter/sign-in-then-tabs-nightly/index.html",
+		"/Users/MaxLighter/MusApp/www/templates/login.html",
+		"/Users/MaxLighter/MusApp/www/templates/signup.html",
+		"/Users/MaxLighter/MusApp/scss/ionic.app.scss",
+		"/Applications/MAMP/htdocs/HansHanany.net_new/style.css",
+		"/Applications/MAMP/htdocs/HansHanany.net_new/index.html",
+		"/Applications/MAMP/htdocs/Ceevee10/index.html",
+		"/Users/MaxLighter/SinessApp/www/css/style.css",
+		"/Users/MaxLighter/SinessApp/www/templates/modal-location.html",
+		"/Users/MaxLighter/myCar/www/app.js",
+		"/Users/MaxLighter/SinessApp/www/index.html",
+		"/Users/MaxLighter/SinessApp/www/templates/tabs.html",
+		"/Users/MaxLighter/Downloads/scrolltotop/index.html",
+		"/Users/MaxLighter/SinessApp/www/templates/tab-location.html",
+		"/Users/MaxLighter/SinessApp/www/css/angular-timeline.css",
+		"/Users/MaxLighter/Downloads/scrolltotop/css/style.css",
+		"/Users/MaxLighter/SinessApp/www/js/app.js",
+		"/Users/MaxLighter/SinessApp/www/templates/car-errors.html",
+		"/Users/MaxLighter/SinessApp/www/js/services.js",
+		"/Users/MaxLighter/SinessApp1/www/templates/tab-dash.html",
+		"/Users/MaxLighter/SinessApp1/www/css/style.css",
+		"/Users/MaxLighter/SinessApp1/www/templates/tabs.html",
+		"/Users/MaxLighter/SinessApp/www/profile.html",
+		"/Users/MaxLighter/SinessApp/www/css/profile.css",
+		"/Users/MaxLighter/SinessApp1/www/templates/tab-location.html",
+		"/Users/MaxLighter/Profile/www/index.html",
+		"/Users/MaxLighter/Profile/www/js/app.js",
+		"/Users/MaxLighter/SinessApp1/www/index.html",
+		"/Users/MaxLighter/SinessApp1/www/templates/tab-car.html",
+		"/Users/MaxLighter/SinessApp1/www/js/app.js",
+		"/Users/MaxLighter/SinessApp1/www/templates/car-errors.html",
+		"/Users/MaxLighter/SinessApp1/www/templates/tab-account.html",
+		"/Users/MaxLighter/SinessApp/www/js/controllers.js",
+		"/Users/MaxLighter/SinessApp1/www/js/controllers.js",
+		"/Users/MaxLighter/SinessApp1/www/img/pp_twitter.png",
+		"/Users/MaxLighter/SinessApp1/www/js/controllers1.js",
+		"/Users/MaxLighter/SinessApp1/www/css/angular-timeline.css",
+		"/Users/MaxLighter/Profile/www/css/style.css",
+		"/Users/MaxLighter/SinessApp1/www/js/services.js",
+		"/Users/MaxLighter/Profile/www/css/angular-timeline.css",
+		"/Users/MaxLighter/SinessApp1/MyCloudCode/config/global.json",
+		"/Users/MaxLighter/Downloads/angular-timeline-master/dist/angular-timeline.scss",
+		"/Users/MaxLighter/Downloads/angular-timeline-master/dist/angular-timeline-bootstrap.scss",
+		"/Users/MaxLighter/SinessApp1/MyCloudCode/cloud/main.js",
+		"/Users/MaxLighter/LeafletTest/www/index.html",
+		"/Users/MaxLighter/LeafletTest/www/js/app.js",
+		"/Users/MaxLighter/LeafletJSON/www/css/style.css",
+		"/Users/MaxLighter/Documents/AngularTest/gauge.html",
+		"/Users/MaxLighter/Documents/AngularTest/app.js",
+		"/Users/MaxLighter/SinessApp/www/js/controllers/mapsController.js",
+		"/Users/MaxLighter/LeafletJSON/www/data/hochries.json",
+		"/Users/MaxLighter/LeafletJSON/www/index.html",
+		"/Users/MaxLighter/SinessApp/www/js/services/GeolocationService.js",
+		"/Users/MaxLighter/LeafletTest/www/css/style.css",
+		"/Users/MaxLighter/Downloads/Leaflet.MultiOptionsPolyline-master 2/demo/index.html",
+		"/Users/MaxLighter/LeafletTest/www/lib/leaflet/leaflet.js",
+		"/Users/MaxLighter/MapLighter/www/js/app.js",
+		"/Users/MaxLighter/Downloads/leaflet-routing/index.html",
+		"/Users/MaxLighter/MapLighter/www/index.html",
+		"/Users/MaxLighter/myCar/www/index.html",
+		"/Users/MaxLighter/Downloads/whereismycar-master/www/index.html",
+		"/Users/MaxLighter/Downloads/whereismycar-master/www/app.js",
+		"/Users/MaxLighter/MapLighter/www/lib/d3.min.js"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"button",
+			"caption",
+			"carousel",
+			"slide",
+			"comm",
+			"caption",
+			"capt",
+			"caption",
+			"screen-sm-min",
+			"show-for-small-only",
+			"screen-sm-min",
+			"show-for-small-only",
+			"30px",
+			"routeStyles",
+			"watch",
+			"addToroute",
+			"\">",
+			"}\n",
+			"$timeout",
+			"</h6>",
+			"h6>",
+			"</h4>",
+			"h4>",
+			"latlngCar",
+			"percentage",
+			"dataset",
+			"h3",
+			"location"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"</h5>",
+			"h5>",
+			"</h6>",
+			"h6>",
+			"h4"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "app.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 291.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,133 @@
+section {
+  h2 {
+    margin: 25px auto !important;
+  }
+  hr {
+    opacity: .3;
+    margin-bottom: 3%;
+  }
+  .owl-stage-outer {
+    overflow-x: scroll !important;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.section-services, .section-services-2 {
+  width: 100%;
+  margin: 0 auto;
+  padding: 10% auto 2% auto;
+
+  .button-colored {
+    display: inline-flex !important;
+    &.reversed {
+      background-color: #fbae17;
+      color: #fff;
+      &:hover {
+        background-color: #e9a215;
+      }
+    }
+  }
+
+  div {
+    width: 100%;
+    margin: 0 auto !important;
+    padding: 0;
+    vertical-align: top;
+  }
+
+  .column:hover i::after {
+    width: 60px;
+  }
+
+  .column {
+    float:none !important;
+    display: inline-block;
+    width: 20%;
+    min-width: 200px;
+    padding: 0! important;
+    vertical-align: top;
+    margin: 0 1% !important;
+
+    .img-wrapper {
+      width: 65px;
+      /* margin: 0 !important; */
+      height: 65px;
+      }
+    img {
+      max-width: none;
+      height: auto;
+      -ms-interpolation-mode: bicubic;
+      display: inline-block;
+      vertical-align: middle;
+      width: 175%;
+      transform: translate(-25px, -25px);
+    }
+
+    span {
+      // display: none;
+      font-family:FuturaStd-Light, Arial, sans-serif;
+    }
+
+
+
+    p {
+      width: 160px;
+      height: 70px;
+      margin: auto;
+      font-family: FuturaBold, Arial, sans-serif;
+    }
+  }
+
+  h3:hover i::after {
+    // width: 60px;
+  }
+
+  h3:before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  margin-left: 15%;
+  height: 1px;
+  margin-top: 5px;
+  bottom: 0;
+  left: 0;
+  background: #666666;
+  visibility: hidden;
+  border-radius: 5px;
+  transform: scaleX(0);
+  transition: .25s linear;
+}
+.column:hover h3:before,
+.column:focus h3:before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+  h3 {
+    span {
+      display: none;
+    }
+      // padding-bottom: 15px;
+      font-size: 26px;
+      border-bottom: none !important;
+      position: relative;
+
+      i::after{
+        // position: absolute;
+        // transition: 0.3s;
+        // content: "";
+        // width: 0px;
+        // height: 61px;
+        // margin-left: -25%;
+        // font-family: FuturaStd-Light;
+        // border-bottom: 2px solid black;
+        // display: inline-block;
+        // vertical-align: bottom;
+      }
+      i::before {
+        vertical-align: top;
+      }
+    }
+}

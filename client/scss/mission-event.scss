@@ -1,0 +1,142 @@
+@import "settings";
+
+.section-mission-event-2 {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: auto !important;
+
+  hr {
+    margin-bottom: 2%;
+  }
+
+  .column {
+    // width: 100%;
+    // padding: 0 !important;
+    // margin: 0 !important;
+    // float: none !important;
+    // display: block;
+    // height: auto;
+
+  //   .squares {
+  //     width: auto;
+  //     margin: auto;
+  //     padding: 1% 20% 5% 20%;
+  //     height: auto;
+  //
+  //     a {
+  //       display: inline-block;
+  //       padding: 0;
+  //       margin: 5px;
+  //       position: relative;
+  //       .caption {
+  //         width: 100%;
+  //         height: 100%;
+  //         position: absolute;
+  //         top: 0;
+  //         left: 0;
+  //         background: rgba(0, 0, 0, .3);
+  //         line-height: 250px;
+  //         vertical-align: middle;
+  //         display: inline-block;
+  //         opacity: 0;
+  //         transition: 0.3s;
+  //         p {
+  //           line-height: 250px;
+  //           color: #fff;
+  //           vertical-align: middle;
+  //         }
+  //       }
+  //       img {
+  //         filter: none;
+  //         -webkit-filter: none;
+  //       }
+  //
+  //       &:hover {
+  //         .caption {
+  //           opacity: 1;
+  //           border: 1px solid $primary-color;
+  //         }
+  //       }
+  //     }
+  //
+  //     .voiturier{
+  //         width: auto;
+  //         height: 250px;
+  //         // left: 234px;
+  //         // margin-top: 80px;
+  //     }
+  //     .street{
+  //         width: auto;
+  //         height: 250px;
+  //         // left: 234px;
+  //         // margin-top: 80px;
+  //     }
+  //     .vestiaire{
+  //       width: auto;
+  //       height: 250px;
+  //         // left: 90px;
+  //         /*margin-top: 267px;*/
+  //     }
+  //     .accueil{
+  //       width: auto;
+  //       height: 250px;
+  //         // left: 525px;
+  //         /*margin-top: 40px;*/
+  //     }
+  //     .pointage{
+  //         width: auto;
+  //         height: 250px;
+  //         // left: 525px;
+  //         /*margin-top: 270px;*/
+  //     }
+  //     .barman{
+  //         width: 150px;
+  //         height: 150px;
+  //         // left: 665px;
+  //         // margin-top: 80px;
+  //     }
+  //     .service{
+  //         width: 320px;
+  //         height: 150px;
+  //         // left: 960px;
+  //         /*margin-top: 267px;*/
+  //     }
+  //   }
+  }
+}
+
+.section-mission-event {
+
+  .column-wrapper {
+    width: auto;
+    margin: auto;
+  }
+  .column {
+    display: inline-block;
+    float: none !important;
+    margin: 0 2%;
+    line-height: 240px;
+    vertical-align: middle;
+    transition: 0.3s;
+
+    &:hover {
+      h4 {
+        color: $primary-color;
+      }
+      transform: scale(1.1);
+    }
+
+    .text-wrapper {
+      line-height: 240px;
+      vertical-align: middle;
+          margin: 0 auto !important;
+          display: inline-block;
+      h4 {
+        transition: 0.4s;
+        margin: 0 auto !important;
+        vertical-align: middle;
+      }
+    }
+  }
+}

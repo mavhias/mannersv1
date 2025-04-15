@@ -1,0 +1,237 @@
+<template name="ModelAccount3">
+    <link rel="stylesheet" href="/css/style.css">
+    <div class="wrapper page_bg">
+      {{#if authCheck}}
+      <header class="header">
+          <div class="expanded row">
+
+              <div class="medium-1 columns">
+                  <i class="fa fa-bars" id="menu-open"></i>
+                  <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                  <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+              </div>
+
+              <div class="medium-2 columns">
+                  <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+              </div>
+
+              <div class="medium-6 columns text-left">
+                {{#unless currentUser}}<div class="comment-wrapper button-wrapper">
+                  <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+                </div>{{/unless}}<div class="comment-wrapper">
+                  <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+                </div><div class="comment-wrapper dropdown dropdown-toggle">
+                   <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                     <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                     <li class="divider"></li>
+                     <li><a href="/faq">Questions fréquentes</a></li>
+                     <li class="divider"></li>
+                     <li><a href="/tenues">Les tenues</a></li>
+                     <li class="divider"></li>
+                     <li><a href="/contact">Contactez-nous</a></li>
+                   </ul>
+                 </div>{{#unless currentUser}}<div class="comment-wrapper ">
+                    <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                  </div>
+                  <div class="comment-wrapper ">
+                    <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                  </div>{{/unless}}{{#if currentUser}}<div class="pull-right customer_name cn-ac">
+                    <div class="inline-block dropdown dropdown-toggle customer_mt">
+                      <div class="comment-wrapper"><div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div><div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+
+                      </div>
+                    </div>
+                <ul class="dropdown-menu">
+                  <li><a href="/client/mes-missions">Mes missions</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/history">Mon historique</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/messagerie">Messagerie</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/compte">Mon compte</a></li>
+                  <li class="divider"></li>
+                  {{>logoutC}}
+                </ul>
+              </div>
+            </div>
+                {{/if}}
+              </div>
+            </div>
+
+          <!-- </div> -->
+  <!--+33 6 51 52 15 89-->
+
+           <!-- <div class="comment-wrapper">
+             <a  class= "hollow button comment-link header-item " href="/devenir-hote-hotesse">AIDE</a>
+          </div> -->
+
+            <!-- <a href="/comment-ca-marche" style="color:#fbae17; font-size: 14px;" class="comment-link header-item">Comment ça marche ?</a> -->
+
+
+           <!--<div class="inline-block customer_menu_header customer_mt">
+               <br/>
+               <a class="hollow button show-for-medium" href="/devenir-hote-hotesse">COMMENT ÇA MARCHE ?</a>
+               <ul class="customer_submenu">
+                   <li>
+                       <a href="/account-dashboard/" class="active"></a>
+                   </li>
+                   <li class="subtitle_devider"></li>
+                   <li><a href="/comment-ca-marche" style="color:#fbae17" class="comment-link header-item">Devenir hôte(sse)</a></li>
+                                           <li class="subtitle_devider"></li>
+                   <a class="comment-link header-item" style="color:#fbae17" href="/devenir-hote-hotesse">AIDE</a>
+                   <li class="subtitle_devider"></li>
+                   <li><a href="/faq" style="color:#fbae17" class="comment-link header-item">FAQs</a></li>
+                   <li class="subtitle_devider"></li>
+                   <li><a href="/tenues" style="color:#fbae17" class="comment-link header-item">Tenues</a></li>
+                   <li class="subtitle_devider"></li>
+                   <li><a href="/model-account" style="color:#fbae17" class="comment-link header-item">Profil</a></li>
+                   <li class="subtitle_devider"></li>
+               </ul>
+           </div>-->
+           <!-- <div class="expanded row">
+             <div class="medium-11 medium-offset-1">
+             </div>
+           </div> -->
+         </header>
+     
+      <div class="border_menu">
+          <div class="container dashboard">
+            <ul class="customer_menu">
+                <li class="underline-1"><a href="/client/mes-missions" class="active">mes missions</a></li
+                  ><li class="underline-2"><a href="/client/profils-favoris">mes recommandations</a></li
+                  ><li class="underline-3"><a href="/client/messagerie">Messagerie</a></li
+                  ><li class="underline-4"><a href="/client/history">Mon historique</a></li
+                  ><li class="underline-5"><a href="/client/compte">mon compte</a></li>
+                <!-- <li class="underline-6">                   </li> -->
+                <hr class="model-3"/>
+            </ul>
+          </div>
+      </div>
+
+        <div class="container">
+            <div class="row customer_wrap">
+                <div class="col-md-12">
+                    <div class="order_bg guest_wrap">
+                        <p class="guest_title yellow_text">N’oubliez pas ! Vous avez des Manners en attente... </p>
+                        <p>
+                            Recommandez les Manners et Mannersses qui vous ont plu afin de pouvoir retravailler
+                            <br> avec eux lors de vos prochaines missions.
+                        </p>
+                        <div class="row">
+                          {{#each users}}
+                            <div class="col-md-6">
+                                <div class="guest_modal">
+                                    <div class="crop-photo medium round"><img src="/images/users_photo.png" alt=""></div>
+                                    <div class="recruitment_info inline-block">
+                                        <div class="users_name">{{shortIt profile.firstname profile.name 20}} </div>
+                                        <div class="mission_text_small">{{missions _id}} missions</div>
+                                        <div class="mission_like_number red_text">
+                                            {{favCount _id}}  <span class="{{favExist _id}}" id="lik-{{_id}}" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-comment" id="likс-{{_id}}" aria-hidden="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="guest_btn_group  pull-right inline-block">
+                                        <button class="btn recommend_btn add-recom" id="{{_id}}">Recommander</button>
+                                        <button class="btn report_btn" id="{{_id}}-report">Signaler</button>
+                                    </div>
+                                    <div class="guest_cross"></div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="modal_close"></div>
+                    </div>
+                    <div class="recommend_wrap">
+                        <div class="gray_title_bg">
+                            Mes recommandations
+                        </div>
+                        <div class="order_bg recommend_content">
+                            <div class="row">
+                              {{#each recom}}
+                                <div class="col-md-3 reccomend_profile">
+                                    <span class="guest_cross user_cross"></span>
+                                    <img src="/images/profile_photo_l.jpg" alt="">
+                                    <div class="recruitment_info">
+                                        <div class="users_name"> <p>
+                                          {{profile.firstname}} {{profile.name}}
+                                        </p>   </div>
+                                        <div class="mission_text_small">{{missions _id}} missions</div>
+                                        <div class="profile_rating">
+                                            <span class="inline-block">5</span>
+                                            <div class="customer_rating inline-block mb_none">
+                                                <div class="star">
+                                                  {{#if star rating 1}}
+                                                  <span class="glyphicon glyphicon-star" id="set-rating-1-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{else}}
+                                                  <span class="glyphicon glyphicon-star-empty" id="set-rating-1-{{_id}}" aria-hidden="true"></span>
+                                                  {{/if}}
+                                                </div>
+                                                <div class="star">
+                                                  {{#if star rating 2}}
+                                                  <span class="glyphicon glyphicon-star" id="set-rating-2-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{else}}
+                                                  <span class="glyphicon glyphicon-star-empty" id="set-rating-2-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{/if}}
+                                                </div>
+                                                <div class="star">
+                                                  {{#if star rating 3}}
+                                                  <span class="glyphicon glyphicon-star" id="set-rating-3-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{else}}
+                                                  <span class="glyphicon glyphicon-star-empty" id="set-rating-3-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{/if}}
+                                                </div>
+                                                <div class="star">
+                                                  {{#if star rating 4}}
+                                                  <span class="glyphicon glyphicon-star" id="set-rating-4-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{else}}
+                                                  <span class="glyphicon glyphicon-star-empty" id="set-rating-4-{{_id}}" aria-hidden="true"></span>
+
+                                                  {{/if}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="mission_like_number red_text">
+                                            8 <img src="/images/heart_small.png" alt="">
+                                        </div> -->
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    <div id="myModal46" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Ecrivez votre texte ici</p>
+        <textarea class="form-control" id="comment" rows="8" cols="40"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="commSubm" class="btn btn-default" data-dismiss="modal">Envoyer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    {{>footerForms}}
+</template>

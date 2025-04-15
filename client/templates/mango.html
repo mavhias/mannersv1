@@ -1,0 +1,130 @@
+<template name="MangoForm1">
+    <br>
+    <section id='authform' class="row">
+        <input type="password" id="password" placeholder="enter password">
+        <button id="auth" class="btn btn-primary align-center">Envoyer</button>
+    </section>
+    
+    <form action="" class="hidden" id='form'>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">Tag</label>
+                <input type="text" class="form-control" required name="tag" placeholder="Tag*">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">E-mail</label>
+                <input type="text" class="form-control" required name="email" placeholder="Email*">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">FirstName*</label>
+                <input type="text" class="form-control" required name="firstname" placeholder="Prénom*">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">LastName*</label>
+                <input type="text" class="form-control" required name="lastname" placeholder="Nom*">
+            </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Address.AddressLine1</label>
+            <input type="text" class="form-control" required name="address" placeholder="Adresse*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Address.AddressLine2</label>
+            <input type="text" class="form-control" name="address2" placeholder="Adresse*">
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Address.City</label>
+            <input type="text" class="form-control" name="city" placeholder="Ville*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Address.PostalCode</label>
+            <input type="text" class="form-control" required name="zip" placeholder="Code Postal*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Address.Country</label>
+            <input type="text" class="form-control" required name="country" placeholder="Pays*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Birthday*</label>
+            <input type="text" class="form-control" name="age" id="my-datepicker" placeholder="Date de naissance">
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">Nationality*</label>
+            <input type="text" class="form-control" required name="nationality" placeholder="Nationalité*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">CountryOfResidence*</label>
+            <input type="text" class="form-control" required name="residence" placeholder="Pays de résidence">
+        </div>
+
+        <div class="col-md-1 col-centered">
+            <br>
+            <br>
+            <button type="submit" id="submit" class="btn btn-primary align-center">Envoyer</button>
+        </div>
+    </form>
+</template>
+
+<template name="MangoForm2">
+        <br>
+    <section id='authform' class="row">
+        <input type="password" id="password" placeholder="enter password">
+        <button id="auth" class="btn btn-primary align-center">Envoyer</button>
+    </section>
+    <form action="" class="hidden"  id='form'>
+        <div class="form_group">
+            <div class="radio col-md-8 col-md-offset-2">
+                <label class="form_label">Legal PersonType*</label>
+                <label class="form_label">
+                    <input type="radio" name="legalType" value="1" checked>Buisness</label>
+            </div>
+            <div class="radio col-md-8 col-md-offset-2">
+                <label class="form_label">
+                    <input type="radio" name='legalType' value="0">Organisation</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">Tag</label>
+                <input type="text" class="form-control" required name="tag" placeholder="Tag*">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">legal E-mail</label>
+                <input type="text" class="form-control" required name="email" placeholder="Email*">
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <label class="form_label">Name</label>
+                <input type="text" class="form-control" required name="name" placeholder="Nom*">
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">LegalRepresentativeFirstName*</label>
+            <input type="text" class="form-control" required name="legalFirstName" placeholder="Prénom*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">LegalRepresentativeLastName*</label>
+            <input type="text" class="form-control" required name="legalLastName" placeholder="Nom*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">LegalRepresentativeBirthday*</label>
+            <input type="text" class="form-control" name="legalAge" id="my-datepicker" placeholder="Date de naissance">
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">LegalRepresentativeNationality*</label>
+            <input type="text" class="form-control" required name="legalNationality" placeholder="Nationalité*">
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <label class="form_label">LegalRepresentativeCountryOfResidence*</label>
+            <input type="text" class="form-control" required name="legalCountryOfResidence" placeholder="Pays de résidence">
+        </div>
+        <div class="col-md-1 col-centered">
+            <br>
+            <br>
+            <button type="submit" id="submit" class="btn btn-primary align-center">Envoyer</button>
+        </div>
+    </form>
+</template>

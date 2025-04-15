@@ -1,0 +1,778 @@
+<template name="ClientCompte">
+  <link rel="stylesheet" href="/css/style.css">
+  <div class="wrapper page_bg">
+    <!-- {{#if authCheck}} -->
+    {{genPdf}}
+    <header class="header">
+      <div class="expanded row">
+        <div class="medium-1 columns">
+          <i class="fa fa-bars" id="menu-open"></i>
+          <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+          <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+        </div>
+        <div class="medium-2 columns">
+          <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+        </div>
+        <div class="medium-6 columns text-left">
+          {{#unless currentUser}}
+          <div class="comment-wrapper button-wrapper">
+            <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+          </div>{{/unless}}
+          <a href="/nouvelle-mission/1" class="button-colored header-item reversed">Créer une mission</a>
+          <div class="comment-wrapper">
+            <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+          </div>
+          <div class="comment-wrapper dropdown dropdown-toggle">
+            <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+              <li class="divider"></li>
+              <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+              <li class="divider"></li>
+              <li><a href="/tenues">Les tenues</a></li>
+              <li class="divider"></li>
+              <li><a href="/contact">Contactez-nous</a></li>
+            </ul>
+          </div>{{#unless currentUser}}
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+          </div>
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+          </div>{{/unless}}{{#if currentUser}}
+          <div class="pull-right customer_name cn-ac">
+            <div class="inline-block dropdown dropdown-toggle customer_mt">
+              <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                <div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+
+              </div>
+              <!--<div class="comment-wrapper">
+                <div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div>
+                <div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+              </div>-->
+              <ul class="dropdown-menu">
+                <li><a href="/client/mes-missions">Mes missions</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/history">Mon historique</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/messagerie">Messagerie</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/compte">Mon compte</a></li>
+                <li class="divider"></li>
+                {{>logoutC}}
+              </ul>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </header>
+    <div class="border_menu">
+      <div class="container">
+        <ul class="customer_menu">
+          <li class="underline-1"><a href="/client/mes-missions" class="active">mes missions</a></li>
+          <li class="underline-2"><a href="/client/profils-favoris">mes recommandations</a></li>
+          <li class="underline-3"><a href="/client/messagerie">Messagerie</a></li>
+          <li class="underline-4"><a href="/client/history">Mon historique</a></li>
+          <li class="underline-5"><a href="/client/compte">mon compte</a></li>
+          <!-- <li class="underline-6">                   </li> -->
+          <hr class="model-5" />
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3 customer_left">
+
+    </div>
+
+
+
+    <div class="container">
+      <div class="row customer_wrap">
+        <div class="col-md-3 customer_left">
+          <div class="customer_block customercarte">
+            <div class="crop-photo large round"><img src="{{getImage currentUser._id}}" alt="customer photo"></div>
+            <div class="text-center">
+              <div class="customer_name margin">
+                <span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+
+                <div class="devider"></div>
+
+                <ul class="account_menu">
+                  <li><a href="#" class="nav" id="nav-1">Coordonnées</a></li>
+                  <li><a href="#" class="nav" id="nav-2">Informations de facturation </a></li>
+                  <!--<li><a href="#" class="nav" id="nav-3">Informations bancaires et fiscales</a></li>-->
+                  <li><a href="#" class="nav" id="nav-4">Historique des paiements</a></li>
+                </ul>
+              </div>
+              <div class="profile_edit">
+                <!-- <p>
+                                    <a href="#" class="red_text">
+                        Voir le profil
+                      </a>
+                                </p> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {{#if nav 1}} {{>coordsProfile1}} {{else}} {{#if nav 2}} {{>infoProfile1}} {{else}} {{#if nav 3}} {{>bankProfile1}} {{else}}
+        {{#if nav 4}} {{>paymentProfile1}} {{/if}} {{/if}} {{/if}} {{/if}}
+      </div>
+    </div>
+    <!-- {{/if}} -->
+  </div>
+  {{>footerForms}}
+</template>
+<template name="coordsProfile1">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <form id="form_coords">
+      <div class="gray_title_bg">
+        Mon compte <span class="bold fa fa-angle-right"></span> Coordonnées :
+      </div>
+      <div class="order_bg">
+        <div class="complete_profile_statement text-center">
+          <h3>Complétez les informations de votre profil (1/2)</h3>
+        </div>
+        <br>
+        <h5>Ces informations restent privées et ne sont utilisées que pour la facturation</h5>
+
+        <div class="devider"></div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Sélectionner le logo de votre entreprise :
+          </div>
+          <input type="file" id="fileselect6" class="form-control" />
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nom de l'entreprise :
+          </div>
+          <input type="text" name="entreprise" class="form-control form_input" value="{{currentUser.profile.entreprise}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Prénom du responsable :
+          </div>
+          <input type="text" name="firstname" class="form-control form_input" value="{{currentUser.profile.nameManager}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nom du responsable :
+          </div>
+          <input type="text" name="name" class="form-control form_input" value="{{currentUser.profile.lastNameManager}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            N° Téléphone du responsable :
+          </div>
+          <input type="text" name="tel" class="form-control form_input" value="{{currentUser.profile.tel}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            E-mail du responsable :
+          </div>
+          <input type="text" name="email" class="form-control form_input" value="{{currentUser.profile.email}}">
+        </div>
+
+        <!--<div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Raison sociale:
+          </div>
+          <input type="text" name="legalCompanyName" id="legalCompanyName" class="form-control" value="" required="required" title="">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Date de naissance
+          </div>
+          <input type="Date" name="dateofbirth" class="form-control form_input" value="">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Qualité responsable :
+          </div>
+          <input type="text" name="qmanage" class="form-control form_input" value="{{currentUser.profile.qmanage}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            N°Société :
+          </div>
+          <input type="text" name="nsoc" class="form-control form_input" value="{{currentUser.profile.nsoc}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Adresse :
+          </div>
+          <input type="text" name="address" class="form-control form_input" value="{{currentUser.profile.address}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Complement d’adresse :
+          </div>
+          <input type="text" name="address2" class="form-control form_input" value="{{currentUser.profile.address2}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Ville :
+          </div>
+          <input type="text" name="city" class="form-control form_input" value="{{currentUser.profile.city}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Code postal :
+          </div>
+          <input type="text" name="zip" class="form-control form_input" value="{{currentUser.profile.zip}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Pays :
+          </div>
+          <input type="text" name="pays" class="form-control form_input" value="{{currentUser.profile.pays}}">
+        </div>-->
+
+        <div class="statistics_block">
+          <input type="submit" id="save" name="save" class="btn button" value="Suivant">
+        </div>
+
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="infoProfile1">
+  <div class="col-md-9 customer_right">
+    <form id="form_info">
+      <div class="gray_title_bg">
+        Mon compte <span class="fa fa-angle-right"></span> Informations de facturation
+      </div>
+      <div class="order_bg">
+        <div class="complete_profile_statement text-center">
+          <h3>Complétez les informations de votre profil !(2/2)</h3>
+        </div>
+        <p class="customer_name profile_name">
+          {{currentUser.username}} {{currentUser.profile.lastName}}
+        </p>
+        <h5>Ces informations restent privées et ne sont utilisées que pour la facturation </h5>
+        <div class="devider"></div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Raison sociale :
+          </div>
+          <input type="text" name="legalCompanyName" class="form-control" value="{{currentUser.profile.legalCompanyName}}" />
+        </div>
+        <!--Field not crawled-->
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Adresse de facturation :
+          </div>
+          <input type="text" name="desctext" class="form-control form_input" value="{{currentUser.profile.desctext}}">
+        </div>
+        <!--Field not crawled-->
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Ville
+          </div>
+          <input type="text" name="hourate" class="form-control form_input" value="{{currentUser.profile.hourate}}">
+        </div>
+        <!--Field not crawled-->
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Code Postal
+          </div>
+          <input type="text" name="zip" class="form-control form_input" value="{{currentUser.profile.zip}}">
+        </div>
+        <!--Field not crawled-->
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Prénom du responsable
+          </div>
+          <input type="text" name="legalFirstName" class="form-control form_input" value="{{currentUser.profile.legalFirstName}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nom du responsable
+          </div>
+          <input type="text" name="legalName" class="form-control form_input" value="{{currentUser.profile.legalName}}">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Email du responsable :
+          </div>
+          <input type="email" name="legalEmail" class="form-control form_input" value="{{currentUser.profile.legalEmail}}">
+        </div>
+
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Date de naissance du responsable :
+          </div>
+          <input type="date" name="manageDateofBirth" class="form-control form_input" value="{{currentUser.profile.manageDateofBirth}}">
+        </div>
+
+
+        <select name="legalNationality" class="form-control">
+          <option value="AF">Afghanistan</option>
+          <option value="AX">Åland Islands</option>
+          <option value="AL">Albania</option>
+          <option value="DZ">Algeria</option>
+          <option value="AS">American Samoa</option>
+          <option value="AD">Andorra</option>
+          <option value="AO">Angola</option>
+          <option value="AI">Anguilla</option>
+          <option value="AQ">Antarctica</option>
+          <option value="AG">Antigua and Barbuda</option>
+          <option value="AR">Argentina</option>
+          <option value="AM">Armenia</option>
+          <option value="AW">Aruba</option>
+          <option value="AU">Australia</option>
+          <option value="AT">Austria</option>
+          <option value="AZ">Azerbaijan</option>
+          <option value="BS">Bahamas</option>
+          <option value="BH">Bahrain</option>
+          <option value="BD">Bangladesh</option>
+          <option value="BB">Barbados</option>
+          <option value="BY">Belarus</option>
+          <option value="BE">Belgium</option>
+          <option value="BZ">Belize</option>
+          <option value="BJ">Benin</option>
+          <option value="BM">Bermuda</option>
+          <option value="BT">Bhutan</option>
+          <option value="BO">Bolivia, Plurinational State of</option>
+          <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+          <option value="BA">Bosnia and Herzegovina</option>
+          <option value="BW">Botswana</option>
+          <option value="BV">Bouvet Island</option>
+          <option value="BR">Brazil</option>
+          <option value="IO">British Indian Ocean Territory</option>
+          <option value="BN">Brunei Darussalam</option>
+          <option value="BG">Bulgaria</option>
+          <option value="BF">Burkina Faso</option>
+          <option value="BI">Burundi</option>
+          <option value="KH">Cambodia</option>
+          <option value="CM">Cameroon</option>
+          <option value="CA">Canada</option>
+          <option value="CV">Cape Verde</option>
+          <option value="KY">Cayman Islands</option>
+          <option value="CF">Central African Republic</option>
+          <option value="TD">Chad</option>
+          <option value="CL">Chile</option>
+          <option value="CN">China</option>
+          <option value="CX">Christmas Island</option>
+          <option value="CC">Cocos (Keeling) Islands</option>
+          <option value="CO">Colombia</option>
+          <option value="KM">Comoros</option>
+          <option value="CG">Congo</option>
+          <option value="CD">Congo, the Democratic Republic of the</option>
+          <option value="CK">Cook Islands</option>
+          <option value="CR">Costa Rica</option>
+          <option value="CI">Côte d'Ivoire</option>
+          <option value="HR">Croatia</option>
+          <option value="CU">Cuba</option>
+          <option value="CW">Curaçao</option>
+          <option value="CY">Cyprus</option>
+          <option value="CZ">Czech Republic</option>
+          <option value="DK">Denmark</option>
+          <option value="DJ">Djibouti</option>
+          <option value="DM">Dominica</option>
+          <option value="DO">Dominican Republic</option>
+          <option value="EC">Ecuador</option>
+          <option value="EG">Egypt</option>
+          <option value="SV">El Salvador</option>
+          <option value="GQ">Equatorial Guinea</option>
+          <option value="ER">Eritrea</option>
+          <option value="EE">Estonia</option>
+          <option value="ET">Ethiopia</option>
+          <option value="FK">Falkland Islands (Malvinas)</option>
+          <option value="FO">Faroe Islands</option>
+          <option value="FJ">Fiji</option>
+          <option value="FI">Finland</option>
+          <option selected="selected" value="FR">France</option>
+          <option value="GF">French Guiana</option>
+          <option value="PF">French Polynesia</option>
+          <option value="TF">French Southern Territories</option>
+          <option value="GA">Gabon</option>
+          <option value="GM">Gambia</option>
+          <option value="GE">Georgia</option>
+          <option value="DE">Germany</option>
+          <option value="GH">Ghana</option>
+          <option value="GI">Gibraltar</option>
+          <option value="GR">Greece</option>
+          <option value="GL">Greenland</option>
+          <option value="GD">Grenada</option>
+          <option value="GP">Guadeloupe</option>
+          <option value="GU">Guam</option>
+          <option value="GT">Guatemala</option>
+          <option value="GG">Guernsey</option>
+          <option value="GN">Guinea</option>
+          <option value="GW">Guinea-Bissau</option>
+          <option value="GY">Guyana</option>
+          <option value="HT">Haiti</option>
+          <option value="HM">Heard Island and McDonald Islands</option>
+          <option value="VA">Holy See (Vatican City State)</option>
+          <option value="HN">Honduras</option>
+          <option value="HK">Hong Kong</option>
+          <option value="HU">Hungary</option>
+          <option value="IS">Iceland</option>
+          <option value="IN">India</option>
+          <option value="ID">Indonesia</option>
+          <option value="IR">Iran, Islamic Republic of</option>
+          <option value="IQ">Iraq</option>
+          <option value="IE">Ireland</option>
+          <option value="IM">Isle of Man</option>
+          <option value="IL">Israel</option>
+          <option value="IT">Italy</option>
+          <option value="JM">Jamaica</option>
+          <option value="JP">Japan</option>
+          <option value="JE">Jersey</option>
+          <option value="JO">Jordan</option>
+          <option value="KZ">Kazakhstan</option>
+          <option value="KE">Kenya</option>
+          <option value="KI">Kiribati</option>
+          <option value="KP">Korea, Democratic People's Republic of</option>
+          <option value="KR">Korea, Republic of</option>
+          <option value="KW">Kuwait</option>
+          <option value="KG">Kyrgyzstan</option>
+          <option value="LA">Lao People's Democratic Republic</option>
+          <option value="LV">Latvia</option>
+          <option value="LB">Lebanon</option>
+          <option value="LS">Lesotho</option>
+          <option value="LR">Liberia</option>
+          <option value="LY">Libya</option>
+          <option value="LI">Liechtenstein</option>
+          <option value="LT">Lithuania</option>
+          <option value="LU">Luxembourg</option>
+          <option value="MO">Macao</option>
+          <option value="MK">Macedonia, the former Yugoslav Republic of</option>
+          <option value="MG">Madagascar</option>
+          <option value="MW">Malawi</option>
+          <option value="MY">Malaysia</option>
+          <option value="MV">Maldives</option>
+          <option value="ML">Mali</option>
+          <option value="MT">Malta</option>
+          <option value="MH">Marshall Islands</option>
+          <option value="MQ">Martinique</option>
+          <option value="MR">Mauritania</option>
+          <option value="MU">Mauritius</option>
+          <option value="YT">Mayotte</option>
+          <option value="MX">Mexico</option>
+          <option value="FM">Micronesia, Federated States of</option>
+          <option value="MD">Moldova, Republic of</option>
+          <option value="MC">Monaco</option>
+          <option value="MN">Mongolia</option>
+          <option value="ME">Montenegro</option>
+          <option value="MS">Montserrat</option>
+          <option value="MA">Morocco</option>
+          <option value="MZ">Mozambique</option>
+          <option value="MM">Myanmar</option>
+          <option value="NA">Namibia</option>
+          <option value="NR">Nauru</option>
+          <option value="NP">Nepal</option>
+          <option value="NL">Netherlands</option>
+          <option value="NC">New Caledonia</option>
+          <option value="NZ">New Zealand</option>
+          <option value="NI">Nicaragua</option>
+          <option value="NE">Niger</option>
+          <option value="NG">Nigeria</option>
+          <option value="NU">Niue</option>
+          <option value="NF">Norfolk Island</option>
+          <option value="MP">Northern Mariana Islands</option>
+          <option value="NO">Norway</option>
+          <option value="OM">Oman</option>
+          <option value="PK">Pakistan</option>
+          <option value="PW">Palau</option>
+          <option value="PS">Palestinian Territory, Occupied</option>
+          <option value="PA">Panama</option>
+          <option value="PG">Papua New Guinea</option>
+          <option value="PY">Paraguay</option>
+          <option value="PE">Peru</option>
+          <option value="PH">Philippines</option>
+          <option value="PN">Pitcairn</option>
+          <option value="PL">Poland</option>
+          <option value="PT">Portugal</option>
+          <option value="PR">Puerto Rico</option>
+          <option value="QA">Qatar</option>
+          <option value="RE">Réunion</option>
+          <option value="RO">Romania</option>
+          <option value="RU">Russian Federation</option>
+          <option value="RW">Rwanda</option>
+          <option value="BL">Saint Barthélemy</option>
+          <option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+          <option value="KN">Saint Kitts and Nevis</option>
+          <option value="LC">Saint Lucia</option>
+          <option value="MF">Saint Martin (French part)</option>
+          <option value="PM">Saint Pierre and Miquelon</option>
+          <option value="VC">Saint Vincent and the Grenadines</option>
+          <option value="WS">Samoa</option>
+          <option value="SM">San Marino</option>
+          <option value="ST">Sao Tome and Principe</option>
+          <option value="SA">Saudi Arabia</option>
+          <option value="SN">Senegal</option>
+          <option value="RS">Serbia</option>
+          <option value="SC">Seychelles</option>
+          <option value="SL">Sierra Leone</option>
+          <option value="SG">Singapore</option>
+          <option value="SX">Sint Maarten (Dutch part)</option>
+          <option value="SK">Slovakia</option>
+          <option value="SI">Slovenia</option>
+          <option value="SB">Solomon Islands</option>
+          <option value="SO">Somalia</option>
+          <option value="ZA">South Africa</option>
+          <option value="GS">South Georgia and the South Sandwich Islands</option>
+          <option value="SS">South Sudan</option>
+          <option value="ES">Spain</option>
+          <option value="LK">Sri Lanka</option>
+          <option value="SD">Sudan</option>
+          <option value="SR">Suriname</option>
+          <option value="SJ">Svalbard and Jan Mayen</option>
+          <option value="SZ">Swaziland</option>
+          <option value="SE">Sweden</option>
+          <option value="CH">Switzerland</option>
+          <option value="SY">Syrian Arab Republic</option>
+          <option value="TW">Taiwan, Province of China</option>
+          <option value="TJ">Tajikistan</option>
+          <option value="TZ">Tanzania, United Republic of</option>
+          <option value="TH">Thailand</option>
+          <option value="TL">Timor-Leste</option>
+          <option value="TG">Togo</option>
+          <option value="TK">Tokelau</option>
+          <option value="TO">Tonga</option>
+          <option value="TT">Trinidad and Tobago</option>
+          <option value="TN">Tunisia</option>
+          <option value="TR">Turkey</option>
+          <option value="TM">Turkmenistan</option>
+          <option value="TC">Turks and Caicos Islands</option>
+          <option value="TV">Tuvalu</option>
+          <option value="UG">Uganda</option>
+          <option value="UA">Ukraine</option>
+          <option value="AE">United Arab Emirates</option>
+          <option value="GB">United Kingdom</option>
+          <option value="US">United States</option>
+          <option value="UM">United States Minor Outlying Islands</option>
+          <option value="UY">Uruguay</option>
+          <option value="UZ">Uzbekistan</option>
+          <option value="VU">Vanuatu</option>
+          <option value="VE">Venezuela, Bolivarian Republic of</option>
+          <option value="VN">Viet Nam</option>
+          <option value="VG">Virgin Islands, British</option>
+          <option value="VI">Virgin Islands, U.S.</option>
+          <option value="WF">Wallis and Futuna</option>
+          <option value="EH">Western Sahara</option>
+          <option value="YE">Yemen</option>
+          <option value="ZM">Zambia</option>
+          <option value="ZW">Zimbabwe</option>
+        </select>
+        <!--<div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            IBAN:
+          </div>
+          <input type="text" name="iban" id="iban" class="form-control" value="{{currentUser.profile.iban}}" required="required" pattern="^[a-zA-Z]{2}\d{2}\s*(\w{4}\s*){2,7}\w{1,4}\s*$" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            BIC:
+          </div>
+          <input type="text" name="bic" id="bic" class="form-control" value="{{currentUser.profile.bic}}" required="required" placeholder="example: AAAA BB DDD"
+            pattern="^[a-zA-Z]{6}\w{2}(\w{3})?$" title="">
+        </div>-->
+
+
+        <!--legalNationality-->
+        <div class="statistics_block">
+          <input type="submit" id="save" name="save" class="btn button" value="Sauvegarder">
+        </div>
+        <!--Field not crawled-->
+
+
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="bankProfile1">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <form action="" id="bank-form" role="form">
+      <div class="gray_title_bg">
+        Mon compte <span class="fa fa-angle-right"></span> Informations bancaires et fiscales
+      </div>
+      <div class="order_bg profile_padding">
+        <div class="complete_profile_statement text-center">
+          <h3>Complétez les informations de votre profil (3/3)</h3>
+        </div>
+        <p class="customer_name profile_name">
+          {{currentUser.username}} {{currentUser.profile.lastName}}
+        </p>
+        <h5>Ces informations restent privées et ne sont utilisées que pour la facturation </h5>
+
+        <div class="devider"></div>
+
+
+        <div class="statistics_block">
+          <div class="statistics_designation black_text">
+            Nom de l’entreprise:
+          </div>
+          <input type="text" name="companyName" id="companyName" class="form-control" value="" required="required" title="">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Prénom du responsable:
+          </div>
+          <input type="text" name="legalFirstName" id="mainFirstName" class="form-control" value="" required="required" title="">
+        </div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nom du responsable:
+          </div>
+          <input type="text" name="legalName" id="mainName" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Email:
+          </div>
+          <input type="email" name="legalEmail" id="email" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Raison sociale:
+          </div>
+          <input type="text" name="legalCompanyName" id="legalCompanyName" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            par défaut BUSINESS pour particulier et entreprise:
+          </div>
+          <input type="text" name="business" id="business" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Date de naissance du responsable dans les infos de facturation:
+          </div>
+          <input type="date" name="manageDateofBirth" id="manageDateofBirth" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nationalité du responsable dans les infos de facturation:
+          </div>
+          <input type="text" name="legalNationality" id="legalNationality" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Par défaut FR:
+          </div>
+          <input type="text" name="defaultFR" id="defaultFR" class="form-control" value="" required="required" title="">
+        </div>
+        <!--<div class="statistics_block">
+                    <div class="inline-block statistics_designation red_text">
+                      Nom de la banque:
+                    </div>
+                  <input type="text" name="bankName" id="bankName" class="form-control" value="" required="required" pattern="" title="">
+                  </div>-->
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Adresse de facturation :
+          </div>
+          <input type="text" name="legalAddr" id="addr" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            IBAN:
+          </div>
+          <input type="text" name="iban" id="iban" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            BIC:
+          </div>
+          <input type="text" name="bic" id="bic" class="form-control" value="" required="required" placeholder="example: AAAA BB DDD"
+            pattern="^[a-zA-Z]{6}\w{2}(\w{3})?$" title="">
+        </div>
+        <button type="submit" id="save" class="btn button">Sauvegarder</button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="paymentProfile1">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <div class="gray_title_bg">
+      Mon compte <span class="fa fa-angle-right"></span> Historique des paiements
+    </div>
+    <div class="order_bg thide">
+
+      <table class="order_table account_history">
+        <tr class="order_title">
+          <td>Date</td>
+          <td>Tag de paiement</td>
+          <td>Montant payé</td>
+          <td>Type de paiement</td>
+          <td>Etat paiement</td>
+          <td>Télécharger</td>
+        </tr>
+        {{#each transacts}}
+        <tr>
+          <td><span>{{dateConv CreationDate}}</span></td>
+          <td>{{name}}</td>
+          <td>{{total}}</td>
+          <td>{{fee}}</td>
+          <td>{{price}}</td>
+          <td>{{Status}}</td>
+          <td> <span class="download_btn" id="down-{{Tag}}-{{ExecutionDate}}-{{CreditedUserId}}-{{Id}}"></span></td>
+        </tr>
+        {{/each}}
+      </table>
+
+    </div>
+    <!--<div class="order_bg tablehide">
+      <table class="order_table">
+        <tr class="order_title">
+          <td>Date</td>
+          <td>Montant payé</td>
+          <td>Etat paiement</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>-->
+  </div>
+</template>

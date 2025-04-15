@@ -1,0 +1,83 @@
+	<template name="preloader">
+
+	<style>
+			@keyframes background{
+				0%{
+					background-color: #000;
+				}
+				50%{
+					background-color: #202020;
+				}
+				100%{
+					background-color: #000;
+
+				}
+			}
+			.preloader{
+				width: 60px;
+				height: 60px;
+				margin: 200px auto 0 auto;
+				text-align: center;
+
+			}
+			.preloader span{
+				background-color: black;
+				display: inline-block;
+				border-radius: 50%;
+				margin-top: 30px;
+			}
+			.preloader span:nth-child(1){
+				width: 20px;
+				height: 20px;
+				background-color: #fbae17;
+				display: inline-block;
+				border-radius: 50%;
+				margin-top: 30px;
+				float: left;
+				animation: leftSpan 2s infinite ease-in-out; 
+				mix-blend-mode: screen;
+			}
+			@keyframes leftSpan{
+				0%{
+					transform: rotate(0deg) scale(1);
+				}
+				50%{
+					transform: rotate(360deg)  scale(1.5);
+					transform-origin: -50px;
+				}
+				100%{
+					transform: rotate(0deg) scale(1);
+				}
+			}
+			.preloader span:nth-child(2){
+				width: 20px;
+				height: 20px;
+				background-color: #fbae17;
+				display: inline-block;
+				border-radius: 50%;
+				margin-top: 30px;
+				float: right;
+				animation: rightSpan 2s infinite ease-in-out; 
+				mix-blend-mode: screen;
+
+			}
+			@keyframes rightSpan{
+				0%{
+					transform: rotate(0deg) scale(1);
+				}
+				50%{
+					transform: rotate(360deg)  scale(1.5);
+					transform-origin: 50px;
+				}
+				100%{
+					transform: rotate(0deg) scale(1);
+
+				}
+			}
+	</style>
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			
+		</div>
+	</template>

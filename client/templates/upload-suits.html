@@ -1,0 +1,61 @@
+<template name="UploadSuits">
+  {{> myForm}}
+  <br>
+</template>
+<template name='myForm'>
+  <form id="upload" action="/" method="POST" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Ajoutez votre image</legend>
+      <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+      <select class="form-control select_text_style" id="cloth-sex">
+                                          <option>Homme</option>
+                                          <option>Femme</option>
+      </select>
+<select class="form-control select_text_style" id="cloth-job">
+                                    <option>Hôte d’accueil</option>
+                                    <option>Responsable vestiaire</option>
+                                    <option>Voiturier</option>
+                                    <option>Régisseur</option>
+                                    <option>Serveur</option>
+                                    <option>Barman</option>
+                                    <option>Runner</option>
+                                    <option>Commis</option>
+                                    <option>Maitre d’hôtel</option>
+                                    <option>Vendeur</option>
+                                    <option>Animateur</option>
+                                    <option>Street-marketeur</option>
+                                    <option>Promoteur</option>
+
+</select>
+      <input id="cloth-info" class="form-control" rows="3" placeholder="si vous ne souhaitez pas adhérer aux tenues proposées, veuillez decrire en quelques lignes la tenue que vous souhaitez"
+      />
+      <button id="button9" class="test button-colored">Continuer</button>
+      <div>
+        <label for="fileselect">Fichier à upload :</label>
+        <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+        <div id="filedrag">Ou déplacez votre fichier ici</div>
+      </div>
+      <div id="submitbutton">
+        <button type="submit">Téléchargez un fichier</button>
+      </div>
+    </fieldset>
+  </form>
+</template>
+<template name="fileList">
+  <div class="fileList">
+    {{#each files}}
+    <div class="file">
+      <strong>{{this.name}}</strong> <a href="{{this.url download=true}}" class="btn btn-primary">Télécharger</a>
+    </div>
+    {{/each}}
+  </div>
+</template>
+<template name="UploadSuits1">
+  <div class="col-md-8">
+    <div class="" id="">
+      <div class="form-group input">
+        {{>UploadSuits}}
+      </div>
+    </div>
+  </div>
+</template>

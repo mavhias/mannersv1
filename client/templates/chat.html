@@ -1,0 +1,110 @@
+<template name="chat">
+    <div class="chat">
+
+
+<aside class="pull-left panel panel-default">
+    <div class="panel-heading" id="panel-titlered">
+      <h2 class="panel-title" align="center">
+        <a data-toggle="collapse" data-parent="#accordion" href="#panel-description">
+        Missions</a>
+      </h2>
+    </div> 
+
+    <div id="panel-description" class="panel-collapse collapse in" align="center"> 
+     <p> Anniversaire de Nicolas Feuillate </p>
+     <p> 08/01/2016 </p>
+     <p> 8 Hôtes </p>
+  </div>
+
+        <div class="panel-heading" id="panel-titleyellow">
+          <h2 class="panel-title" align="center">Hotes</h2>
+        </div>
+  
+    <div class="panel-body">
+       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {{#each users}}
+  <div class="panel panel-collapse collapse in">
+    <div class="panel-heading" role="tab" id="heading{{_id}}">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{_id}}" aria-expanded="true" aria-controls="collapse{{_id}}" class="acc-nav">
+          {{name}}
+
+        </a>
+   <i class="indicator glyphicon glyphicon-chevron-down  pull-left"></i>
+      </h4>
+    </div>
+    <div id="collapse{{_id}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{_id}}">
+      <div class="panel-body">
+        
+        <ul class="list-group">
+          {{#each transformList creator hostes}}
+          <a class="list-group-item" id="{{id}}" href="#"><img src="{{getIm id}}" class="customer_photo header-item" alt="">
+            {{getUser id}}</a>
+          {{/each}}
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+    {{/each}}
+</div>
+    </div>
+</aside>
+
+
+<section class="">
+  <div class="pull-left">
+        <p> Anniversaire de Nicholas Feuillate </p>
+  </div>
+  <div class="pull-right">
+    <p> Créé par </p>
+    <span>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+    <img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+  </div>
+  <hr>
+  {{> messages }}
+</section>
+  </div>
+
+</template>
+
+<template name="messages">
+  <div id="mess-area" class="pull-left" style="background:{{check}};">
+  <ul>
+{{#each messages}}
+
+    {{#if msgSide from}}
+    <li class='message left'>
+      <div class="">
+          <strong>{{name}}:</strong> <p>{{message}}</p> 
+      </div>
+                <div class="arrow-left"></div>
+    <img id="header-img" class="customer_photo header-item" src="{{getIm from}}" alt="Votre photo ici">
+
+    </li>
+    <br>
+    {{else}}
+    <li class='message right'>
+      <div class="text-center">
+          <strong>{{name}}:</strong> <p>{{message}}</p> 
+      </div>
+          <div class="arrow-right"></div>
+    <img id="header-img" class="customer_photo header-item" src="{{getIm from}}" alt="Votre photo ici">
+
+    </li>
+
+    <br>
+    {{/if}}
+{{/each}}
+</ul>
+  {{> input }}
+  </div>
+</template>
+
+<template name="input">
+  <div id="inp-ctrl">
+<input type="text" id="message" class="form-control inPutChat" value="" required="required" pattern="" placeholder="Ecrivez votre message ici..." title="">
+  <button type="button" id="send" class="btn btn-success">Envoyer</button>
+  </div>
+  
+  </template>

@@ -1,0 +1,155 @@
+<template name="JobAccueil">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<div id="main-menu" class="main-menu">
+    <div class="inner">
+        <i class="fa fa-close" id="menu-close"></i>
+
+        <div class="row">
+            <div class="medium-9 columns medium-centered">
+                <div class="row">
+                    <div class="medium-6 columns">
+                        <div class="menu-box">
+                            <h2>Liens utiles</h2>
+                            <nav>
+                                <ul>
+                                    <li><a href="/devenir-hote-hotesse.html">Devenez Hôte/Hôtesse ?</a></li>
+                                    <li><a href="#">Comment ça marche ?</a></li>
+                                    <li><a href="/faq">Questions fréquentes</a></li>
+                                    <li><a href="#">Les tenues</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="medium-6 columns">
+                        <div class="menu-box contacts">
+                            <h2>Contactez-nous</h2>
+                            <p><i class="fa fa-phone"></i> 09 53 27 40 05</p>
+                            <p><i class="fa fa-map-marker"></i> Paris 75008, 24 Avenue Marceau</p>
+                            <p><i class="fa fa-envelope"></i><a href="mailto:contact@bemanners.com">contact@bemanners.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="medium-4 columns medium-centered">
+                <div class="menu-box menu-box-socials">
+                    <h2></h2>
+                    <!-- Réseaux sociaux -->
+                    <div class="socials text-center">
+                        <a href="#"><img src="/images/facebook-menu.png" alt=""></a>
+                        <a href="#"><img src="/images/twitter-menu.png" alt=""></a>
+                        <a href="#"><img src="/images/linkedin-menu.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<header class="header">
+    <div class="expanded row">
+
+        <div class="medium-1 columns">
+            <i class="fa fa-bars" id="menu-open"></i>
+            <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+            <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+        </div>
+
+        <div class="medium-2 columns">
+            <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+        </div>
+
+        <div class="medium-6 columns text-left">
+          <div class="comment-wrapper button-wrapper">
+            <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17 font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+          </div><div class="comment-wrapper">
+            <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+          </div><div class="comment-wrapper dropdown dropdown-toggle">
+             <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+               <li class="divider"></li>
+               <li><a href="/faq">Questions fréquentes</a></li>
+               <li class="divider"></li>
+               <li><a href="#">Les tenues</a></li>
+               <li class="divider"></li>
+               <li><a href="#">Contactez-nous</a></li>
+             </ul>
+           </div>{{#unless currentUser}}<div class="comment-wrapper ">
+              <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+            </div>
+            <div class="comment-wrapper ">
+              <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+            </div>{{/unless}}{{#if currentUser}}<div class="pull-right customer_name cn-ac">
+              <div class="inline-block dropdown dropdown-toggle customer_mt">
+                <div class="comment-wrapper"><div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div><div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a href="/client/mes-missions">Mes missions</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/history">Mon historique</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/messagerie">Messagerie</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/compte">Mon compte</a></li>
+                <li class="divider"></li>
+                {{>logoutC}}
+              </ul>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+
+     <div class="expanded row">
+       <div class="medium-11 medium-offset-1">
+       </div>
+     </div>
+  </header>
+
+  <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+  <section class="job title"><div class="row">
+    <h1>L’accueil et l’orientation</h1>
+    <hr/>
+    <p>L’accueil et l’orientation des invités sont deux facteurs clés dans l’organisation d’un événement. C’est le premier contact qu’ont les invités avec les organisateurs et la première impression est toujours la plus importante. Savoir accueillir est un art qui ne requiert aucune qualification mais qui demande juste à l’hôte ou l’hôtesse d’accueil de connaître quelques classiques. </p>
+  </div></section
+  ><div><section class="job"><div class="row">
+    <h2>La présentation</h2>
+    <hr/>
+    <p>Les hôtes et hôtesses d’accueil doivent avoir une présentation irréprochable au niveau vestimentaire et au niveau physique.</p>
+    <p>Les femmes doivent porter des habits sobres et élégants et les hommes doivent en général porter un costume noir bien taillé avec une cravate noire.</p>
+    <p>Au niveau de la présentation physique, il existe quelques règles dans le milieu de l’événementiel : les femmes doivent toujours avoir les cheveux attachés et être légèrement maquillées et les hommes doivent avoir les cheveux bien coiffés et être rasés de près.</p>
+  </div></section
+  ><section class="job"><div class="row">
+    <h2>L’attitude</h2>
+    <hr/>
+    <p>L’attitude doit être une priorité pour tous les hôtes et hôtesses d’accueil qui souhaitent donner une bonne impression aux invités.</p>
+    <p>Cela se traduit par une bonne posture, ne pas être avachi ou assis et par le fait de sourire.</p>
+    <p>Un hôte ou une hôtesse qui sait sourire mettra toujours les invités dans de bonnes conditions, mais attention à sourire même lorsqu’on tombe sur une personne peu aimable.</p>
+    <p>Un hôte professionnel est toujours présent sans jamais trop l’être.</p>
+  </div></section
+  ><section class="job"><div class="row">
+    <h2>L’élocution</h2>
+    <hr/>
+    <p>Les clients recherchent toujours des profils qui savent bien s’exprimer et qui connaissent les quelques codes de courtoisie.</p>
+    <p>Il faut mettre de côté sa timidité et aller vers les personnes.</p>
+    <p>Pour les codes de courtoisie, il faut toujours commencer par saluer les femmes puis les hommes : « Bonjour Madame, Bonjour Monsieur », ne surtout pas se contenter d’un « bonjour » qui est assez mal vu en événementiel et « Mademoiselle » ne s’utilise plus.</p>
+    <p>Une fois les salutations faites, il est toujours bien vu de souhaiter la bienvenue aux invités et lorsqu’ils repartent, de leurs souhaiter de passer une bonne journée ou une bonne soirée.</p>
+  </div></section
+  ><section class="job"><div class="row">
+    <h2>Être informé</h2>
+    <hr/>
+    <p>Avant de prendre son poste, l’hôte ou l’hôtesse doit s’assurer qu’il ait bien été briefé par le client car il doit être dans la capacité d’informer les invités.</p>
+    <p>Connaître les horaires de fermeture, le thème de l’événement, savoir où se trouvent les toilettes ou le vestiaire, etc.</p>
+    <p>Il faut éviter de répondre « je ne sais pas » et dans le cas où vous n’avez pas la réponse, toujours demander à son responsable.</p>
+  </div></section></div>
+</template>

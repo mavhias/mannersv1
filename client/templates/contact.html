@@ -1,0 +1,58 @@
+<template name="Contact">
+  <link rel="stylesheet" href="/css/style.css">
+
+{{>HeaderLanding}}
+
+  		<div class="container login contact">
+        <div class="bg-login"></div>
+  			<div class="register_frame login_bg login__size_box">
+
+          <div class="infos">
+            <!-- <div class="login_title">
+              <h2>Informations</h2>
+            </div> -->
+            <div>
+              <h3><i class="fa fa-map-marker"></i></h3>
+              <p>24 Avenue Marceau</p>
+              <p>75008 PARIS</p>
+            </div>
+            <div>
+              <h3><i class="fa fa-phone"></i></h3>
+              <p>01 76 39 00 01</p>
+            </div>
+            <div>
+              <h3><i class="fa fa-envelope"></i></h3>
+              <p>contact@bemanners.com</p>
+            </div>
+          </div><div class="login_box">
+  						<div class="login_title">
+              <br>
+  							<h2>Contactez-nous</h2>
+  						</div>
+
+            <form role="form">
+              <div class="form-group label-floating">
+                <!-- <label class="control-label">Mot de passe</label> -->
+                <input type="name" id='password' class="form-control" placeholder="Nom">
+              </div>
+              <div class="form-group label-floating">
+                <!-- <label class="control-label">Adresse e-mail</label> -->
+              <input type="email" id='email' class="form-control" placeholder="Adresse e-mail">
+              </div>
+              <div class="form-group">
+                  <textarea class="form-control" rows="3" id="message" placeholder="Votre message"></textarea>
+              </div>
+              <button class="button-colored">Envoyer</button>
+
+            </form>
+
+            </div>
+  					</div>
+        </div>
+
+
+
+  <!-- {{> loginButtons}} -->
+
+
+</template>

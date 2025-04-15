@@ -1,0 +1,1467 @@
+<template name='GuestRegister'>
+	<style>
+		@font-face {
+			font-family: 'OpenSansSemiBold';
+			src: url('../fonts/OpenSansSemiBold.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
+
+		@font-face {
+			font-family: 'HelveticaBold';
+			src: url('../fonts/HelveticaBold.woff') format('truetype');
+			font-weight: bold;
+			font-style: normal;
+		}
+
+		body,
+		html {
+			height: 100%;
+			font-family: "OpenSansSemiBold";
+			font-size: 13px;
+			height: 100%;
+			box-sizing: border-box;
+		}
+
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul li {
+			list-style: none;
+		}
+
+		a:hover {
+			text-decoration: none;
+		}
+
+		button {
+			outline: none !important;
+		}
+
+		.btn {
+			border-radius: 0;
+		}
+
+		.inline-block {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.turquoise_text {
+			color: #00a99d;
+		}
+
+		.black_text {
+			color: #58595b;
+		}
+
+		.yellow_text {
+			color: #ffc044;
+		}
+
+		.red_text {
+			color: #f57667;
+		}
+
+		.wrapper {
+			padding: 50px 0 0 50px;
+			position: relative;
+			min-height: 100%;
+			padding-bottom: 50px;
+		}
+
+		.wrapper_background {
+			background-image: url(images/connexion.jpg);
+			height: 500px;
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		.wrapper:after {
+			content: "";
+			display: block;
+		}
+
+		.wrapper:after {
+			content: "";
+			display: block;
+		}
+
+		.container {
+			max-width: 868px;
+		}
+
+		.container_center {
+			opacity: 0.9;
+			width: 620px;
+			border-radius: 10px;
+			padding-top: 50px;
+			padding-left: 25px;
+			padding-right: 25px;
+			background: #FAFAFA;
+		}
+
+		.container_center:hover {
+			opacity: 1;
+		}
+
+		.title {
+			margin: 0 0 35px 0;
+			color: #00a99d;
+			font-family: "HelveticaBold";
+			font-size: 29px;
+		}
+
+		.devenir_text {
+			font-size: 16px;
+			color: #666666;
+		}
+
+		.obligatoire {
+			color: #ff0000;
+			font-size: 11px;
+			margin: 70px 0 0 0;
+		}
+
+		.form_registration {
+			color: #999999;
+		}
+
+		.form_label {
+			margin-bottom: 10px;
+		}
+
+		.form_registration .form-control {
+			border-radius: 5px;
+			margin-bottom: 20px;
+			text-align: center;
+			background: #FFF;
+		}
+
+		.form_margin {
+			margin-top: 40px;
+		}
+
+		.checkbox_group {
+			margin-bottom: 35px;
+		}
+
+		.large_input {
+			height: 50px;
+		}
+
+		.file_upload {
+			cursor: pointer;
+		}
+
+		.clip {
+			margin-left: 10px;
+			vertical-align: baseline;
+		}
+
+		.submit_btn {
+			width: 100%;
+			height: 40px;
+			font-size: 16px;
+			margin-top: 60px;
+			border: none;
+			color: #fff;
+			background: #ffc044;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+			border-radius: 0;
+		}
+
+		.submit_btn:hover {
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+		}
+
+		.submit_btn:active {
+			background: #fff;
+			color: #ffc044;
+		}
+		/*guest account*/
+
+		.page_bg {
+			background-color: #f7f7f7;
+		}
+
+		.header_logo {
+			margin: 0;
+		}
+
+		.contact {
+			color: #ffc044;
+			font-size: 18px;
+			margin-left: 30px;
+		}
+
+		.customer_photo {
+			width: 37px;
+			height: 37px;
+			border-radius: 50%;
+			margin-right: 15px;
+		}
+
+		.border_menu {
+			border-top: 1px solid #dededf;
+			border-bottom: 1px solid #dededf;
+			padding: 10px 0;
+		}
+
+		.customer_menu li {
+			position: relative;
+			display: inline-block;
+			text-transform: uppercase;
+			margin-right: 30px;
+		}
+
+		.customer_menu li:hover .customer_subtitle {
+			display: block;
+		}
+
+		.customer_menu a {
+			text-decoration: none;
+			color: #414042;
+		}
+
+		.customer_menu a.active:before,
+		.customer_menu a.active:after {
+			content: "";
+			position: absolute;
+			color: #6d6f71;
+			width: 90%;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			margin: 0 auto -3px auto;
+		}
+
+		.customer_menu a.active:before {
+			border-bottom: 1px solid #f6b6af;
+		}
+
+		.customer_menu a.active:after {
+			bottom: 1px;
+			border-bottom: 1px solid #f57667;
+		}
+
+		.customer_menu.yellow_underline a.active:before {
+			border-bottom: 1px solid #fbdb9d;
+		}
+
+		.customer_menu.yellow_underline a.active:after {
+			bottom: 1px;
+			border-bottom: 1px solid #ffc044;
+		}
+
+		.subtitle_devider {
+			width: 70%;
+			border-bottom: 1px solid #939598;
+			margin: 10px 0;
+		}
+
+		.customer_wrap {
+			margin-top: 35px;
+		}
+
+		.customer_left {
+			width: 26%;
+		}
+
+		.customer_right {
+			width: 74%;
+		}
+
+		.customer_block {
+			background: #fff;
+			padding-bottom: 25px;
+			margin-bottom: 35px;
+		}
+
+		.customer_name {
+			color: #999;
+			font-size: 18px;
+		}
+
+		.customer_name.margin {
+			margin: 10px 0;
+		}
+
+		.customer_menu_header {
+			position: relative;
+		}
+
+		.customer_menu_header:hover .customer_submenu {
+			display: block;
+		}
+
+		.customer_submenu {
+			display: none;
+			position: absolute;
+			width: 240px;
+			background: #fff;
+			padding: 15px;
+			z-index: 100;
+			top: 37px;
+			left: -96px;
+		}
+
+		.customer_submenu a {
+			color: #9f9f9f;
+			font-size: 13px;
+			text-transform: uppercase;
+		}
+
+		.customer_submenu a:hover {
+			color: #414042;
+		}
+
+		.profile_edit p {
+			margin-bottom: 3px;
+		}
+
+		.gray_title_bg {
+			position: relative;
+			background: #f1f2f2;
+			color: #a7a9ac;
+			font-size: 13px;
+			padding: 15px 0px 15px 15px;
+			text-transform: uppercase;
+		}
+
+		.customer_description {
+			padding: 25px 0 0 30px;
+			font-size: 12px;
+		}
+
+		.customer_rating {
+			margin-bottom: 10px;
+			font-size: 0 !important;
+		}
+
+		.customer_rating .star {
+			display: inline-block;
+			background: url(../img/stars.png) no-repeat;
+			width: 16px;
+			height: 16px;
+		}
+
+		.heart_img {
+			vertical-align: baseline;
+		}
+
+		.short_devider {
+			border-top: 1px solid #6d6f71;
+			width: 10px;
+			margin: 15px 0;
+		}
+
+		.order_bg {
+			font-size: 12px;
+			background: #fff;
+			color: #a7a9ac;
+			padding: 0 12px 70px 12px;
+		}
+
+		.order_title {
+			color: #414042;
+		}
+
+		.order_table {
+			width: 100%;
+		}
+
+		.order_table tr {
+			border-bottom: 1px solid #d1d3d4;
+		}
+
+		.order_table td {
+			padding: 30px 0;
+		}
+
+		.first_td_padding {
+			padding-left: 20px !important;
+		}
+
+		.order_btn {
+			width: 98px;
+			height: 22px;
+			padding: 0;
+			margin-left: 10px;
+			color: #fff;
+			font-size: 11px;
+			border-radius: 0;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+		}
+
+		.order_btn:hover {
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+		}
+
+		.order_btn.red:active {
+			background: #fff;
+			color: #f57667;
+		}
+
+		.order_btn.red {
+			background: #f57667;
+		}
+
+		.order_btn.turquoise {
+			background: #6bf2c8;
+		}
+
+		.order_btn.turquoise:active {
+			background: #fff;
+			color: #6bf2c8;
+		}
+
+		.account_history {
+			font-size: 13px;
+			color: #a7a9ac;
+		}
+
+		.mission_text {
+			color: #6d6f71;
+		}
+
+		.profile_name {
+			font-size: 23px;
+		}
+
+		.profile_name.margin {
+			margin-bottom: 35px;
+		}
+
+		.profile_padding {
+			padding: 40px 25px 70px 25px;
+		}
+
+		.profile_text {
+			font-size: 12px;
+			color: #a7a9ac;
+		}
+
+		.profile_rating {
+			margin: 0;
+		}
+
+		.left_size {
+			width: 80%;
+		}
+
+		.premium_img {
+			margin-bottom: 20px;
+		}
+
+		.profile_subtitle {
+			font-size: 14px;
+			color: #999999;
+		}
+
+		.strong_text {
+			font-size: 40px;
+		}
+
+		.statistics_box {
+			margin-top: 60px;
+		}
+
+		.statistics_block {
+			margin-bottom: 20px;
+		}
+
+		.statistics_text {
+			color: #6d6f71;
+		}
+
+		.statistics_scale {
+			width: 30%;
+			min-height: 10px;
+			background: #f1f2f2;
+			margin-left: 10px;
+		}
+
+		.devider {
+			border-top: 1px solid #d1d3d4;
+			margin: 25px 0;
+		}
+
+		.gray_bg {
+			position: relative;
+			background: #f1f2f2;
+			padding: 10px 0;
+			margin: 40px 0 20px 0;
+			text-transform: uppercase;
+		}
+
+		.location_info_box {
+			padding-left: 35px;
+		}
+
+		.location_box_bg {
+			min-height: 275px;
+			background: #fff;
+			padding: 30px 0 15px 15px;
+		}
+
+		.location_text_padding {
+			padding: 30px 20px 0 20px;
+		}
+
+		.address_title_m {
+			margin-bottom: 25px;
+		}
+
+		.address_head {
+			font-size: 21px;
+			color: #414042;
+			text-transform: uppercase;
+			margin: 0 0 5px 0;
+		}
+
+		.address_location {
+			color: #a7a9ac;
+		}
+
+		.shop_name {
+			font-size: 16px;
+			color: #666666;
+			margin-top: 10px;
+		}
+
+		.address_wrap {
+			margin-left: 40px;
+		}
+
+		.users_name {
+			font-size: 15px;
+			color: #00a99d;
+		}
+
+		.mission_text_small {
+			color: #bcbec0;
+			font-size: 14px;
+		}
+
+		.recruitment_info {}
+
+		.account_menu li {
+			margin-bottom: 25px;
+		}
+
+		.account_menu a {
+			font-size: 15px;
+			color: #999;
+		}
+
+		.account_menu a:hover {
+			color: #414042;
+		}
+
+		.bold_numeric {
+			font-size: 74px;
+			font-family: "FuturaBold";
+		}
+
+		.recomendation_box {
+			margin-top: 40px;
+		}
+
+		.recomendation_product {
+			margin-top: 20px;
+		}
+
+		.product_box {
+			margin-bottom: 20px;
+		}
+
+		.product_box .product_name {
+			margin-left: 20px;
+		}
+
+		.product_name {
+			font-size: 14px;
+			color: #999;
+		}
+
+		.coment_bg {
+			background: #f1f2f2;
+			margin-bottom: 15px;
+			padding: 10px;
+		}
+
+		.comment {
+			padding-left: 75px;
+		}
+
+		td .product_name {
+			padding-left: 30px;
+			white-space: nowrap;
+		}
+
+		.user_name_comment {
+			font-size: 13px;
+			display: block;
+		}
+
+		.message_btn {
+			display: inline-block;
+			vertical-align: middle;
+			background: url(../img/message_ico.png) no-repeat;
+			width: 20px;
+			height: 14px;
+			cursor: pointer;
+		}
+
+		.profile_btn {
+			font-size: 12px;
+			height: 20px;
+			color: #fff;
+			padding: 0 12px;
+			border-radius: 0;
+		}
+
+		.profile_btn,
+		.message_btn {
+			margin-left: 15px;
+		}
+
+		.recommend_btn {
+			background: #00a79d;
+		}
+
+		.report_btn {
+			background: #eb212e;
+		}
+
+		.comment_box {
+			position: relative;
+			height: 120px;
+			margin-top: 30px;
+		}
+
+		.comment_field {
+			width: 100%;
+			height: 100%;
+			border: none;
+			background: transparent;
+			outline: none !important;
+		}
+
+		.comment_btn {
+			width: 70px;
+			height: 20px;
+			position: absolute;
+			right: 10px;
+			bottom: 10px;
+			font-size: 12px;
+			background: #f57667;
+			color: #fff;
+			padding: 0;
+			border-radius: 0;
+		}
+		/*guest account*/
+
+		.pad_l {
+			padding-left: 0;
+		}
+
+		.devider_center {
+			margin: 15px auto;
+		}
+
+		.create_btn {
+			position: absolute;
+			right: 15px;
+			top: 10px;
+			font-size: 15px;
+			background: #fff;
+			border: 1px solid #ffc044;
+			border-radius: 5px;
+		}
+
+		.paiment_btn {
+			background: #00a79d;
+			height: 35px;
+		}
+
+		.paiment_btn:active {
+			background: #fff;
+			color: #00a79d;
+		}
+
+		.recruitment_info.inline-block {
+			margin-left: 10px;
+			line-height: 1.2;
+		}
+
+		.guest_wrap {
+			padding: 15px;
+			position: relative;
+		}
+
+		.guest_title {
+			font-size: 13px;
+			margin-bottom: 10px;
+		}
+
+		.guest_modal {
+			position: relative;
+			background: #f1f2f2;
+			padding: 15px;
+		}
+
+		.guest_modal .user_name,
+		.guest_modal .mission_text_small,
+		.guest_modal .mission_like_number {
+			font-size: 11px;
+		}
+
+		.guest_btn_group {
+			width: 82px;
+			margin: 10px 0 0 10px;
+		}
+
+		.guest_btn_group .btn {
+			width: 100%;
+			height: 20px;
+			padding: 0;
+			font-size: 11px;
+			color: #fff;
+			margin-bottom: 10px;
+		}
+
+		.guest_cross {
+			position: absolute;
+			cursor: pointer;
+			background: url(../img/guest_cross.png) no-repeat;
+			width: 12px;
+			height: 12px;
+			top: 5px;
+			right: 5px;
+		}
+
+		.recommend_wrap {
+			margin-top: 40px;
+		}
+
+		.recommend_content {
+			padding: 30px 40px;
+		}
+
+		.reccomend_profile .users_name {
+			font-size: 16px;
+		}
+
+		.reccomend_profile .mission_text_small,
+		.reccomend_profile .mission_like_number {
+			font-size: 15px;
+		}
+
+		.reccomend_profile .recruitment_info {
+			margin-top: 20px;
+		}
+
+		.profile_rating {
+			display: inline-block;
+			color: #b68b32;
+			font-size: 15px;
+		}
+
+		.modal_close {
+			position: absolute;
+			right: 15px;
+			top: 15px;
+			cursor: pointer;
+			width: 22px;
+			height: 22px;
+			background: url(../img/modal_cross.png) no-repeat;
+		}
+
+		.close {
+			opacity: 1;
+		}
+
+		.download_btn {
+			display: block;
+			float: right;
+			width: 16px;
+			height: 12px;
+			cursor: pointer;
+			background: url(../img/download_ico.png) no-repeat -3px -3px;
+			;
+		}
+
+		.download_btn:hover {
+			background-position: -25px -3px;
+		}
+
+		.table_arrow {
+			display: block;
+			margin-left: 15px;
+			width: 7px;
+			height: 15px;
+			background: url(../img/table_arrow.png) no-repeat;
+			cursor: pointer;
+		}
+
+		.account_link {
+			color: #6d6f71;
+		}
+
+		.arrow_back {}
+
+		.valide_popup {
+			position: absolute;
+			text-transform: uppercase;
+			color: #fff;
+			font-size: 15px;
+			background: #00a79d;
+			padding: 5px 10px;
+			top: -38px;
+		}
+
+		.valide_popup.yellow {
+			background: #ffc044;
+		}
+
+		.valide_popup.yellow:after {
+			border-color: #ffc044 transparent transparent transparent;
+		}
+
+		.valide_popup.copmlete_popup {
+			background: #00a79d;
+		}
+
+		.valide_popup.copmlete_popup:after {
+			border-color: #00a79d transparent transparent transparent;
+		}
+
+		.valide_popup:after {
+			content: "";
+			position: absolute;
+			width: 0px;
+			height: 0px;
+			border-style: solid;
+			border-width: 4px 4.5px 0 4.5px;
+			border-color: #00a79d transparent transparent transparent;
+			bottom: -4px;
+		}
+
+		.box_title {
+			color: #58595b;
+			text-transform: capitalize;
+		}
+
+		.footer {
+			background: #fff;
+			color: #b3b3b3;
+			padding: 20px 0;
+		}
+
+		.footer_nav li {
+			margin-bottom: 10px;
+		}
+
+		.footer_nav a {
+			color: #b3b3b3;
+		}
+
+		.partner_box {
+			margin-bottom: 30px;
+		}
+
+		.partner_box .signin_btn {
+			max-width: 100px;
+			height: 20px;
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+		}
+
+		.footer_devider {
+			border-top: 1px solid #b3b3b3;
+			margin: 20px 0 30px 0;
+		}
+
+		.social_wrap {
+			margin-top: 20px;
+		}
+
+		.social_l {
+			background: url(../img/social.png) no-repeat;
+			display: inline-block;
+			height: 28px;
+			cursor: pointer;
+		}
+
+		.social_l.fb {
+			width: 16px;
+			background-position: -5px -5px;
+		}
+
+		.social_l.fb:hover {
+			background-position: -46px -5px;
+		}
+
+		.social_l.tw {
+			width: 32px;
+			background-position: -5px -35px;
+			margin: 0 15px;
+		}
+
+		.social_l.tw:hover {
+			background-position: -46px -35px;
+		}
+
+		.social_l.in {
+			width: 30px;
+			background-position: -5px -68px;
+		}
+
+		.social_l.in:hover {
+			background-position: -46px -68px;
+		}
+
+		.copyright {
+			margin-top: 10px;
+			font-size: 11px;
+		}
+
+		.login_link {
+			margin-top: 5px;
+		}
+
+		.login_link a {
+			color: #b9b4b4;
+			font-size: 18px;
+		}
+
+		.heart_ico {
+			width: 61px;
+			height: 54px;
+			background: url(../img/heart_l.png) no-repeat;
+			display: inline-block;
+		}
+
+		.active_photo {
+			position: relative;
+		}
+
+		.active_photo:after {
+			content: "";
+			position: absolute;
+			background: url(../img/premium.png) no-repeat;
+			width: 77px;
+			height: 77px;
+			z-index: 100;
+			right: 10px;
+			top: 10px;
+		}
+
+		.general_arrow {
+			width: 18px;
+			height: 17px;
+			display: inline-block;
+			background: url(../img/general_arrow.png) no-repeat;
+			vertical-align: bottom;
+			margin-right: 5px;
+		}
+
+		.white_bg {
+			max-width: 300px;
+			margin: 0 auto;
+			padding: 20px 15px;
+			background: #fff;
+		}
+
+		.no_mission {
+			color: #808285;
+			padding: 15px 0 10px 15px
+		}
+
+		.report_modal {
+			width: 355px;
+			padding: 40px 0;
+			margin: 0 auto;
+		}
+
+		.modal_title_report {
+			color: #ffc044;
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+
+		.modal_text_report {
+			font-size: 14px;
+			color: #808080;
+			padding: 0 25px;
+		}
+
+		.modal_menu {
+			margin-top: 40px;
+			text-align: center;
+		}
+
+		.modal_menu li {
+			cursor: pointer;
+			font-size: 14px;
+			padding: 10px;
+			color: #808080;
+		}
+
+		.modal_menu li:hover {
+			background: #f0f0f0;
+		}
+
+		.modal_btn {
+			max-width: 100px;
+			height: 20px !important;
+			font-size: 12px;
+			margin: 30px 0 0 0;
+			padding: 0;
+			box-shadow: none;
+		}
+
+		.modal_info_wrap {
+			max-width: 820px;
+			margin: 0 auto;
+			padding: 80px 30px;
+		}
+
+		.rieview_modal {
+			max-width: 725px;
+			margin: 0 auto;
+			background: #fff;
+			margin: 0 auto;
+			padding: 50px 0 30px 0;
+			text-align: center;
+		}
+
+		.rieview_modal_title {
+			font-family: "HelveticaBold";
+			font-size: 30px;
+		}
+
+		.review_modal_text {
+			font-size: 11px;
+			color: #666666;
+			margin: 20px 0;
+		}
+
+		.rewiew_star {
+			width: 40px;
+			height: 39px;
+			background: url(../img/big_star.png) no-repeat -5px -5px;
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		.rewiew_star.active {
+			background-position: -55px -5px;
+		}
+
+		.rewiew_modal_btn {
+			width: 135px;
+			background: #ffe8bc;
+			text-transform: uppercase;
+			font-size: 20px;
+			font-family: "HelveticaBold";
+			box-shadow: none;
+			margin-top: 40px;
+		}
+
+		.rewiew_modal_btn:hover {
+			background: #ffc044;
+		}
+
+		.paiment_modal {
+			width: 862px;
+			background: #fff;
+			margin: 0 auto;
+			padding: 35px;
+		}
+
+		.paiment_frame {
+			position: relative;
+			width: 158px;
+			height: 103px;
+			border: 2px solid #bcbec0;
+			cursor: pointer;
+			text-align: center;
+		}
+
+		.paiment_frame.active {
+			border: 2px solid #ffc044;
+		}
+
+		.paiment_frame img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%)
+		}
+
+		.paiment_frame.active .payment_check {
+			display: block;
+		}
+
+		.payment_check {
+			display: none;
+			position: absolute;
+			right: -11px;
+			top: -9px;
+			cursor: pointer;
+			width: 22px;
+			height: 22px;
+			background: url(../img/payment_check.png) no-repeat;
+		}
+
+		.payment_form_title {
+			font-size: 14px;
+			margin: 30px 0;
+		}
+
+		.number {
+			background: url(../img/number.png) no-repeat -5px -5px;
+			display: inline-block;
+			vertical-align: middle;
+			width: 27px;
+			height: 27px;
+			margin-right: 10px;
+		}
+
+		.number.number2 {
+			background-position: -42px -5px;
+		}
+
+		.reset_pass_title {
+			color: #808080;
+		}
+
+		.reset_pass_text {
+			margin: 25px 0;
+		}
+
+		.no_padding {
+			padding: 30px 0;
+		}
+
+		.header_btn {
+			border: 1px solid #fbae17;
+			color: #fbae17;
+			text-transform: uppercase;
+			padding: 10px 20px;
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 14px;
+		}
+
+		.header_btn:hover {
+			background: #fbae17;
+			color: #fff;
+		}
+
+		.header_menu_link {
+			text-transform: uppercase;
+			font-size: 13px;
+			color: #bfbfbf;
+			cursor: pointer;
+			margin-left: 20px;
+		}
+
+		.header_menu_link:hover {
+			color: #fbae17;
+		}
+
+		.header_link_wrap {
+			margin-right: 20px;
+		}
+
+		@media screen and (min-width: 0em) and (max-width: 30em) {
+			.inscription-responsive {
+				width: 90%;
+			}
+		}
+
+		@media screen and (min-width: 30.001em) and (max-width: 45em) {
+			.inscription-responsive {
+				width: 75%;
+			}
+		}
+
+		@media screen and (min-width: 45.001em) and (max-width: 60em) {
+			.inscription-responsive {
+				width: 70%;
+			}
+		}
+		/*.mb_none {
+	margin-bottom: ;
+}*/
+	</style>
+
+	<div class="wrapper wrapper_background">
+		<div class="container container_center inscription-responsive">
+			<div class="logo text-center">
+				<a href="/">
+					<img src="images/logo2.png" alt="logo">
+				</a>
+			</div>
+			<h1 class="title text-center">
+				Devenir Manners
+			</h1>
+			<div class="devenir_text text-center">
+
+				<p class="pregister_text">
+					Manners est une plateforme qui permet à de jeunes auto-entrepreneurs de trouver simplement et efficacement des missions en
+					événementiel.
+					<br> De la facturation au paiement en passant par l'assurance, Manners prend tout en charge.<br> Pour vous inscrire,
+					veuillez remplir le formulaire ci-dessous :
+				</p>
+			</div>
+			<div class="obligatoire text-center">Tous les champs marqués par un * sont obligatoire </div>
+			<div class="devenir_text text-center">
+				<h3 class="pregister_h3 text-center"> INFORMATIONS GÉNÉRALES </h3>
+			</div>
+			{{>GuestRegisterForm}}
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("#testing input:checkbox").change(function () {
+			if (this.checked) {
+				var checkname = $(this).attr("name");
+				$("input:checkbox[name='" +
+					checkname + "']").not(this).removeAttr("checked");
+			}
+		});
+	</script>
+
+	<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=909556402492582&ev=PageView&noscript=1"
+		/></noscript>
+</template>
+
+<template name="GuestRegisterForm">
+	<form id="host" role="form" class="form_registration">
+		<div class="form-group form_margin">
+			<input type="text" class="form-control" required name="firstname" placeholder="Prénom*">
+			<input type="text" class="form-control" required name="name" placeholder="Nom*">
+		</div>
+		<h5 class="text-center">Sexe : </h5>
+		<div class="form-group form_margin">
+			<div class="">
+				<input type="radio" name="sex" value="Femme"> Femme <br>
+				<input type="radio" name="sex" value="Homme"> Homme
+			</div>
+		</div>
+		<!--<select class="form-control" name="sex">
+                      <option>Femme</option>
+                      <option>Homme</option>
+                  </select>-->
+		<div class="form-group form_margin">
+			<div class="form-group">
+				<label class="form_label"><h5>Quelle est ta taille (cm) ?*</h5></label>
+				<input type="number" required min="150" max="205" class="form-control" name="height" placeholder="">
+			</div>
+		
+			
+			<div class="form-group form-horizontal">
+				<label class="form_label naissance-label"><h5>Date de naissance ?</h5></label>
+				<input class="form-control naissance" type="number" min="1" max="31" name="ageDay" placeholder="Jour">
+				<input class="form-control naissance" type="number" min="1" max="12" name="ageMonth" placeholder="Mois">
+				<input class="form-control naissance annee" type="number" min="1960" max="1999" name="age" placeholder="Année">
+			</div>
+			<!-- <span>Homme : Possèdes tu un costume noir ?</span>
+                                        <div class="form_margin">
+                                            <input type="radio" name="question1" value="qui" checked="checked"> Qui <br>
+                                            <input type="radio" name="question1" value="non"> Non
+                                        </div>
+                                        <label class="form_label">Femme : Quelle est ta taille de veste ?</label>
+                                        <select class="form-control" name="question2">
+                          <option>34</option>
+                          <option>36</option>
+                          <option>38</option>
+                      </select>
+                                        <label class="form_label">Femme : Quelle est ta taille de robe ?</label>
+                                        <select class="form-control" name="question3">
+                          <option>34</option>
+                          <option>36</option>
+                          <option>38</option>
+                      </select>-->
+			<div class="divider"></div>
+			<input type="text" class="form-control" required name="phone" placeholder="N° de téléphone*">
+			<input type="text" class="form-control" required name="email" placeholder="Email*">
+			<input type="text" class="form-control" required name="address" placeholder="Adresse*">
+			<input type="text" class="form-control" name="zip" required placeholder="Code Postal*">
+			<input type="text" class="form-control" required name="city" placeholder="Ville*">
+		</div>
+			<div class="form_group" id="permB">
+				<label class="form_label"><h5 class="text-center">Quels permis as-tu ? </h5></label>
+				<div class="checkbox">
+					<label class="form_label">
+                              <input type="checkbox" name="bsr" value="true">Bsr</label>
+				</div>
+				<div class="checkbox">
+					<label class="form_label">
+                              <input type="checkbox" name="permis125" value="true">Permis 125</label>
+				</div>
+				<div class="checkbox">
+					<label class="form_label">
+                              <input type="checkbox" name="permisVoiture" value="true">Permis voiture</label>
+				</div>
+				<div class="checkbox">
+					<label class="form_label">
+                              <input type="checkbox" name="permisMoto" value="true">Permis moto</label>
+				</div>
+				<div class="checkbox">
+					<label class="form_label">
+                              <input type="checkbox" name="aucunsObligatory" value="true">Aucun</label>
+				</div>
+			</div>
+
+			<!--<select id="permB" class="form-control" required="required">
+			<option value="bsr">Bsr</option>
+			<option value="permis125">Permis 125</option>
+			<option value="permisVoiture">Permis voiture</option>
+			<option value="permisMoto">Permis moto</option>
+			<option value="aucunsObligatory">Aucun</option>
+		</select>-->
+		<div class="devenir_text text-center">
+			<h3 class="pregister_h3"> NIVEAU DE FORMATION :</h3>
+			<br>
+		</div>
+		<div class="form_group" name="studdyLevel">
+			<label><h5 class="text-center">Quel est ton niveau d’études ?*</h5></label>
+			<select id="studdyLevel" class="form-control" required="required">
+				<option value="bac +1">Bac +1</option>
+				<option value="bac +2">Bac +2</option>
+				<option value="bac +3">Bac +3</option>
+				<option value="bac +4">Bac +4</option>
+				<option value="bac +5">Bac +5</option>
+				<option value="bac">Bac</option>
+				<option value="pas de diplôme">Pas de diplôme</option>
+			</select>
+		</div>
+		<div class="form_group" name="engLevel">
+			<label class="form_label"><h5 class="text-center">Quel est ton niveau d’anglais ?*</h5></label>
+			<select id="engLevel" class="form-control" required="required">
+				<option value="scolaire">Qcm scolaire</option>
+				<option value="notions">Notions</option>
+				<option value="moyen">Moyen</option>
+				<option value="courant">Courant</option>
+				<option value="bilingue">Bilingue</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label class="form_label"><h5 class="text-center">Quelles autres langues parles-tu ?</h5></label>
+			<input type="text" class="form-control" name="anlang2" placeholder="">
+		</div>
+		<div class="checkbox-group" name="langLevel">
+			<label><h5 class="text-center">Si c'est le cas, quel est ton niveau ?</h5></label>
+			<select id="langLevel" class="form-control" required="required">
+				<option value="scolaire">Scolaire</option>
+				<option value="notions">Notions</option>
+				<option value="moyen">Moyen</option>
+				<option value="courant">Courant</option>
+				<option value="bilingue">Bilingue</option>
+			</select>
+		</div>
+		<div class="devenir_text text-center">
+			<h3 class="pregister_h3"> EXPÉRIENCES </h3>
+		</div>
+		<h6 class="text-center"><i>Précisez les types de missions réalisées, ainsi que le maximum de références.</i></h6>
+
+		<div class="form-group">
+			<label class="form_label">Expérience 1 *</label>
+			<select class="form-control" required name="experience1">
+                          <option>Hôtes d'Accueil</option>
+                          <option>Vestiaire</option>
+                          <option>Voiturier</option>
+                          <option>Serveur</option>
+                          <option>Barman</option>
+						  <option>Commis</option>
+						  <option>Runner</option>
+						  <option>Maitre d'hôtel</option>
+						  <option>Animateur</option>
+						  <option>Promoteur</option>
+						  <option>Vendeur</option>
+						  <option>Street Marketeur</option>
+                      </select>
+			<input type="text" name="experience1d" required class="form-control large_input" placeholder="Description*">
+		</div>
+		<div class="form-group">
+			<label class="form_label">Expérience 2 *</label>
+			<select class="form-control" required name="experience2">
+                          <option>Hôtes d'Accueil</option>
+                          <option>Vestiaire</option>
+                          <option>Voiturier</option>
+                          <option>Serveur</option>
+                          <option>Barman</option>
+						  <option>Commis</option>
+						  <option>Runner</option>
+						  <option>Maitre d'hôtel</option>
+						  <option>Animateur</option>
+						  <option>Promoteur</option>
+						  <option>Vendeur</option>
+						  <option>Street Marketeur</option>
+                      </select>
+			<input type="text" name="experience2d" required class="form-control large_input" placeholder="Description*">
+		</div>
+		<div class="form-group">
+			<label class="form_label">Expérience 3 *</label>
+			<select class="form-control" required name="experience3">
+                          <option>Hôtes d'Accueil</option>
+                          <option>Vestiaire</option>
+                          <option>Voiturier</option>
+                          <option>Serveur</option>
+                          <option>Barman</option>
+						  <option>Commis</option>
+						  <option>Runner</option>
+						  <option>Maitre d'hôtel</option>
+						  <option>Animateur</option>
+						  <option>Promoteur</option>
+						  <option>Vendeur</option>
+						  <option>Street Marketeur</option>
+                      </select>
+			<input type="text" name="experience3d" required class="form-control large_input" placeholder="Description*">
+		</div>
+		<div class="devenir_text text-center">
+			<h3 class="pregister_h3"> DOCUMENTS </h3>
+		</div>
+		<div class="file_upload">
+			Ajoute une photo de toi*
+			<!--<img src="img/clip.png" class="clip" alt="clip">-->
+			<input type="file" required id="fileselect" name="fileselect[]" multiple="multiple" />
+		</div>
+		<div class="file_upload">
+			Ajoute ton cv*
+			<input type="file" id="fileselect1" required name="fileselect[]" multiple="multiple" />
+			<div class="form-group">
+				<label class="form_label" required><h5>Comment nous as-tu connu ?*</h5></label>
+				<select class="form-control" name="comment2">
+                          <option>Choisis une option</option>             	
+                          <option>Bouche à Oreille</option>
+                          <option>Flying devant mon école</option>
+                          <option>Post FB depuis mon groupe de promo</option>
+                          <option>Groupe FB Wanted</option>
+                          <option>Site Job étudiant</option>
+                          <option>Site Indeed</option>
+                          <option>Je connais un Manners</option>
+                          <option>Forum ISEG</option>
+                          <option>Forum IESEG</option>
+                          <option>Forum Nanterre</option>
+                          <option>Autre</option>
+
+                      </select>-
+				<label class="form_label"><h5>D'une autre façon ?</h5></label>
+				<input type="text" class="form-control" name="comment" placeholder="Indique-le nous">
+			</div>
+		</div>
+		<input type="submit" class="button-colored pregister_btn login-btn text-center" value="Envoyer" />
+	</form>
+</template>

@@ -1,0 +1,96 @@
+<template name="pdfTest">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <div class="wrapper page_bg">
+    <header class="header">
+        <div class="container">
+            <div class="logo header_logo pull-left">
+                <a href="#">
+                    <img src="/images/logo.svg" alt="Manners" width="200">
+                </a>
+            </div>{{#if currentUser}}<div class="pull-right customer_name cn-ac">
+              <div class="inline-block dropdown dropdown-toggle customer_mt">
+                <div class="comment-wrapper"><img class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"><div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+              </div>
+              <ul class="dropdown-menu">
+                <li><a href="/client/mes-missions">Mes missions</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/history">Mon historique</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/messagerie">Messagerie</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/compte">Mon compte</a></li>
+                <li class="divider"></li>
+                {{>logoutC}}
+              </ul>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+    </header>
+  			<div class="border_menu">
+  				<div class="container">
+            <ul class="customer_menu">
+                <li class="underline-1"><a href="/client/mes-missions" class="active">mes missions</a></li
+                  ><li class="underline-2"><a href="/client/profils-favoris">mes recommandations</a></li>
+                <li class="underline-3"><a href="/client/messagerie">Messagerie</a></li>
+                <li class="underline-4"><a href="/client/history">Mon historique</a></li>
+                <li class="underline-5"><a href="/client/compte">mon compte</a></li>
+                <!-- <li class="underline-6">                   </li> -->
+                <hr class="model-4"/>
+            </ul>
+  				</div>
+  			</div>
+  			<div class="container">
+  				<div class="row customer_wrap">
+  					<div class="col-md-3 customer_left">
+  						<ul class="account_menu">
+  							<!-- <li><a href="">Coordones</a></li>
+  							<li><a href="">Informations bancaires</a></li>
+  							<li><a href="">Historique</a></li>
+  							<li><a href="">Informations profil</a></li> -->
+  							<li><a href="#">Mon historique</a></li>
+  							<li><a href="#">Mes relevés de consommation</a></li>
+  						</ul>
+  					</div>
+  					<div class="col-md-9 customer_right">
+  						 <div class="table_top_info">Au _ _ / _ _ / _ _ _ _ , mon solde est de _ _ _ _ _ €</div>
+  						<div class="gray_title_bg">
+  							Mon historique
+  						</div>
+  						<div class="order_bg">
+                {{#if currentUser}}
+  							<table class="order_table">
+  								<tr class="order_title">
+  									<td></td>
+  									<td>Période</td>
+  									<td>Nombre de missions</td>
+  									<td>Nombre de Manners</td>
+  									<td>Coût total</td>
+  									<td></td>
+  								</tr>
+  								<tr>
+  									<td>
+  										<span class="table_arrow"></span>
+  									</td>
+  									<td>28/01/16 </td>
+  									<td>Assemblée générale</td>
+  									<td class="red_text">5 Manners</td>
+  									<td>1040€</td>
+  									<td>
+  										<span class="download_btn myButton"></span>
+  									</td>
+  								</tr>
+
+  							</table>
+                {{/if}}
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+      {{>footerForms}}
+</template>

@@ -1,0 +1,342 @@
+<template name="HoteMission">
+  <link rel="stylesheet" href="/css/style.css">
+  <div class="wrapper page_bg">
+    {{#if 1}}
+       {{>helperComp}}
+
+    <div class="border_menu">
+      <div class="container">
+        <ul class="customer_menu">
+          <li class="underline-1"><a href="/partenaire/mes-missions" class="active">Mes missions</a></li>
+          <li class="underline-2"><a href="/partenaire/profil">Mon profil</a></li>
+          <li class="underline-3"><a href="/partenaire/messagerie">Messagerie</a></li>
+          <li class="underline-4"><a href="/partenaire/historique">Mon historique</a></li>
+          <li class="underline-5"><a href="/partenaire/compte">Mon compte</a></li>
+          <!-- <li class="underline-6">                   </li> -->
+          <hr/>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row customer_wrap">
+        {{#if currentUser}}
+
+        <div class="col-md-3 customer_left">
+          <div class="customer_block">
+            <div class="crop-photo large round"><img src="{{getImage currentUser._id}}" alt="customer photo"></div>
+            <div class="text-center">
+              <div class="customer_name margin">
+                <br>{{currentUser.profile.firstname}} {{currentUser.profile.name}}</div>
+              <div class="profile_edit">
+                <p>
+                  <a href="/partenaire/profil" class="red_text">
+                      Voir le profil
+                    </a>
+                </p>
+                <p>
+                  <a href="/partenaire/compte" class="red_text">
+                    Modifer mes infos
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="customer_block">
+            <div class="gray_title_bg">
+              À propos de moi
+            </div>
+              <div class="recon_rest responsive-reco">
+
+          <div class="profile_rating customer_rating inline-block mb_none" style="display:inline-flex;">
+                    <div class="">
+                      {{#if star rating 1.75}}
+                            <span class="star star-full-3" id="set-rating-1-{{_id}}" aria-hidden="true"></span> 
+                      {{else}}
+                      <span class="star star-empty" id="set-rating-1-{{_id}}" aria-hidden="true"></span> 
+                      {{/if}}
+                    </div>
+                    <div class="">
+                     {{#if star rating 2.75}}
+                            <span class="star star-full-3" id="set-rating-2-{{_id}}" aria-hidden="true"></span> 
+                      {{else}}
+                      <span class="star star-empty" id="set-rating-2-{{_id}}" aria-hidden="true"></span> 
+                      {{/if}}
+                    </div>
+                    <div class="">
+                     {{#if star rating 3.75}}
+                          
+                            <span class="star star-full-3" id="set-rating-3-{{_id}}" aria-hidden="true"></span> 
+                      {{else}}
+                      <span class="star star-empty" id="set-rating-3-{{_id}}" aria-hidden="true"></span> 
+                      {{/if}}
+                    </div>
+                    <div class="">
+                     {{#if star rating 4.75}}
+                            <span class="star star-full-3" id="set-rating-4-{{_id}}" aria-hidden="true"></span> 
+                      {{else}}
+                      <span class="star star-empty" id="set-rating-4-{{_id}}" aria-hidden="true"></span> 
+                      {{/if}}
+                    </div>
+                    <div class="">
+                     {{#if star rating 5.75}}                        
+                            <span class="star star-full-3" id="set-rating-5-{{_id}}" aria-hidden="true"></span> 
+                      {{else}}
+                      <span class="star star-empty" id="set-rating-5-{{_id}}" aria-hidden="true"></span> 
+                      {{/if}}
+                    </div>
+                  </div>
+                  <!--<button class="btn button-colored add-recom reco-btn btnreco" id="{{_id}}">Recommander</button>
+                  <button class="btn button-colored report-btn report btnreco" id="{{_id}}-report">Signaler</button>-->
+                  
+                  <!--<div class="">
+                    <div class="modal-footer">
+                      <textarea class="form-control" id="comment-{{_id}}" placeholder="Donnez votre avis..." rows="5" cols="40"></textarea>
+
+                      <button type="button" id='comm-{{_id}}' class="button-colored commSubm report-btn btn" data-dismiss="modal">&#10003;</button>
+                    </div>
+                  </div>-->
+
+                </div>
+            <!--<div class="customer_description">
+              <p>{{heard}} <img src="/images/heart.png" class="heart_img" alt="heart"></p>
+              <div class="customer_rating">
+                <div class="star">
+                  {{#if star rating 1}}
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{else}}
+                  <span class="glyphicon" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="star">
+                  {{#if star rating 2}}
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{else}}
+                  <span class="glyphicon" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="star">
+                  {{#if star rating 3}}
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{else}}
+                  <span class="glyphicon" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="star">
+                  {{#if star rating 4}}
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{else}}
+                  <span class="glyphicon" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="star">
+                  {{#if star rating 5}}
+                  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> {{else}}
+                  <span class="glyphicon" aria-hidden="true"></span> {{/if}}
+                </div>
+              </div>
+              <p>{{comments}} Commentaire(s) </p>
+              <div class="short_devider devider_center"></div>
+              <p>
+                <span class="red_text"> Inscrit depuis le:</span> {{registered}}
+              </p>
+              <p>
+                <span class="red_text"> a effectué:</span> {{missCol}} missions
+              </p>
+            </div>-->
+
+          </div>
+        </div>
+        {{/if}}
+        <div>
+          
+        <div class="col-md-9 customer_right">
+        <div class="">
+          <!-- accouunt history -->
+          <div class="gray_title_bg">
+            Mes missions
+            <div class="clearfix"></div>
+          </div>
+          <div class="order_bg thide">
+            {{#if missionsApr}}
+
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Client</td>
+                <td>Mission</td>
+                <td>Nombre de Manners</td>
+                <td>Lieu</td>
+                <td>Statut</td>
+              </tr>
+              {{#each missionsApr}}
+              <tr class="table_pointer" id="mission-{{_id}}">
+                <td class="first_td_padding">
+                  {{startDate}}
+                </td>
+                <td>{{client company}}</td>
+                <td>{{name}}</td>
+                <td class="red_text">
+                  {{hostesCol}}
+                </td>
+                <td>{{city}} ({{zip}})</td>
+
+                <td id="mission-{{_id}}">
+                  <a class="status_btn {{status.color}}">{{{status.text}}}</a>
+                </td>
+              </tr>
+
+              {{/each}}
+            </table>
+
+            <!--{{#each usrPageApr}}
+            <li><a href="#" class="lma" id="lma-{{this}}">{{plusone this}}</a></li>
+            {{/each}}-->
+             {{else}}
+            <div class="row text-center">
+              <img src="/images/clipboard.svg" class="img_mission_empty" alt="">
+              <br>
+              <h4> Tu ne t'es inscrit à aucune mission. Les missions disponibles apparaissent en dessous !</h4>
+            </div>
+            {{/if}}
+          </div>
+          <section>
+            {{#if usrCount}}
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <!--<li>
+                    <a href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>-->
+                {{#each usrPageApr}}
+                <li><a href="#" class="lma" id="lma-{{this}}">{{plusone this}}</a></li>
+                {{/each}}
+                <!--<li><a href="#" class="lm" id="lm-0">1</a></li>
+                  <li><a href="#" class="lm" id="lm-1">2</a></li>
+                  <li><a href="#" class="lm" id="lm-2">3</a></li>
+                  <li><a href="#" class="lm" id="lm-3">4</a></li>-->
+
+                <!--<li>
+                    <a href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>-->
+              </ul>
+            </nav>
+            {{/if}}
+          </section>
+          <div class="order_bg tablehide">
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Mission</td>
+                <td>Lieu</td>
+                <td>Statut</td>
+              </tr>
+              {{#if missionsApr}} {{#each missionsApr}}
+              <tr class="table_pointer" id="mission-{{_id}}">
+                <td class="first_td_padding">
+                  {{startDate}}
+                </td>
+                <td>{{name}}</td>
+                <td>{{city}} ({{zip}})</td>
+
+                <td>
+                  <a class="status_btn {{status.color}}">{{{status.text}}}</a>
+                </td>
+              </tr>
+              {{/each}} {{else}}
+              <p>Tu ne t'es inscris à aucune mission. Les missions disponibles apparaissent en dessous !</p>
+              {{/if}}
+            </table>
+          </div>
+        </div>
+        <div>
+          <!-- accouunt history -->
+          <div class="gray_title_bg">
+            Missions disponibles
+            <div class="clearfix"></div>
+          </div>
+          <div class="order_bg thide">
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Client</td>
+                <td>Mission</td>
+                <td>Nombre de Manners</td>
+                <td>Lieu</td>
+                <td>Statut</td>
+              </tr>
+              {{#each missions.rest}}
+              <tr class="table_pointer" id="mission-{{_id}}">
+                <td class="first_td_padding">
+                  {{startDate}}
+                </td>
+                <td>{{client company}}</td>
+                <td>{{name}}</td>
+                <td class="red_text">{{hostesCol}}</td>
+                <td>
+                  {{city}} ({{zip}})
+                </td>
+                <td>
+                  <a class="status_btn {{status.color}}">{{{status.text}}}</a>
+                </td>
+              </tr>
+              {{/each}}
+            </table>
+          </div>
+          <div class="order_bg tablehide">
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Client</td>
+                <td>Lieu</td>
+              </tr>
+              {{#each missions.rest}}
+              <tr class="table_pointer" id="mission-{{_id}}">
+                <td class="first_td_padding">
+                  {{startDate}}
+                </td>
+                <td>{{name}}</td>
+                <td>
+                  {{city}} ({{zip}})
+                </td>
+              </tr>
+              <tr class="table_pointer" id="mission-{{_id}}">
+                <td colspan="4" class="super-btn-statut">
+                  <a class="status_btn {{status.color}}">{{{status.text}}}</a>
+                </td>
+              </tr>
+              {{/each}}
+            </table>
+            <!--<button type="button" class="btn btn-large btn-block btn-default" id="lm">Voir d'autres profils...</button>-->
+
+
+          </div>
+          <section>
+            {{#if usrCount}}
+            <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <!--<li>
+                    <a href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>-->
+                {{#each usrPage}}
+                <li><a href="#" class="lm" id="lm-{{this}}">{{plusone this}}</a></li>
+                {{/each}}
+                <!--<li><a href="#" class="lm" id="lm-0">1</a></li>
+                  <li><a href="#" class="lm" id="lm-1">2</a></li>
+                  <li><a href="#" class="lm" id="lm-2">3</a></li>
+                  <li><a href="#" class="lm" id="lm-3">4</a></li>-->
+
+                <!--<li>
+                    <a href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>-->
+              </ul>
+            </nav>
+            {{/if}}
+          </section>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  {{>footerForms}}
+</template>

@@ -1,0 +1,85 @@
+<template name='ShowUsers'>
+    <br>
+    <section id='authform' class="row">
+        <p>Accéder au Show users <i class="fa fa-icon">¬</i></p>
+        <input type="password" id="password" placeholder="kamoulox" class="text-center mleft25percent width50">
+        <button id="auth" class="btn btn-primary">Connexion</button>
+        <div class="mt20 text-center"><p> Retourner à <a href="/">l'accueil</a></p></div>
+
+    </section>
+    {{#if currentUser}}
+    <section id='view' class='hidden'>
+        
+        <select name="" id="sort" class="form-control">
+            <option value="date">Date</option>
+            <option value="city">City</option>
+            <option value="year">Years</option>
+        </select>
+        
+        <button type="button" id="make-adm" class="btn btn-primary">Devenir Administrateur</button>
+        
+        <!--{{#each images.each}}-->
+        <!--<img src="{{getImage currentUser._id}}" alt="">-->
+        <!--{{/each}}-->
+        {{#each users}}
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">Nom d'Utilisateur <span class="glyphicon glyphicon-chevron-right"></span>{{profile.firstname}} {{profile.name}}</div>
+                <div class="column-right">
+                    <img width="200" src="{{getImage _id}}" alt="">
+                    <br>
+                    <a href="{{getCv _id}}">cv</a>
+                    <h6>creation date : {{moment profile.createdAt}}</h6>
+                    <h6>Nom : {{profile.firstname}} {{profile.name}} </h6>
+                    <h6>Genre : ({{profile.sex}}) </h6> 
+                    <h6>Age : {{profile.age}} </h6>
+                    <h6>Tel : {{profile.phone}} | Mail : {{profile.email}}</h6>
+                    <h6>Adresse : {{profile.address}}</h6>
+                    <h6>Ville et ZIP : {{profile.city}} {{profile.zip}}</h6>
+                    <h6>Permis B :{{permB profile.permB}} <br></h6>
+                    <h6>Voiture :{{profile.car}} | Scooter :{{profile.scooter}}</h6>
+                    <h6>Taille : {{profile.height}}</h6>
+                    <h6>Niveau d'étude : {{profile.studdyLevel}}</h6>
+                    <h6>Anglais : {{profile.engLevel}} Autre : {{profile.anlang2}}</h6>
+                    <h6>Expérience 1 :{{profile.experience}}</h6>
+                    <h6>Expérience 2 :{{profile.experience2}}</h6>
+                    <h6>Expérience 3 :{{profile.experience3}}</h6>
+                    <h6>comment nous avez-vous connu ?: {{profile.comment2}}</h6>
+                    <h6>D'une autre façon ? : {{profile.comment}}</h6>
+
+                    {{{chooseOp _id}}}
+                
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </section>
+    <div class="modal fade" id="modal-64">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Reason why : Pourquoi le rejeter ?</h4>
+                </div>
+                <div class="modal-body">
+                        
+                    <select name="" id="reasonSelect" class="form-control" required="required">
+                        <option >Manque d'infos</option>
+                        <option >J'aime pas sa gueule</option>
+                        <option >Profil ne correspond pas</option>
+                        <option >Pas de photo/CV</option>
+                        <option >Pas d'expérience</option>
+                        <option >Habite à perpet</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="discReport" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p class="text-center">Il faut que tu sois connecté(e)!</p>
+    {{/if}}
+</template>

@@ -1,0 +1,261 @@
+<template name="HoteProfileC">
+  <link rel="stylesheet" href="/css/style.css">
+  <div class="wrapper page_bg">
+    <header class="header">
+        <div class="expanded row">
+
+            <div class="medium-1 columns">
+                <i class="fa fa-bars" id="menu-open"></i>
+                <a href="/partenaire"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                <a href="/partenaire" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+            </div>
+
+            <div class="medium-2 columns">
+                <a href="/partenaire"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+            </div>
+
+            <div class="medium-6 columns text-left">
+              {{#unless currentUser}}<div class="comment-wrapper button-wrapper">
+                <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17 font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+              </div>{{/unless}}<div class="comment-wrapper">
+                <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+              </div><div class="comment-wrapper dropdown dropdown-toggle">
+                 <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                   <li class="divider"></li>
+                   <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                   <li class="divider"></li>
+                   <li><a href="/tenues">Les tenues</a></li>
+                   <li class="divider"></li>
+                   <li><a href="/contact">Contactez-nous</a></li>
+                 </ul>
+               </div>{{#unless currentUser}}<div class="comment-wrapper ">
+                  <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                </div>
+                <div class="comment-wrapper ">
+                  <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                </div>{{/unless}}{{#if currentUser}}<div class="pull-right customer_name cn-ac">
+                  <div class="inline-block dropdown dropdown-toggle customer_mt">
+                    <div class="comment-wrapper"><img class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"><div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+
+                    </div>
+                  </div>
+                  <ul class="dropdown-menu">
+                    <li><a href="/partenaire/mes-missions">Mes missions</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/partenaire/historique">mon historique</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/partenaire/profil">mon profil</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/partenaire/messagerie">Mes messages</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/partenaire/compte/">Mon compte</a></li>
+                    <li class="divider"></li>
+                    {{>logoutC}}
+                  </ul>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+          </div>
+
+        <!-- </div> -->
+<!--+33 6 51 52 15 89-->
+
+         <!-- <div class="comment-wrapper">
+           <a  class= "hollow button comment-link header-item " href="/devenir-hote-hotesse">AIDE</a>
+        </div> -->
+
+          <!-- <a href="/comment-ca-marche" style="color:#fbae17; font-size: 14px;" class="comment-link header-item">Comment ça marche ?</a> -->
+
+
+         <!--<div class="inline-block customer_menu_header customer_mt">
+             <br/>
+             <a class="hollow button show-for-medium" href="/devenir-hote-hotesse">COMMENT ÇA MARCHE ?</a>
+             <ul class="customer_submenu">
+                 <li>
+                     <a href="/account-dashboard/" class="active"></a>
+                 </li>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/comment-ca-marche" style="color:#fbae17" class="comment-link header-item">Devenir hôte(sse)</a></li>
+                                         <li class="subtitle_devider"></li>
+                 <a class="comment-link header-item" style="color:#fbae17" href="/devenir-hote-hotesse">AIDE</a>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/faq" style="color:#fbae17" class="comment-link header-item">FAQs</a></li>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/tenues" style="color:#fbae17" class="comment-link header-item">Tenues</a></li>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/model-account" style="color:#fbae17" class="comment-link header-item">Profil</a></li>
+                 <li class="subtitle_devider"></li>
+             </ul>
+         </div>-->
+         <!-- <div class="expanded row">
+           <div class="medium-11 medium-offset-1">
+           </div> -->
+         <!-- </div> -->
+       </header>
+    <div class="border_menu">
+        <div class="container">
+          <ul class="customer_menu">
+            <li class="underline-1"><a href="/partenaire/mes-missions" class="active">Mes missions</a></li
+              ><li class="underline-2"><a href="/partenaire/profil">Mon profil</a></li>
+            <li class="underline-3"><a href="/partenaire/messagerie">Mes messages</a></li>
+            <li class="underline-4"><a href="/partenaire/historique">Mon historique</a></li>
+            <li class="underline-5"><a href="/partenaire/compte">Mon compte</a></li>
+            <hr class="model-2"/>
+
+          </ul>
+        </div>
+    </div>
+  			<div class="container">
+  				<div class="row customer_wrap">
+  					<div class="col-md-3 customer_left">
+  						<div class="customer_block">
+  							<div class="active_photo">
+  								<img src="{{user.profile.photo.url}}" alt="customer photo">
+  							</div>
+  							<div class="text-center">
+  								<div class="customer_name margin">{{user.profile.firstname}} {{user.profile.name}}</div>
+  								<div class="profile_edit">
+  									<p>
+  										<a href="#" class="red_text">
+  											Modifer le profil
+  										</a>
+  									</p>
+  								</div>
+  							</div>
+  						</div>
+  						<div class="customer_block">
+  							<div class="gray_title_bg">
+  								A propos de moi
+  							</div>
+
+  							<div class="customer_description">
+  								<p>{{favCol}} <img src="/images/heart.png" class="heart_img" alt="heart"></p>
+  								<div class="customer_rating">
+  									<div class="star"></div>
+  									<div class="star"></div>
+  									<div class="star"></div>
+  									<div class="star"></div>
+                    <div class="star"></div>
+  								</div>
+  								<p>{{commCol}} Commentaires </p>
+  								<div class="short_devider"></div>
+  								<p>
+  									<span class="red_text">Inscrit depuis le:</span>
+  									{{user.profile.createdAt}}
+  								</p>
+  								<p>
+  									<span class="red_text">À effectuer:</span>
+  									{{missTodo}} missions
+  								</p>
+  							</div>
+  						</div>
+  					</div>
+  					<div class="col-md-9 customer_right">
+  						<!-- customer profile -->
+  						<div class="gray_title_bg">
+  							Mon profil
+  						</div>
+  						<div class="order_bg profile_padding">
+  							<div class="pull-left left_size">
+  								<div class="customer_name profile_name margin">
+  									{{user.profile.firstname}} {{user.profile.name}} 
+										<div >								<button class="btn order_btn red" id="order" >Ajouter aux favoris</button>
+								
+								<button class="btn order_btn red" id="back">Retour aux missions</button></div>
+  									<div class="customer_rating profile_rating">
+  										<div class="star"></div>
+  										<div class="star"></div>
+  										<div class="star"></div>
+  										<div class="star"></div>
+  									</div>
+  								</div>
+  								<p class="profile_text">
+  									Bonjour ou bonsoir jeune Manners !
+                    Ceci est un texte remplaçable, il est possible de le changer en allant sur ton espace compte.
+                    Il sera présent sur ton profil et visible par les autres membres.
+  								</p>
+  							</div>
+  							<div class="pull-right text-center">
+  								<img src="/images/premium_img.png" class="premium_img" alt="premium img">
+  								<p class="profile_text">Profil Hôte</p>
+  							</div>
+  							<div class="clearfix"></div>
+  							<div class="row statistics_box">
+  								<div class="col-md-4 text-center">
+  									<p class="profile_subtitle">
+  										Nombre d’heures de travail
+  									</p>
+  									<div class="bold_numeric black_text">
+  										{{travled}}
+  									</div>
+  								</div>
+  								<div class="col-md-4 text-center">
+  									<p class="profile_subtitle">
+  										Mes missions
+  									</p>
+  									<div class="bold_numeric yellow_text">
+  										{{missions}}
+  									</div>
+  								</div>
+  								<div class="col-md-4 text-center">
+  									<p class="profile_subtitle">
+  										Mes recommandations
+  									</p>
+  									<div class="bold_numeric red_text">
+  										0<span class="heart_ico"></span>
+  									</div>
+  								</div>
+  							</div>
+							  <div class="recomendation_box">
+
+				<p>Langues :</p>
+				<p>Langue parlée  - {{empty user.profile.anlang}}</p>
+				<p>Langue parlée 2 - {{empty user.profile.anlang2}}</p>
+
+							  </div>
+  							<!-- <div class="recomendation_box">
+  								<p class="profile_subtitle">
+  									Mes expériences ({{recomNum}})
+  								</p> -->
+  								<!-- <div class="row recomendation_product">
+                    {{#each recom}}
+  									<div class="col-md-4">
+                      <div class="product_box">
+  											<img src="/images/user_photo_small.jpg" alt="">
+  											<span class="product_name"> {{{recomView from}}}</span>
+  										</div>
+  									</div>
+                    {{/each}}
+
+  								</div> -->
+  							<!-- </div> -->
+  							<div class="recomendation_box">
+  								<p class="profile_subtitle">
+  									Mes expériences (0)
+  								</p>
+  								<div class="coment_bg">
+  									<table>
+                      {{#each comments}}
+  										<tr>
+  											<td><img src="/images/user_photo_small.jpg" alt=""></td>
+  											<td><span class="product_name inline-block">{{from}} <br>{{comment}}</span></td>
+  											<td class="comment text-right">
+  												{{company}}
+  												<span class="user_name_comment red_text">Assemblée Générale</span>
+  											</td>
+  										</tr>
+                      {{/each}}
+  									</table>
+  								</div>
+
+  							</div>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+      {{>footerForms}}
+</template>

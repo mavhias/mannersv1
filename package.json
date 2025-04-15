@@ -1,0 +1,26 @@
+{
+  "name": "bemanners",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.24.0",
+    "bcrypt": "^5.1.1",
+    "google-auth-library": "^9.0.0",
+    "googleapis": "^128.0.0",
+    "html-pdf": "^2.2.0",
+    "jquery": "^3.7.1",
+    "jsdom": "^9.12.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "phantom": "^2.1.21",
+    "phantomjs-prebuilt": "^2.1.16",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "request": "^2.88.2",
+    "simpl-schema": "^3.4.1",
+    "sync-request": "^4.1.0"
+  }
+}

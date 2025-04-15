@@ -1,0 +1,1040 @@
+<template name="MissionCreate">
+  <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0l1I8U-zdhGyNFCaXCFhZImZvsBRBc00&libraries=places"></script>
+    <script src="/js/jquery.geocomplete.min.js"></script>-->
+  <script scr="/js/bootstrap-tagsinput.min.js">
+
+
+  </script>
+
+  {{#if authCheck}}
+  <link rel="stylesheet" href="/css/form_create.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <style>
+    .header {
+      /*background:white;
+            height:125px;
+            margin-bottom:1%;*/
+    }
+
+    .col-md-3 {
+      width: 24%;
+    }
+.col-red {
+    color: red;
+}
+
+.col-green {
+    color: green;
+}
+
+.col-orange {
+    color: orange;
+}
+
+  </style>
+  {{test}}{{#if nav 1}} {{>missionCreate1}} {{else}} {{#if nav 2}} {{>missionCreate2}} {{else}} {{#if nav 3}} {{>missionCreate3}}
+  {{else}} {{#if nav 4}} {{>missionCreate5}} {{else}} {{#if nav 5}} {{>missionCreate7}} {{/if}} {{/if}} {{/if}} {{/if}} {{/if}}
+  {{/if}}
+</template>
+
+
+
+
+<!-- HEADER -->
+
+<template name="header">
+  <header class="header">
+    <div class="expanded row">
+      <div class="medium-1 columns">
+        <i class="fa fa-bars" id="menu-open"></i>
+        <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+        <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+      </div>
+      <div class="medium-2 columns">
+        <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+      </div>
+      <div class="medium-6 columns text-left">
+        {{#unless currentUser}}
+        <div class="comment-wrapper button-wrapper">
+          <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+        </div>{{/unless}}
+        <a href="/nouvelle-mission/1" class="button-colored header-item reversed">Créer une mission</a>
+        <div class="comment-wrapper">
+          <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+        </div>
+        <div class="comment-wrapper dropdown dropdown-toggle">
+          <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+            <li class="divider"></li>
+            <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+            <li class="divider"></li>
+            <li><a href="/tenues">Les tenues</a></li>
+            <li class="divider"></li>
+            <li><a href="/contact">Contactez-nous</a></li>
+          </ul>
+        </div>{{#unless currentUser}}
+        <div class="comment-wrapper ">
+          <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+        </div>
+        <div class="comment-wrapper ">
+          <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+        </div>{{/unless}}{{#if currentUser}}
+        <div class="pull-right customer_name cn-ac">
+          <div class="inline-block dropdown dropdown-toggle customer_mt">
+            <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+              <div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+              </div>
+
+            </div>
+            <!--<div class="comment-wrapper">
+                <div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div>
+                <div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+              </div>-->
+            <ul class="dropdown-menu">
+              <li><a href="/client/mes-missions">Mes missions</a></li>
+              <li class="divider"></li>
+              <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+              <li class="divider"></li>
+              <li><a href="/client/history">Mon historique</a></li>
+              <li class="divider"></li>
+              <li><a href="/client/messagerie">Messagerie</a></li>
+              <li class="divider"></li>
+              <li><a href="/client/compte">Mon compte</a></li>
+              <li class="divider"></li>
+              {{>logoutC}}
+            </ul>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </header>
+</template>
+
+
+<!-- FOOTER -->
+
+<template name="footerForms">
+  <footer class="footer">
+    <div class="row text-center">
+      <div class="medium-4 columns">
+        <h6>LIENS UTILES</h6>
+        <ul>
+          <li><a href="devenir-hote-hotesse">Devenez Manners</a></li>
+          <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+          <li><a href="/faq">Questions fréquentes</a></li>
+          <li><a href="/tenues">Les tenues</a></li>
+        </ul>
+      </div>
+      <div class="medium-4 columns">
+        <h6>CONTACTEZ-NOUS</h6>
+        <p>
+          Victor, notre responsable client:
+          <br><a href="mailto:victor@bemanners.com">victor@bemanners.com</a>
+          <br><a href="tel:+33176390001">01 76 39 00 01</a>
+          <br> 24 Avenue Marceau 75008 PARIS
+        </p>
+      </div>
+      <div class="medium-4 columns">
+        <h6>SUIVEZ-NOUS</h6>
+        <div class="socials text-center">
+          <a href="/facebook" target="_blank"><img src="/images/facebook-menu.png" alt=""></a>
+          <a href="/twitter" target="_blank"><img src="/images/twitter-menu.png" alt=""></a>
+          <a href="/linkedin" target="_blank"><img src="/images/linkedin-menu.png" alt=""></a>
+          <a href="/instagram" target="_blank"><img src="/images/instagram.png" alt=""></a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-10 columns medium-centered">
+        <div class="copyright text-center"><a href="dossier/manners-cgu.pdf">Conditions générales d'utilisation </a> - <a href="dossier/manners-mentions-legales.pdf">Mentions légales</a>          - @Manners 2016</div>
+      </div>
+    </div>
+    <div class="row column text-center">
+      <img src="/images/powered.png" alt="">
+    </div>
+  </footer>
+</template>
+
+
+
+<!--STEP MISSION 1 -->
+
+<template name="missionCreate1">
+  <div class="wrapper page_bg">
+    {{>header}}
+    <div class="mission-wrapper mission-1 container form_container">
+      <div class="form_border_container">
+        <ul class="form_menu missioncreation-submenu-responsive">
+          <li class="active"><span class="fa fa-info"></span><a href="/nouvelle-mission/1"> Détail</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-users"></span><a href="/nouvelle-mission/2"> Effectif</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-graduation-cap"></span><a href="/nouvelle-mission/3"> Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-handshake-o"></span><a href="/nouvelle-mission/4"> Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-check"></span> <a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+        <ul class="form_menu missioncreation-hide-responsive">
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/3">Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/4">Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li class="active"><span class="menu_ico validation"></span><a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+      </div>
+      <div class="form_border_container form_padding form_input_style">
+        <div class="text-center">
+          <h2>Détaillez les besoins de votre mission</h2>
+          <hr/>
+        </div>
+        <div>&nbsp;</div>
+        <div class="row">
+          <div class="groupe col-md-6">
+            <form role="form" id='missionCreate1'>
+              <div class="form-group">
+                <input type="text" class="form-control form_input" id="name" value="{{info.name}}" required placeholder="Nom de la mission *">
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-5">
+                    <label class="label_vertical">Nombre de Manners<span class="red_text">*</span></label>
+                  </div>
+                  <div class="col-md-7">
+                    <select required id="host-col" class="form-control">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                            <option>8</option>
+                                            <option>9</option>
+                                            <option>10</option>
+                                        </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" rows="3" id="overview" value="{{info.overview}}" placeholder="Décrivez votre évènement ou vos besoins"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="groupe col-md-6">
+            <form role="form" class="form-horizontal">
+              <div class="form-group">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" data-provide="typeahead" id="address" value="{{info.address}}" placeholder="Lieu de la mission *"
+                    required>
+
+
+
+                  <ul class="" aria-labelledby="address">
+                    {{#each geoauto}}
+                    <li><a href="#" class="selectPlace">{{this}}</a></li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+              <script>
+                // $("#address").geocomplete(); // Option 1: Call on element.
+                // $.fn.geocomplete("#address"); // Option 2: Pass element as argument.
+
+              </script>
+              <div class="form-group">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="city" value="{{info.city}}" required placeholder="Ville *">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" id="zip" value="{{info.zip}}" required placeholder="Code postal *">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <textarea class="form-control" rows="3" id="more-info" value="{{info.moreInfo}}" placeholder=" Un message pour vos manners ?"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="devider form_devider"></div>
+        <div class="row">
+          <div class="groupe col-md-6">
+            <form role="form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="label_vertical">Durée de la mission</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select id="duration" class="form-control">
+                                           {{{duration}}}
+                                        </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                {{#each calend}}
+
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <label class="date" for="datetimepicker{{this}}">Jour {{this}}</label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="input-group date " id="datetimepicker{{this}}">
+                      <input required type="text" class="form-control start-date" value="{{setDate info.startDate this}}" id="start-date-{{this}}"
+                        placeholder="Choisir la date" />
+                      <span class="input-group-addon">
+  											      <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+              <!--<div class="form-group">
+                                <input class="form-control text-center" id="end-mission" disabled="disabled" value="{{endMission}}" />
+                            </div>-->
+            </form>
+          </div>
+          <!-- <div class="form_subtitle">
+  							Horaires d’arrivées et de départs des hôtes(ses)
+  						</div> -->
+          <div class="groupe col-md-6">
+            <form role="form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="label_vertical align-placeholder-creamiss1">Commence à</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select class="form-control" id="begins-to"> 
+                                            <option>1h</option>
+                                            <option>2h</option>
+                                            <option>3h</option>
+                                            <option>4h</option>
+                                            <option>5h</option>
+                                            <option>6h</option>
+                                            <option>7h</option>
+                                            <option>8h</option>
+                                            <option>9h</option>
+                                            <option>10h</option>
+                                            <option>11h</option>
+                                            <option>12h</option>
+                                            <option>13h</option>
+                                            <option>14h</option>
+                                            <option>15h</option>
+                                            <option>16h</option>
+                                            <option>17h</option>
+                                            <option>18h</option>
+                                            <option>19h</option>
+                                            <option>20h</option>
+                                            <option>21h</option>
+                                            <option>22h</option>
+                                            <option>23h</option>
+                                            <option>24h</option>
+                                        </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="label_vertical align-placeholder-creamiss1">Termine à</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select class="form-control" id="ends-to"> 
+                                          {{#each endsTo}}
+                                          <option>{{this}}h</option>
+                                          {{/each}}
+                                            <option>24h</option>
+                                            <optgroup label="Le jour suivant">
+                                               {{#each endsTo1}}
+                                          <option value="{{v}}h">{{s}}h</option>
+                                          {{/each}} 
+                                            </optgroup>
+                                        </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 ref_mission">
+                    <div class="form-group">
+                      <input type="text" class="form-control last-input fullwidth" id="referrer" placeholder="Référence commerciale (Figure sur la facture)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+        <div class="form_center_box">
+          <button id="button1" type="submit" class="submit-btn button-colored">Continuer</button>
+        </div>
+      </div>
+    </div>
+    {{>footerForms}}
+  </div>
+</template>
+
+<!--STEP MISSION 2 -->
+
+
+<template name="missionCreate2">
+  <div class="wrapper page_bg">
+    {{>header}}
+    <div class="mission-wrapper container form_container">
+      <div class="form_border_container">
+        <ul class="form_menu missioncreation-submenu-responsive">
+          <li><span class="fa fa-info"></span><a href="/nouvelle-mission/1"> Détail</a></li>
+          <li class="menu_devider"></li>
+          <li class="active"><span class="fa fa-users"></span><a href="/nouvelle-mission/2"> Effectif</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-graduation-cap"></span><a href="/nouvelle-mission/3"> Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-handshake-o"></span><a href="/nouvelle-mission/4"> Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li class="active"><span class="fa fa-check"></span> <a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+        <ul class="form_menu missioncreation-hide-responsive">
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/3">Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/4">Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico validation"></span><a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+      </div>
+      <div class="form_border_container form_input_style form_padding form_padding_responsive">
+        <div class="form_title">
+          <h2>Quels profils souhaitez-vous?</h2>
+          <hr/>
+        </div>
+        <!-- <div class="devider form_devider"></div> -->
+        <div id="missions-separated" class="missions-separated">
+          {{#each patterns}}
+          <div id="wrapper-{{id}}" class="test-wrapper">
+            <button class="button-colored active" id="miss-2-ind" data="{{id}}">Indifférent</button>
+            <button class="button-colored" id="miss-2-femme" data="{{id}}">Femme</button>
+            <button class="button-colored" id="miss-2-homme" data="{{id}}">Homme</button>
+            <div class="mission-date">
+              <div class="form_btn_group text-center">
+                <div class="profile_date_title">{{ date }}</div>
+                <hr/>
+              </div>
+              <div class="form_select_box form_select_box_responsive">
+                <div class="row">
+                  <div class="col-md-3 sex pattern-{{id}}">
+                    <div class="form-group">
+                      <div class="gray_title_bg text-center"> Sexe </div>
+                    </div>
+                    {{#each foo}}
+                    <div class="form-group">
+                      <select focus="true" class="form-control select_text_style">
+                                    <option>Indifférent</option>
+                                    <option>Homme</option>
+                                    <option>Femme</option>
+                                </select>
+                    </div>
+                    {{/each}}
+                  </div>
+                  <div class="col-md-3 mission">
+                    <div class="form-group">
+                      <div class="gray_title_bg text-center"> Mission </div>
+                    </div>
+                    {{#each foo}}
+                    <div class="form-group">
+                      <select class="form-control select_text_style">
+                                      <optgroup label="Accueil">
+                                    <option>Hôte d’accueil</option>
+                                    <option>Responsable vestiaire</option>
+                                      </optgroup>
+                                    <option>Voiturier</option>
+                                    <option>Régisseur</option>
+                                    <option>Serveur</option>
+                                    <option>Barman</option>
+                                    <option>Runner</option>
+                                    <option>Commis</option>
+                                    <option>Maitre d’hôtel</option>
+                                    <option>Vendeur</option>
+                                    <option>Animateur</option>
+                                    <option>Street-marketeur</option>
+                                    <option>Promoteur</option>
+
+                                </select>
+                    </div>
+                    {{/each}}
+                  </div>
+                  <div class="col-md-3 start">
+                    <div class="form-group">
+                      <div class="gray_title_bg text-center"> Commence à </div>
+                    </div>
+                    {{#each foo}}
+                    <div class="form-group">
+                      <select class="form-control select_text_style">
+                                  {{#each dates}}
+                                  <option>{{this}}h</option>
+                                  {{/each}}
+
+                                  </select>
+                    </div>
+                    {{/each}}
+                  </div>
+                  <div class="col-md-3 finish">
+                    <div class="form-group">
+                      <div class="gray_title_bg text-center"> Finit à </div>
+                    </div>
+                    {{#each foo}}
+                    <div class="form-group">
+                      <!--<select class="form-control" id="ends-to">
+                                          {{#each endsTo}}
+                                          <option>{{this}}h</option>
+                                          {{/each}}
+                                            <option>24h</option>
+                                            <optgroup label="Le jour suivant">
+                                               {{#each endsTo1}}
+                                          <option value="{{v}}h">{{s}}h</option>
+                                          {{/each}} 
+                                            </optgroup>
+                                        </select>-->
+                      <select value="{{lastInAr dates}}" class="form-control select_text_style">
+                                  {{#if dates1}}
+                                        {{#each dates}}
+                                        <option>{{this}}h</option>
+                                        {{/each}}
+
+                                  {{else}}
+                                        {{#each dates}}
+                                        <option selected="selected">{{this}}h</option>
+                                        {{/each}}
+
+                                  {{/if}}
+                                    <optgroup label="Le jour suivant">
+                                    {{#each dates1}}
+                                          <option selected="selected" value="{{v}}h">{{s}}h</option>
+                                    {{/each}} 
+                                    </optgroup>
+                                  </select>
+                    </div>
+                    {{/each}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button id="button-delete-{{id}}" class="test-delete button-colored">Jour précédent</button>
+            <button id="button-{{id}}" class="test button-colored">Jour suivant</button>
+          </div>
+          {{/each}}
+        </div>
+        <div class="text-center">
+          <button id="buttonretour2" class="button-colored submit-colored">Retour</button>
+          <button id="button2" class="button-colored submit-colored">Continuer</button>
+        </div>
+      </div>
+    </div>
+    {{>footerForms}}
+  </div>
+</template>
+
+
+<!-- MISSION 3 -->
+
+
+<template name="missionCreate3">
+  <div class="wrapper page_bg">
+    {{>header}}
+    <div class="mission-wrapper container tenues form_container">
+      <div class="form_border_container">
+        <ul class="form_menu missioncreation-submenu-responsive">
+          <li><span class="fa fa-info"></span><a href="/nouvelle-mission/1"> Détail</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-users"></span><a href="/nouvelle-mission/2"> Effectif</a></li>
+          <li class="menu_devider"></li>
+          <li class="active"><span class="fa fa-graduation-cap"></span><a href="/nouvelle-mission/3"> Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-handshake-o"></span><a href="/nouvelle-mission/4"> Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li class="active"><span class="fa fa-check"></span> <a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+        <ul class="form_menu missioncreation-hide-responsive">
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/3">Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/4">Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico validation"></span><a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+      </div>
+      <div class="mission3_border_container">
+        <div class="row mission3_header">
+          <div class="form_title">
+            <h3>
+              Quelles tenues souhaiteriez-vous pour vos Manners ?
+            </h3>
+          </div>
+        </div>
+        <div class="required_content_center">
+          <div class="required_content">
+
+            <hr/>
+            <div class="container mission3_select" id="missions-separated2">
+
+              <div class="row">
+                {{#each jobSelect}}
+                <div id="wrapper-tenue-{{i}}" class="test-wrapper">
+
+                  <h5 class="pull-left"> Tenues pour {{this.mission}}:</h5>
+                  <br>
+                  <div class="form-group">
+                    {{#each col}} {{{chooseCl this}}} {{/each}}
+                    <button id="button-tenue-delete-{{i}}" class="test-delete button-colored">Tenue précédente</button>
+                    <button id="button-tenue-{{i}}" class="test silhouette button-colored">Tenue suivante</button>
+                  </div>
+
+                </div>
+
+                {{/each}}
+
+              </div>
+            </div>
+            <div class="missions-separated">
+              <!--{{#each foo}}
+                            <div id="wrapper-tenue-{{this}}" class="test-wrapper">
+                                <div class="row">
+                                    <div class="form_title">Tenue pour {{this.name}}</div>
+                                    
+                                   
+                                </div>
+                            </div>
+                            {{/each}}-->
+              <div class="text-center">
+                <button id="buttonretour3" class="test-delete button-colored">Retour</button>
+                <button id="button3" class=" test button-colored">Continuer</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{>footerForms}}
+</template>
+
+
+<!-- MISSION 4 -->
+
+
+<template name="missionCreate5">
+  {{genPdf}}
+  <div class="wrapper page_bg">
+    {{>header}}
+    <div class="mission-wrapper container form_container mission-4">
+      <div class="form_border_container">
+        <ul class="form_menu missioncreation-submenu-responsive">
+          <li><span class="fa fa-info"></span><a href="/nouvelle-mission/1"> Détail</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-users"></span><a href="/nouvelle-mission/2"> Effectif</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-graduation-cap"></span><a href="/nouvelle-mission/3"> Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li class="active"><span class="fa fa-handshake-o"></span><a href="/nouvelle-mission/4"> Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-check"></span> <a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+        <ul class="form_menu missioncreation-hide-responsive">
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/3">Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/4">Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li class="active"><span class="menu_ico validation"></span><a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+      </div>
+
+
+      <div class="form_border_container form_padding">
+        <div class="option_content_pading">
+          <div class="form_title text-center">
+            <h2>Tarification</h2>
+          </div>
+          <hr/>
+          <div class="tarifs">
+            <div class="calcul">
+              <div class="taux-horaire">
+                <div>
+                  <div class="form-group">
+                    <span style="font-size:20px; color:#fbae17">Taux horaire : </span><span class="currencyinput"><input value="20" type="number" id="taux-horaire" class="form-control form_input" name="taux-horaire" min="16" max="35">€/h</span>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!--<div class="montant-total">
+                          <div class="estimate_info">
+                              <div class="estimate_content_margin">
+                                <h2>Montant total</h2>
+                                  <div class="estimate_price">{{price}}€ <span class="turquoise_text">*</span></div>
+                                  <div class="estimate_small_text turquoise_text">
+                                      *Prix non contractuel
+                                  </div>
+                              </div>
+                          </div>
+                        </div>-->
+            </div>
+
+            <div class="detail">
+              <h2> Détail du paiement : <span class="{{pick.color}}">{{pick.text}}</span> </h2>
+
+              <div>
+                <table class="table set-table main-tableau-hide text-center">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Postes</th>
+                      <th>Horaires</th>
+                      <th>Nombre d'heures</th>
+                      <th>Taux horaire</th>
+                      <th>Prix : </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each pattern}}
+                    <tr>
+                      <td>{{date}}</td>
+                      <td>{{mission}}
+                        <p><span class="price"></span></p>
+                      </td>
+                      <td>{{this.start}} - {{finish this.finish}}</td>
+                      <td>{{hours this.start this.finish}}<span class="euro"> h</span> </td>
+                      <td>{{this.tx}}</td>
+                      <td>{{this.price}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4"> Tva non applicable, Article 293B du code général ...</td>
+                      <td> Total :</td>
+                      <td>{{price}}<span class="euro">€</span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="4"></td>
+                      <td> Frais de mise en relation :</td>
+                      <td>0<span class="euro">€</span></td>
+                      <!--<td>{{fee}}<span class="euro">€</span></td>-->
+                    </tr>
+                    <tr>
+                      <td colspan="4"></td>
+                      <td> Total à payer :</td>
+                      <td>{{price}}<span class="euro"></span></td>
+                    </tr>
+
+                  </tfoot>
+                </table>
+                <table class="table set-table responsive-tableau-hide">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Postes</th>
+                      <th>Horaires</th>
+                    </tr>
+                  </thead>
+                  <div class="divider"></div>
+                  <tbody>
+                    <tr>
+                      <td>{{#each pattern }} {{date}} {{/each}}</td>
+                      <td>poste
+                        <p><span class="price"></span></p>
+                      </td>
+                      <td><span class="price">{{hours}}<span class="euro"> h</span></span>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <thead>
+                    <tr>
+                      <th>Nb d'heures</th>
+                      <th>Tx horaire</th>
+                      <th>Nb Manners</th>
+                    </tr>
+                  </thead>
+                  <div class="divider"></div>
+                  <tbody>
+                    <tr>
+                      <td><span class="price">{{hours}}<span class="euro">h</span></span>
+                      </td>
+                      <td>tx horaires</td>
+                      <td>{{hostes}}</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="3"> Tva non applicable, Article 293B du code général ...</td>
+
+                    </tr>
+                    <tr>
+                      <td colspan="2"> Total :</td>
+                      <td>{{price}}<span class="euro">€</span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"> Frais de mise en relation :</td>
+                      <td>{{fee}}<span class="euro">€</span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"> Total à payer :</td>
+                      <td>{{price}}<span class="euro"></span></td>
+                    </tr>
+
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- OLD DESIGN1    <p><span>Nombre d'heures travaillées : </span>
+                                </p>
+                                <p>Frais de mise en relation <span class="price">0<span class="euro">€</span></span>
+                                </p>
+                                <p>Taux horaires <span class="euro">*</span> Heures travaillées<span class="price">{{price}}<span class="euro"> €</span>
+                                    <span class="turquoise_text"></span>
+                                    </span>
+                                </p>
+                                <hr/>
+                                <p>Total du prix :<span class="price">{{price}}<span class="euro"> €</span><span class="turquoise_text"></span></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div> !-->
+
+          <div class="text-center">
+            <button id="buttonretour4" class="button-colored submit-colored">Retour</button> {{#if currentUser}}
+            <button class="button-colored" id="missPdf">Télécharger l’estimation</button> {{else}}
+            <button class="button-colored" id="modalReg1">Inscrivez-vous pour<br> télécharger l'estimation</button> {{/if}}
+            <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content register_frame login_bg">
+                  {{>clientRegister}}
+                </div>
+              </div>
+            </div>
+            <button id="button4" class="button-colored submit-colored">Continuer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{>footerForms}}
+  </div>
+</template>
+
+
+<!-- MISSION 5 -->
+
+<template name="missionCreate7">
+
+  {{>accountModal2}}
+  <div class="wrapper page_bg">
+    {{storage}} {{>header}}
+    <div class="mission-wrapper container mission-5">
+      <div class="form_border_container">
+        <ul class="form_menu missioncreation-submenu-responsive">
+
+          <li><span class="fa fa-info"></span><a href="/nouvelle-mission/1"> Détail</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-users"></span><a href="/nouvelle-mission/2"> Effectif</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-graduation-cap"></span><a href="/nouvelle-mission/3"> Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="fa fa-handshake-o"></span><a href="/nouvelle-mission/4"> Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li class="active"><span class="fa fa-check"></span> <a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+        <ul class="form_menu missioncreation-hide-responsive">
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/3">Tenue(s)</a></li>
+          <li class="menu_devider"></li>
+          <li><span class="menu_ico outfits"></span><a href="/nouvelle-mission/4">Tarif</a></li>
+          <!--<li><span class="menu_ico option"></span>Options</li>-->
+          <li class="menu_devider"></li>
+          <li class="active"><span class="menu_ico validation"></span><a href="/nouvelle-mission/5">Validation</a></li>
+        </ul>
+      </div>
+      <div class="form_group">
+        <div class="form_border_container form_padding mt-0">
+          <div class="login_box">
+            {{#unless currentUser}}
+            <form role="form" id="loginForm">
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" required placeholder="adresse e-mail">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" required placeholder="mot de passe">
+              </div>
+              <div class="pull-left">
+                <!-- <button class="pass_link yellow_text" data-toggle="modal" type="button" data-target="#myModal2">Pas encore membres?</button> -->
+                <button class="pass_link button hollow" data-toggle="modal" type="button" id="modalReg">Pas encore membres?</button>
+              </div>
+              <div class="pull-right">
+                <a href="#" class="pass_link button hollow">
+  										mot de passe oublié ?
+  									</a>
+              </div>
+              <input class="btn submit_btn signin_btn" type="submit" id="loginProgress" value="Connexion" />
+            </form>
+            {{else}}
+
+            <div class="modal fade" id="modal-notcomplete">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <!--<h4 class="modal-title">Modal title</h4>-->
+                  </div>
+                  <!--<div class="modal-body">
+                                </div>-->
+                  <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>-->
+                    {{>infoProfile1}}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form_container">
+              <div class="form_border_container form_padding mission-5">
+                <div class="option_content_pading">
+                  <div class="form_title">
+                    <h2>Comment souhaitez-vous sélectionner vos Manners ?</h2>
+                  </div>
+                  <hr/>
+                  <div class="request_box row">
+                    <div class="col-md-6">
+                      <div id="req-1" class="button-colored request_button text-center active">
+                        <!-- <div class="text-wrapper"> -->
+                        <div class="request_title">
+                          Recrutement express
+                        </div>
+                        <div class="request_text">
+                          Nous choisissons pour vous les meilleurs profils disponibles
+                        </div>
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                    <div class="col-md-2 ou">OU</div>
+                    <div class="col-md-6">
+                      <div id="req-2" class="button-colored request_button text-center">
+                        <!-- <div class="text-wrapper"> -->
+                        <div class="request_title">
+                          Recrutement personnalisé
+                        </div>
+                        <div class="request_text">
+                          Choisissez vous-même les profils qui correspondent à vos attentes
+                        </div>
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <!-- <div class="devider form_devider"></div> -->
+                </div>
+              </div>
+              <div class="buttons-submit">
+                <!-- <button class="submit-btn button-colored">Télécharger l’estimation</button> -->
+                <!-- </div> -->
+                <!-- <div class="text-center"> -->
+                <button class="submit-btn button-colored" id="buttonretour5">Retour</button>
+                <button class="submit-btn button-colored" id="miss-pub">Publier la mission</button>
+              </div>
+            </div>
+            {{/unless}}
+          </div>
+          <div class="form_group">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form_group">
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content form_border_container form_padding register_frame">
+              <div class="register_box">
+                <div class="register_subtitle">
+                  Pas encore membre ? Inscrivez-vous en quelques secondes.
+                </div>
+                <form role="form" class='form-horizontal'>
+                  <div class="form-group">
+                    <div class="col-md-6">
+                      <input type="text" name="entrepr" class="form-control" placeholder="entreprise">
+                    </div>
+                    <div class="col-md-6">
+                      <div class="checkbox custom_checkbox">
+                        <input type="checkbox" id="check5">
+                        <label for="check5">entreprise</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" name="manName" placeholder="prénom du responsable">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" name="lastName" placeholder="nom du responsable">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="tel" pattern="[0-9]{10}" name="tel" class="form-control" placeholder="n° de téléphone">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="email" class="form-control" name="email" placeholder="email ">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="password" class="form-control" name="password" placeholder="mot de passe">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <input type="password" class="form-control" name="re-password" placeholder="répéter mot de passe">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <label class="invalid_label">Mot de passe différent !</label>
+                      <input type="password" class="form-control invalid" placeholder="répéter mot de passe">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12">
+                      <div class="checkbox custom_checkbox">
+                        <input type="checkbox" id="check6">
+                        <label for="check6"><span class="yellow_text">J’accepte</span> <a href="#" class="condition_link yellow_text">les conditions d’utilisations</a></label>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="btn submit_btn signin_btn" id="signUp">Inscriptions</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{>footerForms}}
+  </div>
+</template>

@@ -1,0 +1,30 @@
+{
+    "PrerenderIO": {
+        "prerenderServiceUrl": "http://localhost:3000/",
+        "token": "V8A3ZssAQMBYaQYaJUZK"
+    },
+
+    "private": {
+        "mainAppEmail": "nicholas@bemanners.com",
+        "MailChimp": {
+            "apiKey": "e461183c687556b4f8cb7df529419eb7-us12",
+            "listId": "18b56e6952"
+        }
+    },
+    "public": {
+        "hostName": "www.simplechat.support",
+        "maxClientApps": 3,
+        "maxChatHistoryInDays": 3,
+        "analyticsSettings": {
+            "Google Analytics": {
+                "trackingId": "UA-76289134-1"
+            }
+        }
+    },
+    "sikka": {
+         "captcha": {
+             "siteKey": "6LdZZBAUAAAAAAsTSKq4hUBNfMdhRenj_8pifP33",
+             "secret":  "6LdZZBAUAAAAAOmSUCAKwGcXOdNvChj5LhN1LIDR"
+         }
+    }
+}

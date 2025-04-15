@@ -1,0 +1,185 @@
+<template name="blog">
+   <link href="/css/clean-blog.min.css" rel="stylesheet">
+     <!--<link rel="stylesheet" href="/css/style.css">-->
+
+
+    <!-- Custom Fonts -->
+    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <header class="header">
+
+        <div class="expanded row">
+            <div class="medium-1 columns">
+                <i class="fa fa-bars" id="menu-open"></i>
+                <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                <a href="/devenir-hote-hotesse" class="comment-link show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+            </div>
+            <div class="medium-2 columns">
+                <a href="/"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+            </div>
+            <div class="medium-6 columns text-left">
+
+              <div class="comment-wrapper">
+                <a class="button-colored comment-link show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+              </div>
+
+              <div class="dropdown comment-wrapper">
+                <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+              </div>
+
+              <div class="comment-wrapper dropdown">
+                 <a href="#" class="comment-link dropdown-toggle" data-toggle="dropdown">AIDE <b class="caret"></b></a>
+                 <ul class="dropdown-menu">
+                   <li><a href="#">Comment ça marche</a></li>
+                   <li class="divider"></li>
+                   <li><a href="/faq">Questions fréquentes</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">Les tenues</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">Contactez-nous</a></li>
+                 </ul>
+               </div>
+
+
+               <!-- </div> -->
+<!--+33 6 51 52 15 89-->
+
+                <!-- <div class="comment-wrapper">
+                  <a  class= "hollow button comment-link " href="/devenir-hote-hotesse">AIDE</a>
+               </div> -->
+
+                 <!-- <a href="/comment-ca-marche" style="color:#fbae17; font-size: 14px;" class="comment-link">Comment ça marche ?</a> -->
+
+
+                <!--<div class="inline-block customer_menu_header customer_mt">
+                    <br/>
+                    <a class="hollow button show-for-medium" href="/devenir-hote-hotesse">COMMENT ÇA MARCHE ?</a>
+                    <ul class="customer_submenu">
+                        <li>
+                            <a href="/account-dashboard/" class="active"></a>
+                        </li>
+                        <li class="subtitle_devider"></li>
+                        <li><a href="/comment-ca-marche" style="color:#fbae17" class="comment-link">Devenir hôte(sse)</a></li>
+                                                <li class="subtitle_devider"></li>
+                        <a class="comment-link" style="color:#fbae17" href="/devenir-hote-hotesse">AIDE</a>
+                        <li class="subtitle_devider"></li>
+                        <li><a href="/faq" style="color:#fbae17" class="comment-link">FAQs</a></li>
+                        <li class="subtitle_devider"></li>
+                        <li><a href="/tenues" style="color:#fbae17" class="comment-link">Tenues</a></li>
+                        <li class="subtitle_devider"></li>
+                        <li><a href="/model-account" style="color:#fbae17" class="comment-link">Profil</a></li>
+                        <li class="subtitle_devider"></li>
+                    </ul>
+                </div>-->
+
+                {{#unless currentUser}}
+
+
+                <div class="comment-wrapper ">
+                  <a class="comment-link show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                </div>
+
+                <div class="comment-wrapper ">
+                  <a class="comment-link show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                </div>
+
+                {{/unless}}
+
+                                {{#if currentUser}}
+                <div class="pull-right customer_name cn-ac">
+                    <div class="inline-block customer_menu_header customer_mt">
+                        <img class="customer_photo" src="{{getImage currentUser._id}}" alt="Votre photo ici"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                        <ul class="customer_submenu">
+                            <li><a href="/client/accueil">mes missions</a></li>
+                            <li class="subtitle_devider"></li>
+                            <li><a href="/client/profils-favoris">mes recommandations</a></li>
+                            <li class="subtitle_devider"></li>
+                            <li><a href="/client/history">Mon historique</a></li>
+                            <li class="subtitle_devider"></li>
+                            <li><a href="/client/compte">mon compte</a></li>
+                            <li class="subtitle_devider"></li>
+                            {{>logoutC}}
+                            <li class="subtitle_devider"></li>
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="expanded row">
+            <div class="medium-11 medium-offset-1">
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('/images/slider-bg.jpg')">
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Manners</h1>
+                        <hr class="small">
+                        <span class="subheading">Travaillez directement avec les meilleurs hôtes et hôtesses d'accueil !</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {{#each posts}}
+                <div class="post-preview">
+                    <a href="/blog/{{_id}}">
+                        <h2 class="post-title">
+                            {{title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{{shortIt1 body 40}}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posté par... <a href="#">{{author}}</a> {{date createdAt}}</p>
+                </div>
+                <hr>
+                {{/each}}
+                <!-- Pager -->
+                <!--<ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>-->
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+                </div>
+            </div>
+        </div>
+              {{>footerForms}}
+    </footer>
+
+
+
+    <!-- Contact Form JavaScript -->
+    <script src="/js/jqBootstrapValidation.js"></script>
+    <!--<script src="/js/contact_me.js"></script>-->
+
+    <!-- Theme JavaScript -->
+    <script src="/js/clean-blog.min.js"></script>
+</template>

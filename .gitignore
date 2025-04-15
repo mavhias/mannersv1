@@ -1,0 +1,18 @@
+.meteor/local
+node_modules
+npm-debug.log
+.DS_Store
+.env
+coverage/
+*.log
+
+# IDEs
+.vscode
+.idea
+
+# Mac OS
+*.DS_Store
+
+# Optional build/packaging outputs
+build/
+bundle/

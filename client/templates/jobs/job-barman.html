@@ -1,0 +1,149 @@
+<template name="JobBarman">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <div id="main-menu" class="main-menu">
+      <div class="inner">
+          <i class="fa fa-close" id="menu-close"></i>
+
+          <div class="row">
+              <div class="medium-9 columns medium-centered">
+                  <div class="row">
+                      <div class="medium-6 columns">
+                          <div class="menu-box">
+                              <h2>Liens utiles</h2>
+                              <nav>
+                                  <ul>
+                                      <li><a href="/devenir-hote-hotesse.html">Devenez Hôte/Hôtesse ?</a></li>
+                                      <li><a href="#">Comment ça marche ?</a></li>
+                                      <li><a href="/faq">Questions fréquentes</a></li>
+                                      <li><a href="#">Les tenues</a></li>
+                                  </ul>
+                              </nav>
+                          </div>
+                      </div>
+                      <div class="medium-6 columns">
+                          <div class="menu-box contacts">
+                              <h2>Contactez-nous</h2>
+                              <p><i class="fa fa-phone"></i> 09 53 27 40 05</p>
+                              <p><i class="fa fa-map-marker"></i> Paris 75008, 24 Avenue Marceau</p>
+                              <p><i class="fa fa-envelope"></i><a href="mailto:contact@bemanners.com">contact@bemanners.com</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="medium-4 columns medium-centered">
+                  <div class="menu-box menu-box-socials">
+                      <h2></h2>
+                      <!-- Réseaux sociaux -->
+                      <div class="socials text-center">
+                          <a href="#"><img src="/images/facebook-menu.png" alt=""></a>
+                          <a href="#"><img src="/images/twitter-menu.png" alt=""></a>
+                          <a href="#"><img src="/images/linkedin-menu.png" alt=""></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+  <header class="header">
+      <div class="expanded row">
+
+          <div class="medium-1 columns">
+              <i class="fa fa-bars" id="menu-open"></i>
+              <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+              <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+          </div>
+
+          <div class="medium-2 columns">
+              <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+          </div>
+
+          <div class="medium-6 columns text-left">
+            <div class="comment-wrapper button-wrapper">
+              <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17 font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+            </div><div class="comment-wrapper">
+              <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+            </div><div class="comment-wrapper dropdown dropdown-toggle">
+               <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                 <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                 <li class="divider"></li>
+                 <li><a href="/faq">Questions fréquentes</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#">Les tenues</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#">Contactez-nous</a></li>
+               </ul>
+             </div>{{#unless currentUser}}<div class="comment-wrapper ">
+                <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+              </div>
+              <div class="comment-wrapper ">
+                <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+              </div>{{/unless}}{{#if currentUser}}<div class="pull-right customer_name cn-ac">
+                <div class="inline-block dropdown dropdown-toggle customer_mt">
+                  <div class="comment-wrapper"><div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div><div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+
+                  </div>
+                </div>
+                <ul class="dropdown-menu">
+                  <li><a href="/client/mes-missions">Mes missions</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/history">Mon historique</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/messagerie">Messagerie</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/client/compte">Mon compte</a></li>
+                  <li class="divider"></li>
+                  {{>logoutC}}
+                </ul>
+              </div>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+
+       <div class="expanded row">
+         <div class="medium-11 medium-offset-1">
+         </div>
+       </div>
+    </header>
+
+    <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+    <section class="job title"><div class="row">
+      <h1>Barman</h1>
+      <hr/>
+      <p>Un évènement réussi c’est avant tout des invités satisfaits ! La clef dans ceci : le Barman</p>
+      <p>Pour cela le barman est un acteur primaire. Le barman est polyvalent et habile. Il accueille la clientèle au bar, prépare et effectue le service des cocktails et boissons. Etre barman c’est un tout : une attitude ; un style ; du talent… </p>
+    </div></section><div><section class="job"><div class="row">
+      <h2>La présentation</h2>
+      <hr/>
+      <p>Le barman doit avoir une présentation irréprochable au niveau vestimentaire et au niveau physique. Les femmes doivent porter des habits sobres et élégants et les hommes doivent en général porter un costume noir bien taillé avec une cravate noire. Au niveau de la présentation physique, même chez le barman il existe quelques règles dans le milieu de l’événementiel : les femmes doivent toujours avoir les cheveux attachés et être légèrement maquillées et les hommes doivent avoir les cheveux bien coiffés et être rasés de près.
+      </p>
+      </div></section
+      ><section class="job"><div class="row">
+      <h2>La dynamique</h2>
+      <hr/>
+      <p>Le barman doit mettre du cœur à l’ouvrage, ainsi il se doit d’être vif et habile dans son œuvre (/faire preuve de dextérité). Il n’a pas le droit à l’erreur et doit satisfaire tous les invités. Sa hâte ne doit pas le guider vers l’échec et il se doit d’être précautionneux avec son matériel (/ses outils de travail) afin d’éviter toute casse pour ne pas perturber l’évènement ~. C’est pourquoi le Barman doit allier vitesse et précaution dans son travail afin d’entretenir les invités tout au long de l’évènement. Une dynamique cérébrale est aussi de mise car souvent, les commandes s’enchainent et laissent peu de répit au barman qui ne doit oublier aucun de ses invités : une bonne mémoire est ainsi de mise (/requise)
+</p>
+    </div></section
+    ><section class="job"><div class="row">
+      <h2>Être avenant</h2>
+      <hr/>
+      <p>Le barman contribue aussi à la dynamique du bar en lui-même: le barman doit plaire et (doit) faire preuve de qualité afin de pourvoir à une animation continue du bar. Pour cela il est évident qu’il faut être engagé (/dévoué) sur (/pour) ce poste.
+Le barman doit avoir une stature (/image) attirante : en plus de servir ses clients il le fera en souriant avec les règles de politesses habituelles dans le monde de l’évènementielle. Ainsi le barman mettra toujours les invités dans de bonnes conditions.
+</p>
+    </div></section
+    ><section class="job"><div class="row">
+      <h2>Être responsable</h2>
+      <hr/>
+      <p>Le barman ou encore Employé de bar doit tenir son lieu de travail (au) propre et conforme. Ainsi il s’occupera de tenir les verres au propre ; d’approvisionner le réfrigérateur (/frigo) pour toujours pouvoir répondre à la demande des invités. De plus le barman doit effectuer le nettoyage des installations et des équipements du bar (à la demande du client). Si monétisation (/facturation) il y a, le barman devra aussi procéder à la facturation et à l’encaissement des recettes de la vente des produits.
+Il doit aussi (et surtout) respecter les normes précises d’hygiènes et d’appliquer une règlementation sur les débits des boissons. En plus de tout cela (/De plus), il doit pouvoir discerner un  individu ayant fait preuve d’un abus d’alcool (et faire preuve de bon sens) afin de limiter le débit d’alcool dans le verre du dit (/de l’) invité. </p>
+</div></section></div>
+</template>

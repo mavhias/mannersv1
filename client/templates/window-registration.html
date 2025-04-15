@@ -1,0 +1,298 @@
+<template name="WindowRegistration">
+    <link rel="stylesheet" href="/css/style.css">
+    <div class="wrapper page_bg">
+        <header class="header">
+            <div class="expanded row">
+                <div class="medium-1 columns">
+                    <i class="fa fa-bars" id="menu-open"></i>
+                    <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                    <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+                </div>
+                <div class="medium-2 columns">
+                    <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                </div>
+                <div class="medium-6 columns text-left">
+                    <div class="comment-wrapper button-wrapper">
+                        <a class="button-colored comment-link header-item show-for-medium hide-espace-responsive" style="color:#fbae17; font-size: 14px;"
+                            href="/accueilhote">ESPACE PARTENAIRE</a>
+                    </div>
+                    <div class="comment-wrapper">
+                        <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+                    </div>
+                    <div class="comment-wrapper dropdown dropdown-toggle">
+                        <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/tenues">Les tenues</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/contact">Contactez-nous</a></li>
+                        </ul>
+                    </div>{{#unless currentUser}}
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                    </div>
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                    </div>{{/unless}}{{#if currentUser}}
+                    <div class="pull-right customer_name cn-ac">
+                        <div class="inline-block dropdown dropdown-toggle customer_mt">
+                            <div class="comment-wrapper"><img class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                                <div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                                </div>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a href="/client/mes-missions">Mes missions</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/client/history">Mon historique</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/client/messagerie">Messagerie</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/client/compte">Mon compte</a></li>
+                                <li class="divider"></li>
+                                {{>logoutC}}
+                            </ul>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+            <!-- </div> -->
+            <!--+33 6 51 52 15 89-->
+            <!-- <div class="comment-wrapper">
+           <a  class= "hollow button comment-link header-item " href="/devenir-hote-hotesse">AIDE</a>
+        </div> -->
+            <!-- <a href="/comment-ca-marche" style="color:#fbae17; font-size: 14px;" class="comment-link header-item">Comment ça marche ?</a> -->
+            <!--<div class="inline-block customer_menu_header customer_mt">
+             <br/>
+             <a class="hollow button show-for-medium" href="/devenir-hote-hotesse">COMMENT ÇA MARCHE ?</a>
+             <ul class="customer_submenu">
+                 <li>
+                     <a href="/account-dashboard/" class="active"></a>
+                 </li>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/comment-ca-marche" style="color:#fbae17" class="comment-link header-item">Devenir hôte(sse)</a></li>
+                                         <li class="subtitle_devider"></li>
+                 <a class="comment-link header-item" style="color:#fbae17" href="/devenir-hote-hotesse">AIDE</a>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/faq" style="color:#fbae17" class="comment-link header-item">FAQs</a></li>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/tenues" style="color:#fbae17" class="comment-link header-item">Tenues</a></li>
+                 <li class="subtitle_devider"></li>
+                 <li><a href="/model-account" style="color:#fbae17" class="comment-link header-item">Profil</a></li>
+                 <li class="subtitle_devider"></li>
+             </ul>
+         </div>-->
+            <div class="expanded row">
+                <div class="medium-11 medium-offset-1">
+                </div>
+            </div>
+        </header>
+        <div class="container register">
+            <div class="bg-login"></div>
+            <div class="white_bg">
+                <div class="form_group">
+                    <h2 class="text-center"> Inscrivez-vous !</h2>
+                    <br>
+                    <button type="button" class="button-colored login-btn" data-toggle="modal" id="modalReg1">Devenir un(e) Manners</button>
+                    <div class="modal fade" id="myModal11" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content register_frame container container_center">
+                                <div class="logo text-center">
+                                    <a href="#">
+                                        <img src="/images/logo.svg" alt="Manners" width="200">
+                                    </a>
+                                </div>
+                                <h1 class="title text-center">
+                                    Devenir Manners
+                                </h1>
+                                <div class="devenir_text">
+                                    <p>
+                                        Manners est une plateforme qui simplifie la mise en relation entre des jeunes et des entreprises pour la réalisation de missions
+                                        ponctuelles en événementiel. <br> Si vous
+                                        êtes déterminés, que vous avez la chache et que vous en voulez dans la vie,<br> cette
+                                        plateforme est faite pour vous !
+                                    </p>
+                                </div>
+                                <div class="obligatoire">*obligatoire </div>
+                                {{>GuestRegisterForm}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form_group">
+                    <button type="button" class="button-colored login-btn" id="modalReg2" data-toggle="modal">Je suis une entreprise</button>
+                    <div class="modal fade" id="myModal22" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content register_frame login_bg">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <!--<h4 class="modal-title">Modal title</h4>-->
+                                </div>
+                                {{>clientRegister}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--partieboutton-->
+        <div class="intro-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="intro-message">
+                            <hr class="intro-divider">
+                            <ul class="list-inline intro-social-buttons">
+                                <li>
+                                    <a href="https://twitter.com/bemanners" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                                    <a href="#" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                                    <a href="#" class="btn btn-default btn-lg"><i class="fa fa-instagram fa-fw"></i> <span class="network-name">Instagram</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.intro-header -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer_content">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <h3 class="footer_nav_title">
+                                liens utiles
+                            </h3>
+                            <ul class="footer_nav">
+                                <li><a href="#">Devenez Manners</a></li>
+                                <li><a href="#">Comment ça marche ?</a></li>
+                                <li><a href="/faq">Questions fréquentes</a></li>
+                                <li><a href="#">Les tenues</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h3 class="footer_nav_title">
+                                contact
+                            </h3>
+                            <ul class="footer_nav">
+                                <li>Victor, notre responsable client:</li>
+                                <li><a href="mailto:victor@bemanners.com">victor@bemanners.com</a></li>
+                                <li>Telephone: 01 76 39 00 01</li>
+                                <li>24 Avenue Marceau 75008 PARIS</li>
+
+                            </ul>
+                        </div>
+                        <div class="medium-4 columns">
+                            <h6 class="text-center">SUIVEZ-NOUS</h6>
+                            <div class="socials text-center">
+                                <a href="/facebook" target="_blank"><img src="/images/facebook-menu.png" alt=""></a>
+                                <a href="/twitter" target="_blank"><img src="/images/twitter-menu.png" alt=""></a>
+                                <a href="/linkedin" target="_blank"><img src="/images/linkedin-menu.png" alt=""></a>
+                                <a href="/instagram" target="_blank"><img src="/images/instagram.png" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="copyright">
+                            Conditions générales d’utilisation Mentions légales - @Manners 2016
+                        </div>
+                        <img src="/images/footer_partners.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!--<script type="text/javascript">
+   $("input:checkbox").change(function() { if (this.checked) { var checkname = $(this).attr("name"); $("input:checkbox[name='"
+  + checkname + "']").not(this).removeAttr("checked"); } });
+      </script>-->
+</template>
+
+<template name='clientRegister'>
+    <div class="register_box">
+        <h2 class="login_title text-center">
+            Inscription client
+        </h2>
+        <form role="form" id="client" class='form-horizontal'>
+            <div class="form-group col-md-12">
+                <div class="text-center" id="choose">
+                    <div class="col-md-6">
+                        <label>
+                                                    <input type="radio" name="choose" value="prof" checked>
+                                                                Je suis un professionnel <br>
+                                                    </label>
+                    </div>
+                    <div class="col-md-6">
+                        <label>
+                                                    <input type="radio" name="choose" value="partic">
+                                                    Je suis un particulier
+                                                    </label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="text" class="form-control {{hide}}" name="entreprise" placeholder="Nom de l'entreprise">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    {{{input1}}}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    {{{input2}}}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="tel" pattern="[0-9]{10}" name="tel" class="form-control" placeholder="N° de téléphone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="email" class="form-control" name="email" placeholder="E-mail" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="password" class="form-control" name="repeatpassword" placeholder="Répétez votre mot de passe" required>
+                </div>
+            </div>
+            <div class="file_upload col-md-6">
+                <!--Ajoutez votre logo :-->
+                <input type="file" id="fileselect2" class="hide" name="fileselect[]" multiple="multiple" />
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label>
+                       <input id="agr" required type="checkbox" value="1">
+                        J'accepte les <a href="/dossier/manners-cgu.pdf" target="_blank"> CGU </a>
+                    </label>
+                </div>
+            </div>
+            <input type="submit" class="button-colored" value="Inscription" />
+        </form>
+    </div>
+</template>

@@ -1,0 +1,529 @@
+<template name="ClientRecom">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .recon_rest {
+      margin-top: 130px;
+    }
+
+    .recom_lay {
+      display: inline-flex;
+      width: 35%;
+    }
+
+    .recruitment_info {
+      display: block;
+    }
+
+    .reccomend_profile {
+      display: inline-flex;
+    }
+
+    .fav-heart {
+      position: absolute;
+      top: 10px;
+    }
+
+    .fav-reco {
+      margin-top: 0px;
+    }
+
+    .rating-show {
+      margin-left: 16%;
+    }
+
+    .sectionc2-text {
+      color: #fff !important;
+    }
+
+    #fav-rate {
+      padding-left: 40%;
+    }
+
+    .modal-footer a {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+  </style>
+  <div class="wrapper page_bg">
+
+
+    <!--<a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a>-->
+    <div class="modal fade" id="modal-fav">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title text-center">Evaluation enregistrée</h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="center-block">
+
+              <div class="profile_rating customer_rating inline-block mb_none" id="fav-rate" style="display:inline-flex;">
+                <div class="">
+                  {{#if star currentUser1.rating 1}} {{#if star2 currentUser1.rating 1}}
+                  <span class="star star-full" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 1.25}}
+                  <span class="star star-full-1" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 1.5}}
+                  <span class="star star-full-2" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 1.75}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{else}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{/if}} {{/if}} {{/if}} {{/if}} {{else}}
+                  <span class="star star-empty" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="">
+                  {{#if star currentUser1.rating 2}} {{#if star2 currentUser1.rating 2}}
+                  <span class="star star-full" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 2.25}}
+                  <span class="star star-full-1" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 2.5}}
+                  <span class="star star-full-2" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 2.75}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{else}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{/if}} {{/if}} {{/if}} {{/if}} {{else}}
+                  <span class="star star-empty" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="">
+                  {{#if star currentUser1.rating 3}} {{#if star2 currentUser1.rating 3}}
+                  <span class="star star-full" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 3.25}}
+                  <span class="star star-full-1" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 3.5}}
+                  <span class="star star-full-2" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 3.75}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{else}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{/if}} {{/if}} {{/if}} {{/if}} {{else}}
+                  <span class="star star-empty" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="">
+                  {{#if star currentUser1.rating 4}} {{#if star2 currentUser1.rating 4}}
+                  <span class="star star-full" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 4.25}}
+                  <span class="star star-full-1" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 4.5}}
+                  <span class="star star-full-2" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 4.75}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{else}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{/if}} {{/if}} {{/if}} {{/if}} {{else}}
+                  <span class="star star-empty" aria-hidden="true"></span> {{/if}}
+                </div>
+                <div class="">
+                  {{#if star currentUser1.rating 5}} {{#if star2 currentUser1.rating 5}}
+                  <span class="star star-full" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 5.25}}
+                  <span class="star star-full-1" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 5.5}}
+                  <span class="star star-full-2" aria-hidden="true"></span> {{else}} {{#if star2 currentUser1.rating 5.75}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{else}}
+                  <span class="star star-full-3" aria-hidden="true"></span> {{/if}} {{/if}} {{/if}} {{/if}} {{else}}
+                  <span class="star star-empty" aria-hidden="true"></span> {{/if}}
+                </div>
+              </div>
+              <hr>
+              <h5 class="text-center">Voulez vous ajouter ce Manners à vos Favoris ? </h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+          </div>
+          <div class="modal-footer center-block">
+            <a type="button" class="btn" data-dismiss="modal">No <img width="28px" height="28px" src="/images/profile/boutons_manners_11.svg"/>
+                          </a>
+            <a type="button" class="btn" id="fav-acc">Yes <img width="28px" height="28px" src="/images/profile/boutons_manners_12.svg"/>
+                          </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{#if authCheck}}
+    <header class="header">
+      <div class="expanded row">
+        <div class="medium-1 columns">
+          <i class="fa fa-bars" id="menu-open"></i>
+          <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+          <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+        </div>
+        <div class="medium-2 columns">
+          <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+        </div>
+        <div class="medium-6 columns text-left">
+          {{#unless currentUser}}
+          <div class="comment-wrapper button-wrapper">
+            <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+          </div>{{/unless}}
+          <a href="/nouvelle-mission/1" class="button-colored header-item reversed">Créer une mission</a>
+          <div class="comment-wrapper">
+            <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+          </div>
+          <div class="comment-wrapper dropdown dropdown-toggle">
+            <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+              <li class="divider"></li>
+              <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+              <li class="divider"></li>
+              <li><a href="/tenues">Les tenues</a></li>
+              <li class="divider"></li>
+              <li><a href="/contact">Contactez-nous</a></li>
+            </ul>
+          </div>{{#unless currentUser}}
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+          </div>
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+          </div>{{/unless}}{{#if currentUser}}
+          <div class="pull-right customer_name cn-ac">
+            <div class="inline-block dropdown dropdown-toggle customer_mt">
+              <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                <div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+
+              </div>
+              <!--<div class="comment-wrapper">
+                <div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div>
+                <div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+              </div>-->
+              <ul class="dropdown-menu">
+                <li><a href="/client/mes-missions">Mes missions</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/history">Mon historique</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/messagerie">Messagerie</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/compte">Mon compte</a></li>
+                <li class="divider"></li>
+                {{>logoutC}}
+              </ul>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </header>
+    <div class="border_menu">
+      <div class="container dashboard">
+        <ul class="customer_menu">
+          <li class="underline-1"><a href="/client/mes-missions" class="active">mes missions</a></li>
+          <li class="underline-2"><a href="/client/profils-favoris">mes recommandations</a></li>
+          <li class="underline-3"><a href="/client/messagerie">Messagerie</a></li>
+          <li class="underline-4"><a href="/client/history">Mon historique</a></li>
+          <li class="underline-5"><a href="/client/compte">mon compte</a></li>
+          <!-- <li class="underline-6">                   </li> -->
+          <hr class="model-2" />
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      {{#unless isEmpty}}
+      <div class="row customer_wrap">
+        <div class="col-md-12">
+          <div class="gray_title_bg">
+            {{{mission}}}
+          </div>
+          <div class="order_bg guest_wrap">
+            <select name="" id="selectMiss" class="form-control ml270 width50" required="required">
+
+              {{#each selectMiss}}
+              
+                <option value="{{_id}}">{{name}}</option>
+              
+              {{/each}}
+                            </select>
+
+            <div class="row">
+              <div class="rec_cont">
+
+                {{#if exCh users}} {{#each users}}
+                <!--<div class="col-md-12">-->
+                <div class="recon_sec change-reco-responsive">
+                  <div class="rec_main pull-left">
+                    <div class="crop-photo medium round"><a href="/partenaire/profil/{{_id}}" target="_blank"><img src="{{getImage id}}" width='300px' alt="" /></a>
+                    </div>
+                    <div class="users_name text-center">{{shortIt profile.firstname profile.name 15}} </div>
+                    <!--<br>-->
+                  </div>
+                  <br>
+                  <!--<div class="mission_like_number red_text">
+                          {{favCount _id}} <span class="{{favExist _id}}" id="lik-{{_id}}" aria-hidden="true"></span>
+                        </div>-->
+                  <div class="recon_rest responsive-reco">
+
+                    <div class="profile_rating customer_rating inline-block mb_none" style="display:inline-flex;">
+                      <div class="">
+                        {{#if star rating 1}} {{#if star2 rating 1}}
+                        <span class="star star-full" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 1.25}}
+                        <span class="star star-full-1" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 1.5}}
+                        <span class="star star-full-2" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 1.75}}
+                        <span class="star star-full-3" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 2}} {{#if star2 rating 2}}
+                        <span class="star star-full" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 2.25}}
+                        <span class="star star-full-1" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 2.5}}
+                        <span class="star star-full-2" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 2.75}}
+                        <span class="star star-full-3" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 3}} {{#if star2 rating 3}}
+                        <span class="star star-full" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 3.25}}
+                        <span class="star star-full-1" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 3.5}}
+                        <span class="star star-full-2" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 3.75}}
+                        <span class="star star-full-3" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 4}} {{#if star2 rating 4}}
+                        <span class="star star-full" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 4.25}}
+                        <span class="star star-full-1" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 4.5}}
+                        <span class="star star-full-2" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 4.75}}
+                        <span class="star star-full-3" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 5}} {{#if star2 rating 5}}
+                        <span class="star star-full" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 5.25}}
+                        <span class="star star-full-1" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 5.5}}
+                        <span class="star star-full-2" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 5.75}}
+                        <span class="star star-full-3" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                    </div>
+                    <!--<button class="btn button-colored add-recom reco-btn btnreco" id="{{_id}}">Recommander</button>
+                  <button class="btn button-colored report-btn report btnreco" id="{{_id}}-report">Signaler</button>-->
+
+                    <!--<div class="">
+                    <div class="modal-footer">
+                      <textarea class="form-control" id="comment-{{_id}}" placeholder="Donnez votre avis..." rows="5" cols="40"></textarea>
+
+                      <button type="button" id='comm-{{_id}}' class="button-colored commSubm report-btn btn" data-dismiss="modal">&#10003;</button>
+                    </div>
+                  </div>-->
+
+                  </div>
+
+
+
+
+
+
+
+                  <div class="pull-left rating-show">{{shortRate rating}}/5</div>
+                  <br>
+                  <h5><a class="fav-img" id="add-fav-{{_id}}">
+                  <img src="/images/profile/boutons_manners_12.svg" class="fav-img" width="10%" alt="plus">
+                  <br><i>add to the favorites</i></a></h5>
+                  <!--<div class="guest_cross">&times;</div>-->
+                </div>
+
+                <!--</div>-->
+                {{/each}} {{else}} {{#if exUser users}}
+
+                <img src="/images/search.jpg" class="img-loop center-block" alt="">
+                <br>
+                <h4 class="text-center">Vos futurs Manners sont en train de postuler... </h4>
+                {{else}}
+                <div class="order_bg guest_wrap">
+                  <div class="text-center">
+                    <img src="/images/btn-recom.svg" width="5%" alt="warning" />
+                    <div class="recommandation-presentation">
+                      <h2 class="red_text">
+                        Bravo !<br> Vous avez noté tous <br> vos Manners
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+                {{/if}} {{/if}} {{#if usrCount}}
+                <!--<button type="button" class="btn btn-large btn-block btn-default" id="lm">Voir d'autres profils...</button>-->
+                <section>
+                  <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                      <!--<li>
+                    <a href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>-->
+                      {{#each usrPage}}
+                      <li><a href="#" class="lm" id="lm-{{this}}">{{plusone this}}</a></li>
+                      {{/each}}
+                      <!--<li><a href="#" class="lm" id="lm-0">1</a></li>
+                  <li><a href="#" class="lm" id="lm-1">2</a></li>
+                  <li><a href="#" class="lm" id="lm-2">3</a></li>
+                  <li><a href="#" class="lm" id="lm-3">4</a></li>-->
+
+                      <!--<li>
+                    <a href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>-->
+                    </ul>
+                  </nav>
+                </section>
+
+                {{/if}}
+              </div>
+              <div class="modal_close"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="recommend_wrap mb50">
+        <div class="gray_title_bg">
+          Mes Manners favoris
+        </div>
+        <div class="order_bg recommend_content">
+          <div class="row recom_lay">
+            {{#each recom}}
+            <div class="col-md-8 reccomend_profile">
+              <span class=" user_cross">&times;</span>
+              <div class="recruitment_info">
+                <img src="/images/profile/boutons_manners_12.svg" class="fav-heart" width="15%" alt="">
+                <a href="/partenaire/profil/{{_id}}" target="_blank"><img src="{{getImage _id}}" width='300px' alt="" /></a>
+                <div class="users_name">
+                  {{shortIt profile.firstname profile.name 20}}
+                </div>
+                <div>
+
+                  <div class="mission_text_small">{{missions _id}} missions</div>
+                  <div class="recon_rest fav-reco responsive-reco">
+
+                    <div class="profile_rating customer_rating inline-block mb_none fr-m" style="display:inline-flex;">
+                      <div class="">
+                        {{#if star rating 1}} {{#if star2 rating 1}}
+                        <span class="star star-full" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 1.25}}
+                        <span class="star star-full-1" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 1.5}}
+                        <span class="star star-full-2" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 1.75}}
+                        <span class="star star-full-3" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-1-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 2}} {{#if star2 rating 2}}
+                        <span class="star star-full" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 2.25}}
+                        <span class="star star-full-1" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 2.5}}
+                        <span class="star star-full-2" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 2.75}}
+                        <span class="star star-full-3" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-2-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 3}} {{#if star2 rating 3}}
+                        <span class="star star-full" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 3.25}}
+                        <span class="star star-full-1" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 3.5}}
+                        <span class="star star-full-2" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 3.75}}
+                        <span class="star star-full-3" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-3-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 4}} {{#if star2 rating 4}}
+                        <span class="star star-full" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 4.25}}
+                        <span class="star star-full-1" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 4.5}}
+                        <span class="star star-full-2" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 4.75}}
+                        <span class="star star-full-3" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-4-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                      <div class="">
+                        {{#if star rating 5}} {{#if star2 rating 5}}
+                        <span class="star star-full" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 5.25}}
+                        <span class="star star-full-1" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 5.5}}
+                        <span class="star star-full-2" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}} {{#if
+                        star2 rating 5.75}}
+                        <span class="star star-full-3" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{else}}
+                        <span class="star star-full-3" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{/if}} {{/if}}
+                        {{/if}} {{/if}} {{else}}
+                        <span class="star star-empty" id="set-rating-5-{{_id}}" aria-hidden="true"></span> {{/if}}
+                      </div>
+                    </div>
+                    <!--<button class="btn button-colored add-recom reco-btn btnreco" id="{{_id}}">Recommander</button>
+                  <button class="btn button-colored report-btn report btnreco" id="{{_id}}-report">Signaler</button>-->
+
+                    <!--<div class="">
+                    <div class="modal-footer">
+                      <textarea class="form-control" id="comment-{{_id}}" placeholder="Donnez votre avis..." rows="5" cols="40"></textarea>
+
+                      <button type="button" id='comm-{{_id}}' class="button-colored commSubm report-btn btn" data-dismiss="modal">&#10003;</button>
+                    </div>
+                  </div>-->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      {{/unless}}
+      <br> {{#if isEmpty}}
+
+      <div class="gray_title_bg text-center"> <img src="/images/profile/boutons_manners_21.svg" width="5%" alt="warning"> </div>
+      <div class="order_bg guest_wrap">
+        <div class="recommandation-presentation text-center">
+          <h2 class="black">
+            Vous n'avez pas <br> encore de Manners favoris.<br> Pour y remédier, veuillez <br>
+            <a href="/nouvelle-mission/1">créer votre première mission.</a>
+          </h2>
+
+          <h5><a href="/client/mes-missions"><img src="/images/profile/boutons_manners_14.svg" width="5%" alt="plus"><br>Créer une mission</a></h5>
+        </div>
+      </div>
+
+
+
+
+      {{/if}}
+    </div>
+
+    {{/if}}
+
+
+  </div>
+
+
+  {{>footerForms}}
+</template>

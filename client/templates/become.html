@@ -1,0 +1,270 @@
+<template name="Become">
+<style media="screen">
+body {
+  font-family: "UniversalisADFStd-Regular", Arial, sans-serif;
+}
+</style>
+    <div id="main-menu" class="main-menu">
+        <div class="inner">
+            <i class="fa fa-close" id="menu-close"></i>
+
+          <div class="row">
+              <div class="medium-9 columns medium-centered">
+                  <div class="row">
+                      <div class="medium-6 columns">
+                          <div class="menu-box">
+                              <h2>Liens utiles</h2>
+                              <nav>
+                                  <ul>
+                    <li><a href="/">Espace client</a></li>
+                    <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+                    <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                    <li><a href="/tenues">Les tenues</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="medium-6 columns">
+                            <div class="menu-box contacts">
+                                <h2>Contact</h2>
+                                <p><i class="fa fa-phone"></i>01 76 39 00 01</p>
+                                <p><i class="fa fa-map-marker"></i> Paris 75008, 24 Avenue Marceau</p>
+                                <p><i class="fa fa-envelope"></i><a href="/contact" target="_blank">Contactez-nous</a></p>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+            <div class="row">
+                <div class="medium-4 columns medium-centered">
+                    <div class="menu-box menu-box-socials">
+                        <h2></h2>
+                        <!-- Réseaux sociaux -->
+                        <div class="socials text-center">
+                            <a href="/facebook" target="_blank"><img src="/images/facebook-menu.png" alt=""></a>
+                            <a href="/twitter" target="_blank"><img src="/images/twitter-menu.png" alt=""></a>
+                            <a href="/linkedin" target="_blank"><img src="/images/linkedin-menu.png" alt=""></a>
+                            <a href="/instagram" target="_blank"><img src="/images/instagram.png" alt=""></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<header class="header">
+        <div class="expanded row">
+            <div class="medium-1 columns">
+                <i class="fa fa-bars" id="menu-open"></i>
+                <a href="/"><img class="logo show-for-small-only" src="images/logo.svg" alt="Manners" height="120" width="200"></a>
+            </div>
+            <div class="medium-3 columns">
+                <a href="/"><img class="logo show-for-medium" src="images/logo.svg" alt="Manners" height="120" width="200"></a>
+            </div>
+            <div class="medium-8 columns text-right">
+                <a href="/comment-ca-marche" style="color:#fbae17; font-size: 14px;" class="comment-link">Comment ça marche ?</a>
+
+                <a href="/" class="button-colored comment-link header-item show-for-medium">ESPACE CLIENT</a>
+                  
+            </div>
+        </div>
+    </header>
+
+    <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+    <div class="carousel become slide" data-ride="carousel" id="blog-carousel">
+        {{> carouselList templ="become"}}
+    </div>
+    <section class="section-more text-center">
+        <div class="row">
+            <div class="medium-5 columns wow fadeInRightBig how2display">
+                <img src="/images/more.png" alt="">
+            </div>
+            <div class="medium-5 columns wow fadeInLeftBig floatright-noresp">
+                <h2>Gagnez plus d'argent</h2>
+                <p>Mettez fin aux intermédiaires.
+                <br>Gagnez jusqu'au <b>double</b> par rapport à une agence traditionnelle.</p>
+            </div>
+            <div class="medium-5 columns wow fadeInRightBig how2hide">
+                <img src="/images/more.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-phone text-center">
+        <div class="row">
+            <div class="medium-5 columns wow fadeInLeftBig">
+                <div class="inner">
+                    <h2>Simplifiez-vous la vie</h2>
+                    <p>Recevez votre argent <b>juste après</b> la mission<!--Travaillez de façon totalement <b>indépendante-->.
+                    <br>Recevez vos missions par notifications.</p>
+                   <!-- <br>Profitez de <b>démarches en ligne</b> simplifiées.</p> -->
+                </div>
+            </div>
+            <div class="medium-5 columns text-center wow fadeInRightBig">
+                <img src="/images/phone.png" alt="">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-best text-center">
+        <div class="row">
+            <div class="medium-5 columns wow fadeInRightBig how2display">
+                <img src="/images/best.jpg" alt="">
+            </div>
+            <div class="medium-5 columns wow fadeInLeftBig floatright-noresp">
+                <h2>Soyez performant</h2>
+                <p>Comportez-vous de manière <b>professionnelle</b> et<br> votre profil sera mis en avant.</p>
+                <!--<br>Accumulez des <b>recommandations</b> et<br> votre rémunération augmentera.</p>-->
+                <a href="/inscription" onclick="setTimeout(function(){location.reload(true)},1200);" class="hollow button">REJOIGNEZ L'ÉQUIPE</a>
+            </div>
+            <div class="medium-5 columns wow fadeInRightBig how2hide">
+                <img src="/images/best.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-clothes text-center">
+        <div class="row">
+            <div class="medium-5 columns wow fadeInLeftBig">
+                <h2>Utilisez votre vestiaire</h2>
+                <p><b>Ne perdez plus de temps</b> à récupérer puis<br> rendre votre tenue en agence.</p>
+                <!--<br>Nos hôtes et hôtesses partenaires travaillent <br>avec leur propres tenues.</p>-->
+                <a href="/tenues" class="hollow button">VOIR LES TENUES</a>
+            </div>
+            <div class="medium-5 columns wow fadeInRightBig">
+                <img src="/images/clothes.png" alt="">
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-partner">
+        <div class="row">
+            <div class="medium-8 columns medium-centered text-center">
+                <h2><b>Devenez notre partenaire</b></h2>
+                <p>Si vous avez de l’ambition et la volonté de travailler de manière professionnelle, Manners est une plate-forme qui vous correspond.
+                    <br>Inscrivez-vous pour participer à nos séances <strong>
+                    <u>de brief</u><!--de séléction...--></strong></p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-services2">
+        <div class="row medium-up-4">
+            <div class="column">
+                <h3><span>1.</span> <i class="fa fa-list"></i></h3>
+                <p>Pré-inscrivez vous en ligne.</p>
+            </div>
+            <div class="column">
+                <h3><span>2.</span><i class="fa fa-users"></i></h3>
+                <p>Rencontrez-nous à nos bureaux.</p>
+            </div>
+            <div class="column">
+                <h3><span>3.</span><i class="fa fa-pencil"></i></h3>
+                <p>Créez votre profil.</p>
+            </div>
+            <div class="column">
+                <h3><span>4.</span><i class="fa fa-thumbs-o-up"></i></h3>
+                <p>Commencez vos missions.</p>
+            </div>
+        </div>
+        <div class="row column medium-12">
+            <a href="/inscription" onclick="setTimeout(function(){location.reload(true)},1200);" class="hollow button">REJOIGNEZ L'ÉQUIPE</a>
+        </div>
+    </section>
+
+    <section class="section-qualifications">
+        <div class="row column">
+            <h2 style="text-align:center">Quelles qualifications ?</h2>
+        </div>
+        <div class="row">
+            <div class="medium-5 columns medium-centered text-center" style="float: none;">
+                <div class="row medium-up-2">
+                    <div class="column education wow bounce">
+                        <div class="image-wrapper">
+                            <img src="/images/education.png" alt="">
+                        </div>
+                        <h5>Des bonnes manières</h5>
+                    </div>
+                    <div class="column smiley wow bounce">
+                        <div class="image-wrapper">
+                            <img src="/images/smiley.png" alt="">
+                        </div>
+                        <h5>Un comportement irréprochable</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="medium-5 columns medium-centered text-center" style="float: none;">
+                <div class="row medium-up-2">
+                    <div class="column experience wow bounce">
+                        <div class="image-wrapper">
+                            <img src="/images/experience.png" alt="">
+                        </div>
+                        <h5>De l'expérience</h5>
+                    </div>
+                    <div class="column agreement wow bounce">
+                        <div class="image-wrapper">
+                            <img src="/images/agreement.png" alt="">
+                        </div>
+                        <h5>Le sens des responsabilités</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="row text-center">
+            <div class="medium-4 columns">
+                <h6>LIENS UTILES</h6>
+                <ul>
+                <li><a href="/partenaire">Devenez Manners</a></li>
+                <li><a href="/comment-ca-marche">Comment ça marche ?</a></li>
+                <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                <li><a href="/tenues">Les tenues</a></li>
+                </ul>
+            </div>
+            <div class="medium-4 columns">
+                <h6>CONTACTEZ-NOUS </h6>
+                <p>
+                    Victor, notre responsable partenariat :
+                    <br><a href="mailto:victor@bemanners.com">victor@bemanners.com</a>
+                    <br><a href="tel:+33176390001">01 76 39 00 01</a>
+
+                    <br> 24 Avenue Marceau 75008 PARIS
+
+                </p>
+            </div>
+            <div class="medium-4 columns">
+                <h6>SUIVEZ-NOUS </h6>
+                <div class="socials text-center">
+                            <a href="/facebook" target="_blank"><img src="/images/facebook-menu.png" alt=""></a>
+                            <a href="/twitter" target="_blank"><img src="/images/twitter-menu.png" alt=""></a>
+                            <a href="/linkedin" target="_blank"><img src="/images/linkedin-menu.png" alt=""></a>
+                            <a href="/instagram" target="_blank"><img src="/images/instagram.png" alt=""></a>
+        </div>
+            </div>
+        </div>
+     <div class="row">
+            <div class="medium-10 columns medium-centered">
+                <div class="copyright text-center"><a href="dossier/manners-cgu.pdf">Conditions générales d'utilisation </a> - <a href="dossier/manners-mentions-legales.pdf">Mentions légales</a> - @Manners 2016</div>
+            </div>
+        </div>
+        <div class="row column text-center">
+            <img src="/images/powered.png" alt="">
+        </div>
+    </footer>
+    <noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=909556402492582&ev=PageView&noscript=1"
+/></noscript>
+    <!--<script src="bower_components/jquery/dist/jquery.js"></script>-->
+    <!--<script src="bower_components/what-input/what-input.js"></script>-->
+</template>

@@ -1,0 +1,218 @@
+<template name="HoteHistory">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <div class="wrapper page_bg">
+    {{genPdf}} {{#if authCheck}}
+    <header class="header">
+            <div class="expanded row">
+                <div class="medium-1 columns">
+                    <i class="fa fa-bars" id="menu-open"></i>
+                    <a href="/accueilhote"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                    <a href="/accueil" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Client</a>
+                </div>
+
+                <div class="medium-2 columns">
+                    <a href="/accueilhote"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                </div>
+
+                <div class="medium-6 columns text-left">
+                    {{#unless currentUser}}
+                    <div class="comment-wrapper button-wrapper">
+                        <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueil">ESPACE CLIENT</a>
+                    </div>{{/unless}}
+                    <div class="comment-wrapper">
+                        <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+                    </div>
+                    <div class="comment-wrapper dropdown dropdown-toggle">
+                        <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/tenues">Les tenues</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/contact">Contactez-nous</a></li>
+                        </ul>
+                    </div>{{#unless currentUser}}
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                    </div>
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                    </div>{{/unless}}{{#if currentUser}}
+                    <div class="pull-right customer_name cn-ac">
+                        <div class="inline-block dropdown dropdown-toggle customer_mt">
+                            <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                                <div
+                                    class="header-item"><span class="inline-block"><br>{{currentUser.profile.firstname}} {{currentUser.profile.name}}</span>
+                            </div>
+
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="/partenaire/mes-missions">Mes missions</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/historique">mon historique</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/profil">mon profil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/messagerie">Messagerie</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/compte/">Mon compte</a></li>
+                            <li class="divider"></li>
+                            {{>logoutC}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+    </div>
+
+
+    <div class="expanded row">
+        <div class="medium-11 medium-offset-1">
+        </div>
+    </div>
+    </header>
+    <div class="border_menu">
+      <div class="container">
+        <ul class="customer_menu">
+          <li class="underline-1"><a href="/partenaire/mes-missions" class="active">mes missions</a></li>
+          <li class="underline-2"><a href="/partenaire/profil">Mon profil</a></li>
+          <li class="underline-3"><a href="/partenaire/messagerie">Messagerie</a></li>
+          <li class="underline-4"><a href="/partenaire/historique">Mon historique</a></li>
+          <li class="underline-5"><a href="/partenaire/compte">mon compte</a></li>
+          <!-- <li class="underline-6">                   </li> -->
+          <hr class="model-4" />
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row customer_wrap">
+        <div class="col-md-3 customer_left">
+          <ul class="account_menu history-account-menu">
+            <li><a href="/partenaire/historique">Missions</a></li>
+            <li><a href="/partenaire/historique/a">Relevés d’activité</a></li>
+          </ul>
+        </div>
+        <div class="col-md-9 customer_right">
+          <!-- accouunt history -->
+          <div class="gray_title_bg">
+            Missions
+          </div>
+          {{#unless tab}}
+          <div class="order_bg thide">
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Client</td>
+                <td>Lieu</td>
+                <td>Poste</td>
+                <td>Note</td>
+                <td>Rémunération </td>
+                <td>Report</td>
+              </tr>
+              {{#each transacts}}
+              <tr>
+                <td class="red_text first_td_padding">{{dateConv CreationDate}}</td>
+                <td>{{client Tag}}</td>
+                <td class="mission_text">{{place Tag}}</td>
+                <!--<td>{{price Tag}}€/heure</td>-->
+                <td>{{job Tag}}</td>
+                <td>{{rating}}</td>
+                <!--<td>{{duration Tag}}</td>-->
+                <td>{{price Tag}} €</td>
+                <td> <span class="download_btn" id="mid-{{Tag}}"></span></td>
+              </tr>
+              {{/each}}
+
+            </table>
+          </div>
+          <div class="order_bg tablehide">
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Mission </td>
+                <td>Rémunération </td>
+              </tr>
+              {{#each transacts}}
+              <tr>
+                <td class="red_text first_td_padding">{{dateConv CreationDate}}</td>
+                <td class="mission_text">{{Mission}}</td>
+                <td>{{DebitedFunds.Amount}}</td>
+              </tr>
+              {{/each}}
+
+            </table>
+          </div>
+          {{else}}
+          <div class="order_bg thide">
+
+
+            <select name="" id="historyF" class="form-control" required="required">
+                 <option selected="{{hisFS 0}}" value="0">Janvier</option>
+                 <option selected="{{hisFS 1}}" value="1">Février</option>
+                 <option selected="{{hisFS 2}}" value="2">Mars</option>
+                 <option selected="{{hisFS 3}}" value="3">Avril</option>
+                <option selected="{{hisFS 4}}" value="4">Mai</option>
+                <option selected="{{hisFS 5}}" value="5">Juin</option>
+                <option selected="{{hisFS 6}}" value="6">Juillet</option>
+                <option selected="{{hisFS 7}}" value="7">Aout</option>
+                <option selected="{{hisFS 8}}" value="8">Septembre</option>
+                <option selected="{{hisFS 9}}" value="9">Octobre</option>
+                <option selected="{{hisFS 10}}" value="10">Novembre</option>
+                <option selected="{{hisFS 11}}" value="11">Décembre</option>
+               </select>
+
+
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Chiffre d'affaire</td>
+                <td>Nom de missions</td>
+                <td>Comission Manners</td>
+                <td>Rémunération nette</td>
+                <td>Download</td>
+              </tr>
+              {{#each transacts}}
+              <tr>
+                <td class="red_text first_td_padding">{{ratingM Tag}}</td>
+                <td>{{count}}</td>
+                <td class="mission_text">{{fee Tag}}</td>
+                <td>{{fullPrice Tag}}</td>
+                <td> <span class="download_btn" id="down-{{Tag}}"></span></td>
+              </tr>
+              {{/each}}
+
+            </table>
+          </div>
+          <div class="order_bg tablehide ">
+            <table class="order_table account_history">
+              <tr class="order_title">
+                <td class="first_td_padding">Date</td>
+                <td>Client</td>
+                <td class="subvingtcinqem">Note</td>
+                <td>Rémunération </td>
+              </tr>
+              {{#each transacts}}
+              <tr>
+                <td class="red_text first_td_padding">{{dateConv CreationDate}}</td>
+                <td>{{client Tag}}</td>
+                <td class="subvingtcinqem">Note</td>
+                <td>{{price Tag}}</td>
+              </tr>
+              <tr class="facture_btn_center">
+                <td class="order_title">Facture : </td>
+                <td colspan="3"><span class="download_btn" id="down-{{Tag}}"></span></td>
+              </tr>
+              {{/each}}
+
+            </table>
+          </div>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  {{>footerForms}}
+</template>

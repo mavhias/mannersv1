@@ -1,0 +1,22 @@
+<template name="carouselList">
+    <div class="carousel-inner" role="listbox">
+        {{#each carouselItems}} {{> caruselItem title=title imageUrl=imageUrl index=@index html=html htmla=htmla}} {{/each}}
+    </div>
+</template>
+
+<template name="caruselItem">
+    <div class="item {{isActive}}">
+        <img alt="{{title}}" src="{{imageUrl}}">
+        {{#unless currentUser}}
+        <div class="caption">
+            {{{html}}}
+        </div>
+        {{/unless}}
+        {{#if currentUser}}
+        <div class="caption">
+            {{{htmla}}}
+        </div>
+        {{/if}}
+    </div>
+
+</template>

@@ -1,0 +1,537 @@
+<template name="HoteCompte">
+  <link rel="stylesheet" href="/css/style.css">
+  <div class="wrapper page_bg">
+    {{#if authCheck}}
+       <header class="header">
+            <div class="expanded row">
+                <div class="medium-1 columns">
+                    <i class="fa fa-bars" id="menu-open"></i>
+                    <a href="/accueilhote"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                    <a href="/accueil" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Client</a>
+                </div>
+
+                <div class="medium-2 columns">
+                    <a href="/accueilhote"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+                </div>
+
+                <div class="medium-6 columns text-left">
+                    {{#unless currentUser}}
+                    <div class="comment-wrapper button-wrapper">
+                        <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueil">ESPACE CLIENT</a>
+                    </div>{{/unless}}
+                    <div class="comment-wrapper">
+                        <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+                    </div>
+                    <div class="comment-wrapper dropdown dropdown-toggle">
+                        <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/tenues">Les tenues</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/contact">Contactez-nous</a></li>
+                        </ul>
+                    </div>{{#unless currentUser}}
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+                    </div>
+                    <div class="comment-wrapper ">
+                        <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+                    </div>{{/unless}}{{#if currentUser}}
+                    <div class="pull-right customer_name cn-ac">
+                        <div class="inline-block dropdown dropdown-toggle customer_mt">
+                            <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                                <div
+                                    class="header-item"><span class="inline-block"><br>{{currentUser.profile.firstname}} {{currentUser.profile.name}}</span>
+                            </div>
+
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a href="/partenaire/mes-missions">Mes missions</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/historique">mon historique</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/profil">mon profil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/messagerie">Messagerie</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/partenaire/compte/">Mon compte</a></li>
+                            <li class="divider"></li>
+                            {{>logoutC}}
+                        </ul>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+    </div>
+
+
+    <div class="expanded row">
+        <div class="medium-11 medium-offset-1">
+        </div>
+    </div>
+    </header>
+     
+  <div class="border_menu">
+    <div class="container">
+      <ul class="customer_menu">
+        <li class="underline-1"><a href="/partenaire/mes-missions" class="active">Mes missions</a></li>
+        <li class="underline-2"><a href="/partenaire/profil">Mon profil</a></li>
+        <li class="underline-3"><a href="/partenaire/messagerie">Messagerie</a></li>
+        <li class="underline-4"><a href="/partenaire/historique">Mon historique</a></li>
+        <li class="underline-5"><a href="/partenaire/compte">Mon compte</a></li>
+        <hr class="model-5" />
+
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row customer_wrap">
+    
+      <div class="col-md-3 customer_left">
+      
+                                       <div class="customer_block customercarte">
+                        <div class="crop-photo large round"><img src="{{getImage currentUser._id}}" alt="customer photo"></div>
+                        <div class="text-center">
+                            <div class="customer_name margin">
+                        <div class="devider"></div>
+        <ul class="account_menu">
+          <li><a href="#" class="nav" id="nav-1">Coordonnées</a></li>
+          <!--<li><a href="#" class="nav" id="nav-2">Informations profil</a></li>-->
+          <li><a href="#" class="nav" id="nav-3">Informations bancaires et fiscales</a></li>
+          <li><a href="#" class="nav" id="nav-4">Historique des paiements</a></li>
+        </ul>
+                            </div>
+                            <div class="profile_edit">
+                                <!-- <p>
+                                    <a href="#" class="red_text">
+                        Voir le profil
+                      </a>
+                                </p> -->
+                            </div>
+                        </div>
+                    </div>
+      </div>
+      {{#if nav 1}} {{>coordsProfile}} {{else}} {{#if nav 2}} {{>infoProfile}} {{else}} {{#if nav 3}} {{>bankProfile}} {{else}}
+      {{#if nav 4}} {{>paymentProfile}} {{/if}} {{/if}} {{/if}} {{/if}}
+    </div>
+  </div>
+  {{/if}}
+  </div>
+  {{>footerForms}}
+</template>
+
+<template name="coordsProfile">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <form id="form_coords">
+
+
+      <div class="gray_title_bg">
+        Mon compte / Coordonnées
+      </div>
+      <div class="order_bg">
+        <p class="customer_name profile_name">
+          {{currentUser.username}} {{currentUser.profile.lastName}}
+        </p>
+        <p>Ces informations restent privées et ne sont utilisées que pour la facturation</p>
+        <!-- <div class="statistics_block">
+            <div class="inline-block statistics_designation black_text">
+              Contact information: 
+            </div>
+          </div> -->
+        <div class="devider"></div>
+
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Prénom:
+          </div>
+          <input type="text" name="firstname" class="form-control form_input" value="{{currentUser.profile.firstname}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nom:
+          </div>
+          <input type="text" name="name" class="form-control form_input" value="{{currentUser.profile.name}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            N°Siret:
+          </div>
+          <input type="text" name="siret" class="form-control form_input" pattern="[0-9]{10}" value="{{currentUser.profile.siret}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Adresse:
+          </div>
+          <input type="text" name="address" class="form-control form_input" value="{{currentUser.profile.address}}">
+
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Complement d’adresse:
+          </div>
+          <input type="text" name="address2" class="form-control form_input" value="{{currentUser.profile.address2}}">
+
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Ville:
+          </div>
+          <input type="text" name="city" class="form-control form_input" value="{{currentUser.profile.city}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Code postal:
+          </div>
+          <input type="text" name="zip" class="form-control form_input" value="{{currentUser.profile.zip}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Pays:
+          </div>
+          <input type="text" name="pays" class="form-control form_input" value="{{currentUser.profile.pays}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            N° Tel:
+          </div>
+          <input type="text" name="phone" class="form-control form_input" value="{{currentUser.profile.phone}}">
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            E-mail:
+          </div>
+          <input type="text" name="email" class="form-control form_input" value="{{currentUser.profile.email}}">
+        </div>
+        <div class="statistics_block">
+          <input type="submit" id="save" name="save" class="button hollow pull-right" value="Sauvegarder">
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+<template name="infoProfile">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <form id="form_info">
+      <div class="gray_title_bg">
+        Mon compte / Informations profil
+      </div>
+      <div class="order_bg">
+        <p class="customer_name profile_name">
+          {{currentUser.username}} {{currentUser.profile.lastName}}
+        </p>
+        <p>Ces informations sont publiques et accessibles par l'ensemble des clients.</p>
+        <!-- <div class="statistics_designation black_text">
+    								Information du profil :&nbsp;
+    							</div> -->
+        <div class="devider"></div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            <div class="crop-photo medium round"><img src="{{getImage currentUser._id}}" alt="">Photo de profil</div>
+
+          </div>
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Photo:
+          </div>
+          <input type="file" id="fileselect3" class="form-control" />
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Texte descriptif:
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="{{descr}}">
+        </div>
+        <!--<div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Taux horaire:
+          </div>
+          <input type="text" name="hourate" class="form-control form_input" value="{{currentUser.profile.hourate}}">
+        </div>-->
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Permis B:
+          </div>
+          <select class="form-control" name="permB">
+                        <option>oui</option>
+                        <option>non</option>
+                    </select>
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Voiture :
+          </div>
+          <select class="form-control" name="car">
+                        <option>oui</option>
+                        <option>non</option>
+                    </select>
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+              Scooter :
+          </div>
+          <select class="form-control" name="scooter">
+                        <option>oui</option>
+                        <option>non</option>
+                    </select>
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Niveau d'études:
+          </div>
+          <select class="form-control" name="studdyLevel">
+                        <option>Bac</option>
+                        <option>Bac +1</option>
+                        <option>Bac +2</option>
+                        <option>Bac +3</option>
+                        <option>Bac +4</option>
+                        <option>Bac +5</option>
+                    </select>
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Niveau d'anglais:
+          </div>
+          <select class="form-control" name="engLevel">
+                        <option>Scolaire</option>
+                        <option>Notions</option>
+                        <option>Moyen</option>
+                        <option>Courant</option>
+                        <option>Bilingue</option>
+                    </select>
+        </div>
+        <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Langue 2:
+          </div>
+          <input type="text" class="form-control" name="anlang2" placeholder="{{currentUser.profile.anlang2}}">
+        </div>
+
+        
+        <div class="statistics_block">
+          <input type="submit" id="save" name="save" class="button hollow" value="Sauvegarder">
+        </div>
+      </div>
+    </form>
+  </div>
+</template>
+
+
+<!-- TAB 1 : Informations bancaires et fiscales -->
+
+<template name="bankProfile">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <div class="gray_title_bg">
+      Mon compte / informations bancaires et fiscales
+    </div>
+    <div class="order_bg">
+      <p class="customer_name profile_name">
+        {{currentUser.username}} {{currentUser.profile.lastName}}
+      </p>
+      <p>Ces informations restent privées et ne sont utilisées que pour la facturation </p>
+      <!-- <div class="statistics_block">
+    								<div class="statistics_designation black_text">
+    									Informations bancaires et fiscales :
+    								</div>
+    							</div> -->
+      <div class="devider"></div>
+      <div class="statistics_block">
+        <div class="inline-block statistics_designation red_text">
+          <a href="">[EDITER] les informations de facturation</a> :
+        </div>
+        <div class="inline-block statistics_scale"></div>
+      </div>
+      <div class="checkbox right">
+        <label class="form_label statistics_designation">je ne suis pas assujettie à la TVA<input type="checkbox" name="1" value="1"></label>
+      </div>
+     <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Texte descriptif:
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nom:
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Email :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Adresse :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Adresse complémentaire :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Ville :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Région :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div>
+         <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Code postal :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div>
+         <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Pays :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div>
+         <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Date de naissance :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div>
+         <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Nationalité :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div>
+         <div class="statistics_block">
+          <div class="inline-block statistics_designation red_text">
+            Pays de résidence :
+          </div>
+
+          <input type="textarea" name="desctext" class="form-control form_input" value="">
+        </div> 
+
+    </div>
+  </div>
+  
+</template>
+
+<!-- TAB 2 : Historique des paiements -->
+
+<template name="paymentProfile">
+  <div class="col-md-9 customer_right">
+    <!-- my account -->
+    <div class="gray_title_bg">
+      Mon compte <span class="fa fa-angle-right"></span> Historique des paiements
+    </div>
+    <div class="order_bg thide">
+
+      <table class="order_table account_history">
+        <tr class="order_title">
+          <td></td>
+          <td>Date</td>
+          <td>Client</td>
+          <td>Montant brut</td>
+          <td>Commission</td>
+          <td>Montant net</td>
+          <td>Etat</td>
+        </tr>
+        {{#each transacts}}
+        <tr>
+          <td class="red_text first_td_padding">{{dateConv CreationDate}}</td>
+          <td>{{client Tag}}</td>
+          <td>{{DebitedFunds.Amount}}</td>
+          <td>{{Fees.Amount}}</td>
+          <td>{{Status}}</td>
+        </tr>
+        {{/each}}
+        <tr>
+          <td>
+            <span class="table_arrow"></span>
+          </td>
+          <td>28/01/16 </td>
+          <td>Assemblée générale</td>
+          <td>12345€</td>
+          <td>1240€</td>
+          <td>Net123€</td>
+          <td>
+            Etat123
+            <span class="download_btn"></span>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+    <div class="order_bg tablehide">
+      <table class="order_table facture_btn_center">
+        <tr class="order_title">
+          <td>Date</td>
+          <td>Client</td>
+          <td>Commission</td>
+          <td class="host_compte_hide_net">Montant net</td>
+        </tr>
+        <tr>
+          <td>28/01/16 </td>
+          <td>Assemblée générale</td>
+          <td>1240€</td>
+          <td class="host_compte_hide_net">Net123€</td>
+        </tr>
+        <tr>
+          <td class="order_title">Etat : </td>
+          <td colspan="3">
+            Etat123
+            <span class="download_btn"></span>
+          </td>
+        </tr>>
+        <tr>
+          <td>28/01/16 </td>
+          <td>Assemblée générale</td>
+          <td>1240€</td>
+          <td class="host_compte_hide_net">Net123€</td>
+
+        </tr>
+        <tr>
+          <td class="order_title">Etat : </td>
+          <td colspan="3">
+            Etat123
+            <span class="download_btn"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>28/01/16 </td>
+          <td>Assemblée générale</td>
+          <td>1240€</td>
+          <td class="host_compte_hide_net">Net123€</td>
+        </tr>
+        <tr>
+          <td class="order_title">Etat : </td>
+          <td colspan="3">
+            Etat123
+            <span class="download_btn"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>

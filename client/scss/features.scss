@@ -1,0 +1,122 @@
+@import "settings";
+
+.video-presentation {
+  padding: 0 !important;
+  height: 500px;
+  .fullscreen-video-player {
+    // position: fixed;
+    // background-color: #000;
+    // height: 100%;
+    // left: 0;
+    // position: fixed;
+    // top: 0;
+    // -webkit-transition: opacity 800ms ease;
+    // -moz-transition: opacity 800ms ease;
+    // -o-transition: opacity 800ms ease;
+    // transition: opacity 800ms ease;
+    // width: 100%;
+    // z-index: 999999;
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+  }
+  video {
+    // object-fit: contain;
+    height: 500px;
+    width: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+    // height: auto !important;
+
+    background:transparent url('images/about-bg.jpg') no-repeat 0 0;
+   -webkit-background-size:cover;
+   -moz-background-size:cover;
+   -o-background-size:cover;
+   background-size:cover;
+  }
+  button {
+    // font-size: 30px;
+    // color: #fff;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+  }
+
+  .button-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+
+
+.play {
+  display:block;
+  width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-bottom: 50px solid transparent;
+	border-left: (50px*1.2) solid #fff;
+  margin: auto;
+  position:relative;
+  z-index:1;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  left:(50px*0.2);
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:before {
+    content:'';
+    position:absolute;
+    top:(50px*-1.5);
+    left:(50px*-2.3);
+    bottom:(50px*-1.5);
+    right:(50px*-0.7);
+    border-radius:50%;
+    border: (50px*0.2) solid #fff;
+    z-index:2;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+  }
+  &:after {
+    content:'';
+    opacity:0;
+    transition: opacity (0.4s * 2);
+    -webkit-transition: opacity (0.4s * 2);
+    -moz-transition: opacity (0.4s * 2);
+  }
+
+  &:hover, &:focus {
+    &:before {
+       transform: scale(1.1);
+       -webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+    }
+  }
+
+  &.paused{
+    opacity: 0;
+	  border-color:transparent;
+    &:after {
+      content:'';
+      opacity:1;
+      width:(50px);
+      height:(50px*1.6);
+      background:#fff;
+      position:absolute;
+      right: 15px;
+      top: (50px*-0.8);
+      border-left:(50px*0.4) solid #fff;
+      box-shadow:inset 11px 0 0 0 transparent;
+    }
+  }
+}
+
+}
+

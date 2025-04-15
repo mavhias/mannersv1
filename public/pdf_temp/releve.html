@@ -1,0 +1,338 @@
+<!DOCTYPE html><html><head>
+<!-- If you delete this meta tag, Half Life 3 will never be released. -->
+<meta name="viewport" content="width=device-width">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Relevé Activité</title>
+
+<!--<link rel="stylesheet" type="text/css" href="css/manners.css" />-->
+<style>
+	/* ------------------------------------- 
+		GLOBAL 
+------------------------------------- */
+
+body {
+    transform-origin: 0 0; 
+    -webkit-transform-origin: 0 0; 
+    transform: scale(0.45); 
+   -webkit-transform: scale(0.45);
+}
+
+html,
+body {
+    width: 150%;
+}
+
+body {
+    margin:0;
+    zoom: 0.75;
+}
+
+@font-face{
+	font-family: "Helvetica Neue";
+	src: url('css/HelveticaNeue-Light.ttf') format ('ttf');
+}
+
+* { 
+	margin:0;
+	padding:0;
+}
+* { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
+
+img { 
+	max-width: 100%; 
+}
+.collapse {
+	margin:0;
+	padding:0;
+}
+body {
+	-webkit-font-smoothing:antialiased; 
+	-webkit-text-size-adjust:none; 
+	height: 100%;
+	background:#ffffff;
+}
+
+
+
+/* ------------------------------------- 
+		ELEMENTS 
+------------------------------------- */
+
+.logo
+{	
+	max-width: 100%;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+
+	
+}
+
+.divider 
+{
+	background-color:#000;
+	height:2px;
+	width: 90%;
+
+	margin-left:120px;
+}
+
+a {color: #fff;
+   text-decoration: none;
+}
+
+.supermarg{
+	margin-left: 120px;
+	font-weight: bold;
+	margin-bottom:-2px;
+}
+.fontspe{
+	color: rgb(195,192,192);
+	margin-left: 120px;
+}
+.marleft{
+	text-align:left;
+	padding-left: 120px;
+}
+.marleft2{
+	text-align:left;
+
+}
+.padright2{
+	text-align:right;
+	padding-right: -100px;	
+}
+.footer {
+  padding: 30px 0 30px 0;
+  background: #fff;
+  color: #fefefe;
+  display: block;
+
+}
+
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
+  .footer {
+    text-align: center;
+  }
+}
+
+.titreh2{
+	text-align: center;
+	font-weight: bold; 
+	font-size: 24px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.ita{
+	font-style: italic;
+}
+/* ------------------------------------- 
+		TYPOGRAPHY 
+------------------------------------- */
+h1,h2,h3,h4,h5,h6 {
+font-family: "HelveticaNeue-Light, "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif"; line-height: 1.1; margin-bottom:15px; color:#000;
+src: url("HelveticaNeue-Light.ttf") format("ttf"),
+	 url("HelveticaNeue-Light.otf") format("otf");
+	}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
+
+h1 { font-weight:200; font-size: 44px;}
+h2 { font-weight:200; font-size: 37px;}
+h3 { font-weight:500; font-size: 27px;}
+h4 { font-weight:500; font-size: 23px;}
+h5 { font-weight:900; font-size: 17px;}
+h6 { font-weight:900; font-size: 14px; text-transform: uppercase; color:#444;}
+
+.collapse { margin:0!important;}
+
+p, ul { 
+	margin-bottom: 10px; 
+	font-weight: normal; 
+	font-size:14px; 
+	line-height:1.6;
+}
+
+/* This should also be a block element, so that it will fill 100% of the .container */
+.content {
+	padding:15px;
+	max-width:1200px;
+	margin:0 auto;
+	display:block;
+	font-weight: bold; 
+}
+
+/* Let's make sure tables in the content area are 100% wide */
+.content table { width: 100%;
+font-weight: bold;
+text-align: center }
+
+table{
+	max-width: 1000px;
+	padding-left:120px;
+}
+
+
+.case{
+	text-align: center;
+
+}
+
+.floatr{
+	float: right;
+}
+
+/* Be sure to place a .clear element after each set of columns, just to be safe */
+.clear { display: block; clear: both; }
+
+
+/* ------------------------------------------- 
+		PHONE
+		For clients that support media queries.
+		Nothing fancy. 
+-------------------------------------------- */
+@media only screen and (max-width: 600px) {
+	
+	a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
+
+	div[class="column"] { width: auto!important; float:none!important;}
+	
+	table.social div[class="column"] {
+		width:auto!important;
+	}
+
+}
+
+</style>
+</head>
+ 
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<img class="logo show-for-small-only" src="img/logo.png" alt="Manners" height="78" width="200">
+
+			<div class="content">
+
+				<h4 style="text-align:center; margin-top: -20px;">Tél : {{tel}}</h4><br>
+				<h2 class="titreh2">RELEVÉ D'ACTIVITÉ DU MOIS DE JUIN</h2>
+					<div class="divider"></div>
+				<br><br><table>
+						
+					<tbody><tr>
+						<td class="marleft">			
+				
+							<!-- A Real Hero (and a real human being) -->							
+						Prénom et Nom
+	
+						</td>
+						<td>
+						</td>
+						<td>
+						Nombre de <br>missions
+
+						</td>
+						<td>
+							Recommandations
+						</td>
+
+					</tr>
+					<tr>
+						<td class="marleft">			
+				
+							<!-- A Real Hero (and a real human being) -->							
+						<br><p class="ita">{{name}}<br></p><p>
+	
+						</p></td>
+						
+						<td>
+						</td><td>
+						<br><p class="ita">{{miss_num}}<br></p>
+
+						</td>
+						<td>
+						<br><p class="ita">{{recom}}<br></p>
+						</td>
+
+					</tr>
+				</tbody></table>
+				<div class="divider"></div><br><br><br><br>
+				<p class="supermarg"> Récapitulatif du chiffre d'affaires</p>
+				<div class="divider"></div><br>
+				<table>
+					<tbody><tr>
+						<td class="marleft2">CA brut* généré par les missions</td>
+						<td class="padright2">{{price}}€</td>
+					</tr>
+					<tr>
+						<td class="marleft2">CA brut* généré par l'apport en affaires</td>
+						<td class="padright2"> - {{intake}}€</td>
+					</tr>
+					<tr>
+						<td class="marleft2 ">CA TOTAL</td>
+						<td class="padright2 supermarg3">{{ca_total}}€</td>
+					</tr>
+				</tbody></table>
+				
+				
+				<br>
+				<p class="fontspe">*TVA non applicable, article 293B du code général des impôts</p>
+				<br>
+			
+
+	
+				<p class="supermarg"> Commissions</p>
+				<div class="divider"></div><br>
+				<table>
+					<tbody><tr>
+						<td class="marleft2">Commissions Manners</td>
+						<td class="padright2">{{commission_manners}}€</td>
+					</tr>
+					<tr>
+						<td class="marleft2">Chiffre d'affaires net de commissions</td>
+						<td class="padright2">{{net}}€</td>
+					</tr>
+					
+				</tbody></table>
+				
+				
+				<br>
+				<br>
+				<br>	
+
+				
+						<p class="supermarg">Votre situation du mois</p>
+				<div class="divider"></div><br>
+				<table>
+					<tbody><tr>
+						<td class="marleft2">En attente de paiement</td>
+						<td class="padright2">{{waiting}}€</td>
+					</tr>
+					<tr>
+						<td class="marleft2">Viré sur votre compte</td>
+						<td class="padright2">{{payed}}€</td>
+					</tr>
+					
+				</tbody></table>
+				
+				
+				<br>
+				<br>
+				<br>	
+
+
+				
+				
+
+			</div>
+			<!-- COLUMN WRAP -->
+
+			
+
+<footer class="footer" style="text-align:center">
+
+                <h4 style="font-weight:500; font-size: 14px;">Manners SAS - 95 Avenue Achille Peretti, 92200 Neuilly sur Seine</h4>
+                <h4 style="font-weight:500; font-size: 14px;">RCS : 818 722 860 00017</h4> 
+</footer>
+
+
+
+</body></html>

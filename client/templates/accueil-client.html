@@ -1,0 +1,399 @@
+<template name="AccueilClient">
+ {{>headerFrontPages}}
+
+       <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+
+    <div class="carousel slide" data-ride="carousel" id="blog-carousel">
+        <ol class="carousel-indicators bullets">
+            <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="1" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="2" data-target="#carousel-example-generic"></li>
+        </ol>
+
+
+        {{> carouselList templ="client"}}
+        <a class="left carousel-control" data-slide="prev" href="#blog-carousel" role="button">
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Précèdent</span>
+        </a>
+        <a class="right carousel-control" data-slide="next" href="#blog-carousel" role="button">
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </div>
+
+
+    <section class="section-services">
+        <div class="row small-up-2 medium-up-4 ssc">
+            <div class="column">
+                <h3><span>1.</span><div class="img-wrapper"><img src="images/picto/detaillez-vos-besoins.png"/></div></h3>
+                <p>Détaillez vos besoins</p>
+            </div>
+            <div class="column">
+                <h3><span>12.</span><div class="img-wrapper"><img src="images/picto/nous-vous-mettons.png"/></div></h3>
+                <p>Choisissez les meilleurs profils</p>
+            </div>
+            <div class="column">
+                <h3><span>3.</span><div class="img-wrapper"><img src="images/picto/payez.png"/></div></h3>
+                <p>Payez en ligne</p>
+            </div>
+            <div class="column">
+                <h3><span>4.</span><div class="img-wrapper"><img src="images/picto/recommandez.png"/></div></h3>
+                <p>Recommandez vos profils favoris</p>
+            </div>
+        </div>
+    </section>
+
+<section class="section-manners">
+        <div class="row">
+            <div class="medium-10 columns medium-centered text-center">
+                <p>Manners vous met directement en relation avec <br>des jeunes professionnels <br>
+                    pour réaliser vos événements et opérations ponctuelles. <br> <br>
+                    Travaillez directement avec des profils qualifiés et responsables.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-10 columns medium-centered text-center">
+                <a href="/comment-ca-marche" class="button hollow button">EN SAVOIR PLUS</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-features">
+        <div class="row small-up-2 medium-up-4 sscf">
+                <h2> Pourquoi Manners </h2>
+                <hr/>
+              <div class="column">
+
+                  <img class="icon" src="/images/euro.png" />
+                  <h2>Payez moins cher<span class="star"></span></h2>
+                  <div class="ul-wrapper draw meet">
+                    <ul>
+                      <li><p class="little" >Mise en relation gratuite.</p></li>
+                      <li><p class="little">Travaillez directement avec des auto-entrepreneurs.</p></li>
+                      <li><p class="little">Deux fois moins cher qu’avec une agence traditionnelle.</p></li>
+                    </ul>
+                </div>
+              </div>
+              <div class="column">
+                  <img class="icon" src="/images/medal.png" />
+                  <h2>Choisissez les meilleurs</h2>
+                  <div class="ul-wrapper draw meet">
+                    <ul>
+                      <li><p>Une sélection exigeante sur CV puis entretien physique.</p></li>
+                      <li><p>Un système d’évaluation performant qui met avant les profils sérieux et responsables.</p></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="column time">
+                  <img class="icon" src="/images/time.png" />
+                  <h2>Simplifiez vos démarches</h2>
+                  <div class="ul-wrapper draw meet">
+                    <ul>
+                      <li><p>Facturation dématérialisée et consultable en ligne.</p></li>
+                      <li><p>Système de paiement en ligne sécurisé.</p></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="column">
+                  <img class="icon" src="/images/security.png" />
+                  <h2 class="little">Travaillez en toute sécurité</h2>
+                  <div class="ul-wrapper draw meet">
+                    <ul>
+                        <li><p>Travaillez avec des indépendants en règle avec le droit du travail.</p></li>
+                        <li><p>Nos partenaires sont assurés pendant leurs missions jusqu’à 8M€.</p></li>
+                   
+                      </ul>
+                    </div>
+              </div>
+        </div>
+
+    </section>
+
+    <section class="video-presentation">
+      <div class="fullscreen-video-player">
+        <video id="player" poster="images/transparent.jpg">
+        <source src="video/manners-movie.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas ce format vidéo
+      </video>
+      <div class="button-container"><button id="button-play" class="play" onclick="goFullscreen('player'); return false"></button></div>
+    </div>
+    </section>
+
+    <script type="text/javascript">
+function goFullscreen(id) {
+  var element = document.getElementById(id);
+  var button = document.getElementById('button-play');
+
+  if (element.mozRequestFullScreen) {
+
+    if(element.paused || element.currentTime < 1) {
+      element.mozRequestFullScreen();
+      element.play();
+      button.classList.add('paused');
+      button.classList.remove('playing');
+    } else {
+      element.pause();
+        button.classList.add('playing');
+        button.classList.remove('paused');
+    }
+
+
+
+  } else if (element.webkitRequestFullScreen) {
+
+    if(element.paused || element.currentTime < 1) {
+      element.webkitRequestFullScreen();
+      element.play();
+      button.classList.add('paused');
+      button.classList.remove('playing');
+    } else {
+      element.pause();
+        button.classList.add('playing');
+        button.classList.remove('paused');
+    }
+  }
+}
+</script>
+
+    <section class="section-mission-event-2">
+        <h2> Les Missions </h2>
+        <hr/>
+        <p>Les différents types de mission
+            <br> proposés par nos Manners</p>
+
+            <div class="column">
+                  <div class="squares">
+                      <a href="/job/vestiaire"><img class="voiturier" src="/images/vestaire.png"></a>
+                      <a href="/job/voiturier"><img class="vestaire" src="/images/voiturier.png"></a>
+                      <a href="/job/accueil"><img class="accuil" src="/images/accuil.png"></a>
+                      <a href="/job/service"><img class="pointage" src="/images/pointage.png"></a>
+                      <a href="/job/barman"><img class="barman" src="/images/barman.png"></a>
+                      <a href="/job/serveur"><img class="service" src="/images/service.png"></a>
+                  </div>
+              </div>
+
+    </section>
+
+<section class="latest-work owl-carousel container">
+    <div class="row">
+        <div class="col-md-7">
+        <h2 class="text-center"> Nos services</h2>
+            <img src="images/latest-work/latest-work-01.jpg" alt="Heli">
+        </div>
+        <div class="col-md-5 latest-work-right">
+            <h2 class="heading font-light"><b>Curty's</b></h2>
+            <div class="background-primary">
+                <h2 class="heading font-size-36 font-light">Street marketing</h2>
+                <p>Paris, Mars 2016</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <img src="#" alt="Heli">
+        </div>
+        <div class="col-md-5 latest-work-right">
+            <h2 class="heading font-light"><b>Musée</b> de la chasse</h2>
+            <div class="background-primary">
+                <h2 class="heading font-size-36 font-light">Accueil et Vesting</h2>
+                <p>Paris, Janvier 2017</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <img src="#" alt="Heli">
+        </div>
+        <div class="col-md-5 latest-work-right">
+            <h2 class="heading font-light"><b>Snap</b>Event</h2>
+            <div class="background-primary">
+                <h2 class="heading font-size-36 font-light">The Black Bottles</h2>
+                <p>Versailles, Octobre 2016</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    
+    <section class="section-testimonials">
+      <h2>Témoignages</h2>
+      <hr/>
+      <div class="testimonials">
+        <!-- <div class ="row"> -->
+        <div class="testitop column draw meet">
+          <div class="infos">
+            <div class="logo">
+              <img src="/images/logos/zipjet.png"/>
+            </div>
+            <div class="identity">
+              <span class="name">Damien R.</span>
+              <span class="job">Country Manager France</span>
+              <span class="society">ZipJet</span>
+            </div>
+          </div>
+          <div class="text-testimonial">
+            <p>"Bilan super positif, toujours réactif et présent. Manners nous permet de passer plus de temps à créer nos campagnes plutôt qu’à les planifier"</p>
+          </div>
+        </div>
+        <div class="testitop column draw meet">
+          <div class="infos">
+            <div class="logo">
+              <img src="/images/logos/ddp.png"/>
+            </div>
+            <div class="identity">
+              <span class="name">Alban de R.</span>
+              <span class="job">CEO & Co-founder</span>
+              <span class="society">Drop Don't Park</span>
+            </div>
+          </div>
+          <div class="text-testimonial"><p>"C’est beaucoup plus simple et agile qu’une agence et les Manners sont super. On recommande vivement"</p></div>
+        </div>
+        <div class="testitop column draw meet">
+          <div class="infos">
+            <div class="logo">
+              <img src="/images/logos/incamera.png"/>
+            </div>
+            <div class="identity">
+              <span class="name">Jean-Noël de S.</span>
+              <span class="job">Propriétaire</span>
+              <span class="society">In Camera</span>
+            </div>
+          </div>
+          <div class="text-testimonial"><p>"J'apprécie particulièrement le sérieux, l'efficacité, la discrétion et l'élégance du service de grande qualité."</p></div>
+        </div>
+      <!--</div>-->
+      <!-- <div class="row"> -->
+        <div class="testitop column draw meet">
+          <div class="infos">
+            <div class="logo">
+              <img src="/images/logos/museecn.png"/>
+            </div>
+            <div class="identity">
+              <span class="name">Agnès D.</span>
+              <span class="job">Directrice Générale</span>
+              <span class="society">Musée de la chasse et de la nature</span>
+            </div>
+          </div>
+          <div class="text-testimonial"><p>" Bonne organisation et réactivité du service Manners. Bravo !"</p></div>
+        </div>
+        <div class="testitop column draw meet">
+          <div class="infos">
+            <div class="logo">
+              <img src="/images/logos/curtys.png"/>
+            </div>
+            <div class="identity">
+              <span class="name">Jean-Philippe B.</span>
+              <span class="job">Directeur de Projets</span>
+              <span class="society">Curty's</span>
+            </div>
+          </div>
+          <div class="text-testimonial"><p>"Un service disponible et à notre écoute, tout était dans les délais, merci à eux !"</p></div>
+        </div>
+        <div class="testitop column draw meet">
+          <div class="infos">
+            <div class="logo">
+              <img src="images/logos/dcontract.png"/>
+            </div>
+            <div class="identity">
+              <span class="name">Victor C.</span>
+              <span class="job">Partner & Project Leader</span>
+              <span class="society">Dcontract</span>
+            </div>
+          </div>
+          <div class="text-testimonial"><p>"Un service que nous recommandons vivement, des jeunes motivés et organisés, tout s'est très bien passé, merci à vous !"</p></div>
+        </div>
+      <!--</div>-->
+      </div>
+    </section>
+
+    <section class="section-community">
+            <h2>Notre communauté</h2>
+            <hr/>
+        <p> Manners c’est déjà plus de 200 partenaires <br>sélectionnés pour leur
+professionnalisme et leur savoir-faire.</p>
+        <div class="small-up-2 medium-up-5" id="owl-demo">
+            {{#each hostes}}
+            <div class="item">
+                <a href="partenaire/profil {{_id}}"><img src="{{getImage _id}}">{{this.profile.firstname}} {{this.profile.name}}</a>
+            </div>
+            {{/each}}
+        </div>
+
+<!--<div class="customNavigation">
+  <a class="btn prev1">Previous</a>
+  <a class="btn next1">Next</a>
+  <a class="btn play1">Autoplay</a>
+  <a class="btn stop1">Stop</a>
+</div>-->
+
+        <!--<div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 center-block">
+                    <div class="carousel slide" id="myCarousel4">
+                        <div class="carousel-inner" id='cinner'>
+                            <div class="item active">
+                                <div class="col-xs-4"><a href="#"><img src="http://aszx.altervista.org/aatest/img/carousel/carousel-001.jpg" class="img-responsive"></a></div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4"><a href="#"><img src="http://aszx.altervista.org/aatest/img/carousel/carousel-002.jpg" class="img-responsive"></a></div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4"><a href="#"><img src="http://aszx.altervista.org/aatest/img/carousel/carousel-003.jpg" class="img-responsive"></a></div>
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel4" id="ccl" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#myCarousel4" id="ccr" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!--<script>
+            $(document).ready(function () {
+                $('#myCarousel4').carousel({
+                    interval: 10000
+                })
+                $('#myCarousel4 .item').each(function () {
+                    var next = $(this).next();
+                    if (!next.length) {
+                        next = $(this).siblings(':first');
+                    }
+                    next.children(':first-child').clone().appendTo($(this));
+                    if (next.next().length > 0) {
+                        next.next().children(':first-child').clone().appendTo($(this));
+                    } else {
+                        $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                    }
+                });
+            });
+        </script>-->
+        <!--<style>
+            #myCarousel4 {
+                overflow: hidden;
+            }
+            #cinner {
+                width: 150%;
+                left: -25%;
+            }
+            #cinner > .item.next,
+            #cinner > .item.active.right {
+                left: 0;
+                -webkit-transform: translate3d(33%, 0, 0);
+                transform: translate3d(33%, 0, 0);
+            }
+            #cinner > .item.prev,
+            #cinner > .item.active.left {
+                left: 0;
+                -webkit-transform: translate3d(-33%, 0, 0);
+                transform: translate3d(-33%, 0, 0);
+            }
+            #ccl, #ccr {
+                background: rgba(255, 255, 255, 0.3);
+                width: 25%;
+            }
+        </style>-->
+    </section>
+    {{>footerForms}}
+</template>

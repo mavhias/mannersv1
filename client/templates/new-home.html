@@ -1,0 +1,68 @@
+<template name="newHome">
+ {{>headerFrontPages}}
+
+       <div class="sub-header" style="position: relative; width:100%; height:74px; z-index:1"></div>
+
+    <div class="carousel slide" data-ride="carousel" id="blog-carousel">
+        <ol class="carousel-indicators bullets">
+            <li class="active" data-slide-to="0" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="1" data-target="#carousel-example-generic"></li>
+            <li data-slide-to="2" data-target="#carousel-example-generic"></li>
+        </ol>
+
+
+        {{> carouselList templ="client"}}
+        <a class="left carousel-control" data-slide="prev" href="#blog-carousel" role="button">
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Précèdent</span>
+        </a>
+        <a class="right carousel-control" data-slide="next" href="#blog-carousel" role="button">
+            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </div>
+
+
+
+
+<section class="section-about hero-fullscreen parallax overlay bg-img-5">  
+            <div class="hero-container">  
+                <div class="hero-content">   
+                    
+                    <div class="content-slider container">
+                        
+                        <div class="white">
+                            <h5 class="subheading mt10">Réinventons ensemble les métiers de l'accueil</h5>
+                            <h1 class="large mt20">be<span class="bold">Manners</span></h1>
+                            <hr class="separator">   
+                            <p class="white">Vous êtes étudiants, auto entrepreneurs, à la recherche<br> de nouvelles
+                            perspectives pour compléter vos revenus</p>
+                            <a href="#features" class="btn btn-lg btn-primary btn-circle btn-scroll mt40 hidden-xs">En savoir plus</a>  
+                            <a href="#features" class="btn btn-lg btn-primary btn-circle btn-scroll mt40 hidden-xs">Créer une mission</a> 
+
+                        </div>
+                        
+                        <div class="white">
+                            <h5 class="subheading mt10">Trendy new pieces to fall in love with</h5>
+                            <h1 class="large mt20">be<span class="bold">MANNERS</span></h1>
+                            <hr class="separator">   
+                            <p class="white">We create experiences that transform brands, grow businesses and make<br>people’s lives better. We are dedicated to your success!</p>
+                            <a href="#features" class="btn btn-lg btn-primary btn-circle btn-scroll mt40 hidden-xs">We're Creative</a>  
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <a href="#features" class="scroll-btn"><i class="ion-chevron-down"></i></a>
+            </div>    
+        </section>
+        <!-- End Page Hero -->        
+
+
+
+
+
+
+    {{>footerForms}}
+
+</template>

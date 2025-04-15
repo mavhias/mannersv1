@@ -1,0 +1,170 @@
+<template name="ClientMission">
+    <link rel="stylesheet" href="/css/style.css">
+    <div class="wrapper page_bg">
+      {{#if authCheck 'host'}}
+             {{>helperComp}}
+
+
+        <div class="border_menu">
+            <div class="container dashboard">
+                <ul class="customer_menu">
+                    <li class="underline-1"><a href="/client/mes-missions" class="active">mes missions</a></li
+                      ><li class="underline-2"><a href="/client/profils-favoris">mes recommandations</a></li
+                      ><li class="underline-3"><a href="/client/messagerie">Messagerie</a></li
+                      ><li class="underline-4"><a href="/client/history">Mon historique</a></li
+                      ><li class="underline-5"><a href="/client/compte">mon compte</a></li>
+                    <!-- <li class="underline-6">                   </li> -->
+                    <hr/>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- <div style="display:inline-block; float:right; list-style-type:none;">{{>logoutC}}</div> -->
+        <div class="container dashboard">
+            <div class="row customer_wrap">
+                {{#if currentUser}}
+                
+                <div class="col-md-3 customer_left">
+                    <div class="customer_block customercarte">
+                        <div class="crop-photo large round"><img src="{{getImage currentUser._id}}" alt="customer photo"></div>
+                        <div class="text-center">
+                            <div class="customer_name margin">
+<span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                            </div>
+                            <div class="profile_edit">
+                                <!-- <p>
+                                    <a href="#" class="red_text">
+                        Voir le profil
+                      </a>
+                                </p> -->
+                                <p>
+                    <a href="/client/compte" class="red_text">
+                      Modifer mes infos
+                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer_block">
+                        <div class="customer_description pad_l text-center">
+                            <p>Adresse:</p>
+                            <p>{{currentUser.profile.address}} <br> {{currentUser.profile.city}} {{currentUser.profile.zip}}</p> 
+                            <div class="short_devider devider_center"></div>
+                            <!-- <p>75011 Paris</p> -->
+                            <p>Téléphone :</p>
+                            <p>{{currentUser.profile.tel}}</p>
+                            <p> <span class="red_text"> </span> </p>
+                                <p>{{currentUser.createdAt}}</p>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                <div class="col-md-9 customer_right">
+                    <!-- accouunt history -->
+                    <div class="gray_title_bg">
+                        Mes missions
+                        <button class="create_btn pull-right button-colored reversed" id="nouvelle-mission">Créer une mission</button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="order_bg thide">
+                        {{#if missions}}
+                        <table class="order_table account_history">
+                            <tr class="order_title">
+                                <td class="first_td_padding">Mission</td>
+                                <td>Date</td>
+                                <td>Durée</td>
+                                <td>Lieu</td>
+                                <td>Nombre
+                                    <br>de Manners</td>
+                                <td></td>
+                            </tr>
+                             
+                            {{#each missions}}
+                            <tr class="table_pointer" id="mission-{{_id}}">
+                                <td class="first_td_padding">{{name}}</td>
+                                <td>{{startDate}}</td>
+                                <td>{{duration}}</td>
+                                <td>{{address}}</td>
+                                <td class="red_text">
+                                    {{hostesCol}}
+                                </td>
+                                <td>
+                                    <a class="button status_btn {{status.color}}">{{{status.text}}}</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                          
+                        </table>
+                          {{else}}
+                          <table class="order_table account_history">
+                            <tr class="order_title">
+                                <td class="first_td_padding">Mission</td>
+                                <td>Date</td>
+                                <td>Durée</td>
+                                <td>Lieu</td>
+                                <td>Nombre
+                                    <br>de Manners</td>
+                                <td></td>
+                            </tr>
+                             
+                            <tr class="table_pointer" id="mission-{{_id}}">
+                            </tr>
+                            
+                          </table>
+                            <div class="row text-center">
+                            <img src="/images/clipboard.svg" class="img_mission_empty" alt="">
+                            <br>
+                            <h4> Vous n'avez pas encore créé de mission !</h4>
+                            </div>
+                            {{/if}}
+                    </div>
+                     <div class="order_bg tablehide">
+                        <table class="order_table account_history">
+                            <tr class="order_title">
+                                <td class="first_td_padding">Mission</td>
+                                <td>Date</td>
+                            </tr>
+                            {{#each missions}}
+                            <tr class="table_pointer" id="mission-{{_id}}">
+                                <td class="first_td_padding">{{name}}</td>
+                                <td>{{startDate}}</td>
+                                <td id="mission-{{_id}}">
+                                    <div class="button status_btn {{status.color}}">{{{status.text}}}</div>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                    </div>
+                     <section>
+                <nav aria-label="Page navigation">
+                <ul class="pagination">
+                  <!--<li>
+                    <a href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>-->
+                  {{#each missPage}}
+                        <li><a href="#" class="lm" id="lm-{{this}}">{{plusone this}}</a></li>
+                  {{/each}}
+                  <!--<li><a href="#" class="lm" id="lm-0">1</a></li>
+                  <li><a href="#" class="lm" id="lm-1">2</a></li>
+                  <li><a href="#" class="lm" id="lm-2">3</a></li>
+                  <li><a href="#" class="lm" id="lm-3">4</a></li>-->
+                  
+                  <!--<li>
+                    <a href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>-->
+                </ul>
+              </nav>
+              </section>
+                </div>
+            </div>
+            
+        </div>
+        {{/if}}
+    </div>
+    {{>footerForms}}
+
+</template>

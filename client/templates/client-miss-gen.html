@@ -1,0 +1,352 @@
+<template name="ClientMissGen">
+  {{link}}
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .font-change-title {
+      font-family: 'UniversalisADFStd-Regular';
+    }
+
+    .font-change-body {
+      font-family: 'UniversalisADFStd-Regular';
+      src: url("../fonts/UniversalisADFStd-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/UniversalisADFStd-Regular.otf") format("opentype"), url("../fonts/UniversalisADFStd-Regular.woff") format("woff"), url("../fonts/UniversalisADFStd-Regular.ttf") format("truetype"), url("../fonts/UniversalisADFStd-Regular.svg#UniversalisADFStd-Regular") format("svg");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .btn-circle {
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      padding: 6px 0;
+      font-size: 12px;
+      line-height: 1.428571429;
+      border-radius: 20px;
+    }
+
+    .col-md-6.women_part {
+      padding-left: 100px;
+    }
+
+    .title_tenue_gender {
+      font-size: 20px;
+      color: #fbae17;
+    }
+
+    .location_box_bg.address_box {
+      min-height: 300px;
+    }
+
+  </style>
+  <div class="wrapper page_bg">
+    {{#if authCheck}} {{pay}} {{genPdf}}
+    <header class="header">
+      <div class="expanded row">
+        <div class="medium-1 columns">
+          <i class="fa fa-bars" id="menu-open"></i>
+          <a href="/accueil"><img class="logo show-for-small-only" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+          <a href="/accueilhote" class="comment-link header-item show-for-small-only" style="font-size: 14px;">Espace Partenaire</a>
+        </div>
+        <div class="medium-2 columns">
+          <a href="/accueil"><img class="logo show-for-medium" src="/images/logo.svg" alt="Manners" height="120" width="200"></a>
+        </div>
+        <div class="medium-6 columns text-left">
+          {{#unless currentUser}}
+          <div class="comment-wrapper button-wrapper">
+            <a class="button-colored comment-link header-item show-for-medium" style="color:#fbae17; font-size: 14px;" href="/accueilhote">ESPACE PARTENAIRE</a>
+          </div>{{/unless}}
+          <a href="/nouvelle-mission/1" class="button-colored header-item reversed">Créer une mission</a>
+          <div class="comment-wrapper">
+            <a href="/comment-ca-marche" id="header-phone" style="font-size: 14px;" class="comment-link header-item"><i class="fa fa-phone"></i>01 76 39 00 01</a>
+          </div>
+          <div class="comment-wrapper dropdown dropdown-toggle">
+            <a href="#" class="comment-link header-item ">AIDE <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/comment-ca-marche">Comment ça marche</a></li>
+              <li class="divider"></li>
+              <li><a href="/questions-frequentes">Questions fréquentes</a></li>
+              <li class="divider"></li>
+              <li><a href="/tenues">Les tenues</a></li>
+              <li class="divider"></li>
+              <li><a href="/contact">Contactez-nous</a></li>
+            </ul>
+          </div>{{#unless currentUser}}
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/inscrivez-vous">INSCRIPTION</a>
+          </div>
+          <div class="comment-wrapper ">
+            <a class="comment-link header-item show-for-medium" style="font-size: 14px;" href="/connexion">CONNEXION</a>
+          </div>{{/unless}}{{#if currentUser}}
+          <div class="pull-right customer_name cn-ac">
+            <div class="inline-block dropdown dropdown-toggle customer_mt">
+              <div class="comment-wrapper"><img class="customer_photo radius" src="{{getImage currentUser._id}}" alt="Votre photo ici">
+                <div class="header-item"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+
+              </div>
+              <!--<div class="comment-wrapper">
+                <div class="crop-photo little round inline"><img id="header-img" class="customer_photo header-item" src="{{getImage currentUser._id}}" alt="Votre photo ici"></div>
+                <div class="header-item .customer_name"><span class="inline-block">{{myCompany}}<br>{{currentUser.profile.nameManager}} {{currentUser.profile.lastNameManager}}</span>
+                </div>
+              </div>-->
+              <ul class="dropdown-menu">
+                <li><a href="/client/mes-missions">Mes missions</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/profils-favoris">Mes recommandations</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/history">Mon historique</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/messagerie">Messagerie</a></li>
+                <li class="divider"></li>
+                <li><a href="/client/compte">Mon compte</a></li>
+                <li class="divider"></li>
+                {{>logoutC}}
+              </ul>
+            </div>
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </header>
+    <div class="border_menu">
+      <div class="container">
+        <ul class="customer_menu">
+          <li class="underline-1"><a href="/client/mes-missions" class="active">mes missions</a></li>
+          <li class="underline-2"><a href="/client/profils-favoris">mes recommandations</a></li>
+          <li class="underline-3"><a href="/client/messagerie">Messagerie</a></li>
+          <li class="underline-4"><a href="/client/history">Mon historique</a></li>
+          <li class="underline-5"><a href="/client/compte">mon compte</a></li>
+          <!-- <li class="underline-6">                   </li> -->
+          <hr/>
+        </ul>
+      </div>
+    </div>
+    <!-- ADDRESS -->
+    <div class="gray_bg font-change-body">
+      <div class="container">
+        <div class="pull-left address_title">
+          <div class="inline-block valide_link_wrap">
+            <a href="/client/mes-missions/" class="account_link">mes missions</a>
+            <div class="{{status.class}}">
+              {{{status.text}}}
+            </div>
+            <div class="valide_popup hidden">
+              Mission complète Nous recherchons actuellement des Manners disponibles pour votre mission.
+            </div>
+            <div class="valide_popup hidden">
+              Mission complète des Manners ont répondu à votre mission, veuillez valider leur candidature
+            </div>
+            <div class="valide_popup hidden">
+              Mission complète votre mission est validée
+            </div>
+            <div class="valide_popup hidden">
+              Mission complète votre mission est validée, n’oubliez pas d’effectuer le paiement
+            </div>
+            <div class="valide_popup hidden">
+              Mission complète cette mission est terminée
+            </div>
+          </div>
+          /
+          <a href="#" class="red_text">{{miss.name}}</a>
+        </div>
+        <div class="pull-right">
+          <a href="/client/mes-missions/" class="account_link"><span class="general_arrow"></span>Revenir à mes missions</a>
+        </div>
+      </div>
+    </div>
+    <div class="container font-change-body">
+      <div class="location_info_box text-center">
+        <div class="" style="width: 100px; display: inline-block; vertical-align: middle;">
+          <div class="crop-photo medium round"><img src="{{getImage currentUser._id}}" alt=""></div>
+          <p class="shop_name">{{currentUser.profile.nameManager}}</p>
+          <p class="shop_name">{{currentUser.profile.entreprise}}</p>
+        </div>
+        <div class="inline-block address_wrap">
+          <h4 class="address_head font-change-title"> {{miss.name}}</h4>
+          <p class="address_location">
+            Adresse de la mission :<br> {{miss.address}} <br> {{miss.zip}} {{miss.city}} <br> Type de mission : {{miss.mtype}};
+            {{#if miss.referrer}}
+              referrer: {{miss.referrer}}
+            {{/if}}
+          </p>
+
+        </div>
+      </div>
+      <div class="devider"></div>
+      <section class="btnmissionid">
+        <div class="row">
+          <div class="col-lg-3">
+            <a class="btn icon-btn btn-danger adbtn-radius" id="dlt-miss" href="#"><span class="glyphicon btn-glyphicon glyphicon-remove-circle img-circle text-danger"></span>Annuler ma mission</a>
+          </div>
+          <div class="col-lg-3">
+            <a class="btn icon-btn btn-success adbtn-radius" id="missPdf" href="#"><span class="glyphicon btn-glyphicon glyphicon-arrow-down img-circle text-success"></span>Télécharger le devis</a>
+          </div>
+          <div class="col-lg-3">
+            <a class="btn icon-btn btn-primary adbtn-radius" id="" disabled href="#"><span class="glyphicon btn-glyphicon glyphicon-arrow-down img-circle text-success"></span>Télécharger les coordonnées</a>
+          </div>
+          <div class="col-lg-3">
+            <a class="btn icon-btn btn-warning adbtn-radius " disabled href="#"><span class="glyphicon btn-glyphicon glyphicon-level-up img-circle text-warning adbtn-radius"></span>Accéder à la messagerie</a>
+          </div>
+        </div>
+      </section>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="gray_title_bg box_title font-change-title">
+            À propos de l’évènement
+          </div>
+          <div class="location_box_bg location_text_padding">
+            <p>
+              {{miss.overview}}
+            </p>
+          </div>
+          <div class="gray_title_bg box_title font-change-title">
+            Informations supplémentaires
+          </div>
+          <div class="location_box_bg location_text_padding">
+            <p>
+              {{miss.moreInfo}}
+            </p>
+          </div>
+          <div class="location_mt">
+            <div class="gray_title_bg box_title font-change-title">
+              Lieu
+            </div>
+            <p>{{miss.address}}</p>
+            <p>{{miss.city}} ({{miss.zip}})</p>
+            <div class="location_box_bg address_box" id="mapCli">
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+
+          {{#each posts}}
+          <div class="gray_title_bg font-change-title">
+            {{date sdate}} | {{mission}} | {{hcol}} Participants
+          </div>
+          <div class="location_box_bg place_info location_text_padding text-center">
+            <div class="row">
+              {{#if hostExist vals}} {{#each vals.pre}}
+              <div class="col-md-4">
+                <div class=" box_title mission_title">
+                </div>
+                <div class="location_box_bg location_p text-center">
+                  <div class="row">
+                    <img src="{{getImage id}}" width='200px' alt="" />
+                    <div class="recruitment_info">
+                      <div class="users_name">{{userName id}}</div>
+                      <div class="users_name">Tel: {{tel id}}</div>
+                      <div class="users_name">Email: {{email id}}</div>
+                      <div class="mission_like_number red_text">
+                        {{{controls id}}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}} {{#each vals.hote}}
+              <div class="col-md-4">
+                <div class="box_title mission_title">
+                  <!--{{username}} {{pattern.start}}-{{pattern.finish}} ({{hostesCol}} hôtes)-->
+                </div>
+                <div class="location_box_bg location_p text-center">
+                  <div class="row">
+
+                    <a href="/partenaire/profil/{{id}}" target="_blank"><img src="{{getImage id}}" width='200px' alt="" /></a>
+
+
+                    <div class="recruitment_info">
+                      <!--{{pattern.date}}-->
+                      <div class="users_name">{{userName id}}</div>
+                      <div class="users_name">Tel:{{tel id}}</div>
+                      <div class="users_name">Email:{{email id}}</div>
+                      <!--{{#unless vipSt}}
+                                                    <button type="button" id="pay-{{id}}" class="btn btn-large pay btn-block btn-primary">Pay</button>
+                                                    {{/unless}}-->
+                      <div class="users_name">Note : {{favorites id}}</div>
+                      <div class="mission_text_small">{{miscol}} missions</div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}} {{else}}
+              <img src="/images/search.jpg" class="img-loop" alt="">
+              <br>
+              <h4 class="text-center">Vos futurs Manners sont en train de postuler... </h4>
+              {{/if}}
+
+            </div>
+          </div>
+          {{/each}}
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            {{#each jobs}}
+            <div class="gray_title_bg box_title font-change-title">
+              Tenue pour : {{job}}</div>
+            <div class="location_box_bg box_title">
+              <div class="col-md-6">
+                {{#each col.h}}
+                <div class="title_tenue_gender">Pour les hommes</div>
+                <p class="description_tenue"> {{info}} </p>
+                {{/each}}
+              </div>
+              <div class="col-md-6 women_part">
+                {{#each col.f}}
+                <div class="title_tenue_gender">Pour les femmes</div>
+                <p class="description_tenue"> {{info}} </p>
+                {{/each}}
+
+              </div>
+
+            </div>{{/each}}</div>
+        </div>
+      </div>
+
+      <div class="devider"></div>
+      <div class="col-lg-4 text-center">
+      </div>
+      <!-- <div class="address_title address_title_m">
+  					Les missions / <span class="red_text">Recrutement express</span>
+  				</div>
+  				<div class="row">
+  					<div class="col-md-4">
+  						<div class="gray_title_bg box_title">
+  							Les tenues / Hommes
+  						</div>
+  						<div class="location_box_bg">
+  							<div class="yellow_text">
+  								EN RECHERCHE...
+  							</div>
+  						</div>
+  					</div>
+  					<div class="col-md-5">
+  						<div class="gray_title_bg box_title">
+  							Les tenues / Femmes
+  						</div>
+  						<div class="location_box_bg">
+  							<div class="yellow_text">
+  								EN RECHERCHE...
+  							</div>
+  						</div>
+  					</div>
+  					<div class="col-md-3">
+  						<div class="gray_title_bg box_title">
+  							Les tenues / Femmes
+  						</div>
+  						<div class="location_box_bg">
+  							<div class="yellow_text">
+  								EN RECHERCHE...
+  							</div>
+  						</div>
+  					</div>
+  				</div> -->
+    </div>
+    <!-- ADDRESS -->
+    {{/if}}
+  </div>
+  {{>footerForms}}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYZvlJ-KNDVsaXbCKhAkczfRnvlae5pt4" async
+    defer></script>
+</template>
