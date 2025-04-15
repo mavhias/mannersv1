@@ -1,20 +1,12 @@
 /**
  * Created by maxencecornet on 03/09/2016.
+ * edited by mavhias on 15/04/2025
  */
-//var mangopay = require('mangopay2-nodejs-sdk');
 import fs from 'fs'
 import request from "request"
+import MangoPaySDK from 'mangopay2-nodejs-sdk'
 
-
-Meteor.startup(function () {
-  try {
-    Payment = new paymentModule(20);
-    Payment.authenticate();
-
-  } catch (error) {
-    console.log(error);
-  }
-});
+let Payment;
 
 var paymentModule = function (commissionRate) {
   this.commissionRate = commissionRate;
@@ -30,6 +22,17 @@ paymentModule.prototype.authenticate = function () {
     console.log(error);
   }
 };
+
+Meteor.startup(function () {
+  try {
+    Payment = new paymentModule(20);
+    Payment.authenticate();
+
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 paymentModule.prototype.updateUser = function (data) {
     console.log(Meteor.userId());
     let id = Meteor.users.findOne(Meteor.userId()).mangoUserId;

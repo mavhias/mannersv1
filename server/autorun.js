@@ -1,5 +1,6 @@
 import moment from 'moment'
 import request from "sync-request";
+import { Appointment } from '/imports/api/appointment';
 
 
 const sendAlert = (user, miss) => {
@@ -108,27 +109,28 @@ const missionTimer = () => {
 
 Meteor.startup(function () {
   let app = Appointment.find().fetch();
-  app.forEach(appV => {
-    if (!!appV.answer) return;
-    let diff = new Date(appV.date).getTime() - new Date().getTime();
-    if (diff > 0) {
-      setTimeout(() => {
-        var user = Meteor.users.findOne(appV.user);
-        let answ = false;
-        let data = JSON.parse(request('GET', 'https://api.vyte.in/thirdparties/592af17bba526a64003b98b6/groups/bemanners_events/events').getBody('utf8'));
-        data = data.map(val => {
-          if (val.created_by.email === appV.email) {
-            Apointment.update({
-              user: user._id
-            }, {
-              $set: {
-                answer: true
-              }
-            });
-            answ = true;
-          }
-          if (!answer && appV.step == 2) {
-            let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + `,
+  if (Array.isArray(app)) {
+    app.forEach(appV => {
+      if (!!appV.answer) return;
+      let diff = new Date(appV.date).getTime() - new Date().getTime();
+      if (diff > 0) {
+        setTimeout(() => {
+          var user = Meteor.users.findOne(appV.user);
+          let answ = false;
+          let data = JSON.parse(request('GET', 'https://api.vyte.in/thirdparties/592af17bba526a64003b98b6/groups/bemanners_events/events').getBody('utf8'));
+          data = data.map(val => {
+            if (val.created_by.email === appV.email) {
+              Appointment.update({
+                user: user._id
+              }, {
+                $set: {
+                  answer: true
+                }
+              });
+              answ = true;
+            }
+            if (!answer && appV.step == 2) {
+              let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + `,
 
 Nous avons remarqué que tu n'as pas encore fixé de date pour venir nous rencontrer 😔
 
@@ -143,13 +145,13 @@ Nous avons hâte de te rencontrer 😘
 L'équipe Manners
 
 JOINDRE GUIDE DU MANNERS`;
-            Meteor.call('sendEmailCli',
-              user._id,
-              'julie@bemanners.com',
-              "Manners | Tu nous aimes plus ? 💔",
-              mText);
-          } else if (!answer && appV.step == 3) {
-            let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + `,
+              Meteor.call('sendEmailCli',
+                user._id,
+                'julie@bemanners.com',
+                "Manners | Tu nous aimes plus ? 💔",
+                mText);
+            } else if (!answer && appV.step == 3) {
+              let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + `,
 Nous avons remarqué que tu n'as pas encore fixé de date pour venir nous rencontrer 😔
 
 Tu peux toujours le faire grâce au lien suivant :
@@ -164,13 +166,13 @@ L'équipe Manners
 
 JOINDRE GUIDE DU MANNERS
 `;
-            Meteor.call('sendEmailCli',
-              user._id,
-              'julie@bemanners.com',
-              "Manners : Derniere chance",
-              mText);
-          } else if (!answer && step == 4) {
-            let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + ` 😊
+              Meteor.call('sendEmailCli',
+                user._id,
+                'julie@bemanners.com',
+                "Manners : Derniere chance",
+                mText);
+            } else if (!answer && step == 4) {
+              let mText = `Hello ` + user.profile.firstname + ` ` + user.profile.lastname + ` 😊
 J'espère que tu vas bien ?
 Où en es-tu de tes démarches ? On a pas de news … On est triste 😢
 As-tu besoin d'aide ?
@@ -179,18 +181,19 @@ Si tu as des questions surtout n'hésite pas à m'appeler directement sur mon po
 
 Have a good day ☀️
 L'équipe Manners`;
-            Meteor.call('sendEmailCli',
-              user._id,
-              'julie@bemanners.com',
-              "Manners | Besoin d'aide ? Tu nous manques 😢",
-              mText);
-          }
-          return val;
-        })
-      }, diff);
-    }
+              Meteor.call('sendEmailCli',
+                user._id,
+                'julie@bemanners.com',
+                "Manners | Besoin d'aide ? Tu nous manques 😢",
+                mText);
+            }
+            return val;
+          })
+        }, diff);
+      }
 
-  });
+    });
+  }
   Meteor.setInterval(missionTimer, 1000 * 60 * 60 * 24);
 
 
