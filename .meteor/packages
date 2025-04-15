@@ -27,3 +27,9 @@ blaze-html-templates
 jquery
 momentjs:moment
 ostrio:files
+aldeed:simple-schema
+aldeed:schema-deny
+http
+meteorhacks:subs-manager
+kadira:flow-router
+ostrio:flow-router-extra

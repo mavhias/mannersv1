@@ -220,16 +220,6 @@ Meteor.methods({
   'Payment.methods.updateUser': async function (data) {
     return Payment.updateUser(data);
   },
-  'mango.addUserNatural': async function() {
-    try {
-      const result = await MangoPayClient.Users.create({
-        // ... paramètres existants ...
-      });
-      return result;
-    } catch (error) {
-      throw new Meteor.Error('mango-error', error.message);
-    }
-  },
   'mango.addBankAccount': async function(userId, iban, bic) {
     try {
       const result = await MangoPayClient.Users.createBankAccount(userId, {
